@@ -13,6 +13,37 @@ PDF Upload → Parse (PyMuPDF) → Review/Edit Markdown → LLM Extraction → V
 3. **Extract** — Local LLM fills every field in `TransceiverSpecs` as independent atoms
 4. **Store** — Each run is saved with metadata, the markdown sent, raw LLM output, and validated specs
 
+## Design Notes
+
+Why the pipeline is shaped this way:
+
+**Two-stage extraction: atoms first, then modes.** Rather than asking the model to produce a
+structured, mode-aware object in one pass, extraction is split into two stages. Stage one pulls every
+parameter as an independent atomic value with no cross-field inference. Stage two links those atoms
+into coherent operating modes. For coherent optics datasheets, recovering which values *co-occur* in a
+selectable configuration is the genuinely hard part — a single module may expose a dozen application
+codes, each with its own baud rate, modulation, OSNR requirement and reach. Separating "what values
+exist" from "which values belong together" keeps the second, harder question from corrupting the first.
+
+**Module envelope vs. per-mode specification.** `MODE_FIELDS` in `transceiver_models.py` marks which
+parameters vary per configuration and which describe the module as a whole. A worst-case receiver
+sensitivity is a hardware envelope; a required OSNR is a per-mode figure. Encoding that distinction in
+the schema means mode synthesis only has to reason about the fields that can actually differ.
+
+**Field descriptions do double duty.** Each Pydantic `Field(description=...)` is both the validation
+contract and the schema text sent to the model, generated from `model_json_schema()`. There is one
+definition of what a field means, so the prompt and the validator cannot drift apart as the schema
+evolves.
+
+**Human review sits before extraction, not after.** PDF-to-text on vendor datasheets is unreliable —
+merged table cells, footnote markers glued to values, multi-column layouts. The editable markdown step
+acknowledges that rather than pretending parsing is solved, and lets the operator trim irrelevant
+sections or repair a mangled table before spending inference time on it.
+
+**Runs record exactly what was sent.** `content.md` stores the post-edit markdown that actually reached
+the model, alongside the raw LLM response and the validated specs. A run can be understood after the
+fact without re-parsing the source PDF.
+
 ## Requirements
 
 - Python 3.11+
