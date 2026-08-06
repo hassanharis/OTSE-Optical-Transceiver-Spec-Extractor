@@ -1,0 +1,97 @@
+{
+  "modes": [
+    {
+      "label": "Unamplified (80km)",
+      "channel_spacing_ghz": [
+        50.0,
+        100.0
+      ],
+      "host_interface_name": [
+        "CAUI-4",
+        "SFF-8679"
+      ],
+      "media_interface_name": [
+        "100GBASE-ZR",
+        "SFF-8636"
+      ],
+      "bit_rate_gbps": [
+        100.0,
+        103.12,
+        25.0
+      ],
+      "modulation_formats": [
+        "DP-QPSK",
+        "NRZ"
+      ],
+      "reach_km": 80.0,
+      "rx_sensitivity_dbm": -30.0,
+      "cd_tolerance_ps_nm": 2400.0,
+      "fec_types": [
+        "SC-FEC",
+        "Staircase FEC"
+      ]
+    },
+    {
+      "label": "Amplified (120km)",
+      "channel_spacing_ghz": [
+        50.0,
+        100.0
+      ],
+      "host_interface_name": [
+        "CAUI-4",
+        "SFF-8679"
+      ],
+      "media_interface_name": [
+        "100GBASE-ZR",
+        "SFF-8636"
+      ],
+      "bit_rate_gbps": [
+        100.0,
+        103.12,
+        25.0
+      ],
+      "modulation_formats": [
+        "DP-QPSK",
+        "NRZ"
+      ],
+      "reach_km": 120.0,
+      "rx_sensitivity_dbm": -18.0,
+      "cd_tolerance_ps_nm": 2400.0,
+      "fec_types": [
+        "SC-FEC",
+        "Staircase FEC"
+      ]
+    },
+    {
+      "label": "Extended (300km)",
+      "channel_spacing_ghz": [
+        50.0,
+        100.0
+      ],
+      "host_interface_name": [
+        "CAUI-4",
+        "SFF-8679"
+      ],
+      "media_interface_name": [
+        "100GBASE-ZR",
+        "SFF-8636"
+      ],
+      "bit_rate_gbps": [
+        100.0,
+        103.12,
+        25.0
+      ],
+      "modulation_formats": [
+        "DP-QPSK",
+        "NRZ"
+      ],
+      "reach_km": 300.0,
+      "rx_sensitivity_dbm": -22.0,
+      "cd_tolerance_ps_nm": 6000.0,
+      "fec_types": [
+        "SC-FEC",
+        "Staircase FEC"
+      ]
+    }
+  ]
+}
