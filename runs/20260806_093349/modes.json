@@ -1,0 +1,320 @@
+{
+  "modes": [
+    {
+      "label": "FlexO-4e-DO-QPSK (0x64)",
+      "channel_spacing_ghz": 150.0,
+      "host_interface_name": [
+        "400GAUI-8",
+        "200GAUI-4",
+        "100GAUI-2"
+      ],
+      "host_interface_id_hex": [
+        "0x11",
+        "0x0F",
+        "0x0D"
+      ],
+      "media_interface_name": "FLEXO-4e-DO-QPSK",
+      "media_interface_id_hex": "0x64",
+      "baud_rate_gbaud": 118.2,
+      "modulation_formats": "DP-QPSK",
+      "rx_sensitivity_dbm": -27.0,
+      "rx_osnr_db": [
+        17.9,
+        18.7
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 58000.0,
+      "fec_types": "oFEC"
+    },
+    {
+      "label": "FlexO-4e-MPCS066-OS (0xC0)",
+      "channel_spacing_ghz": 75.0,
+      "host_interface_name": [
+        "400GAUI-8",
+        "200GAUI-4",
+        "100GAUI-2"
+      ],
+      "host_interface_id_hex": [
+        "0x11",
+        "0x0F",
+        "0x0D"
+      ],
+      "media_interface_name": "FlexO-4e-MPCS066-OS",
+      "media_interface_id_hex": "0xC0",
+      "baud_rate_gbaud": 65.7,
+      "modulation_formats": "PCS-66",
+      "rx_sensitivity_dbm": -24.5,
+      "rx_osnr_db": [
+        21.2,
+        22.0
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 42000.0,
+      "fec_types": "oFEC"
+    },
+    {
+      "label": "FlexO-4e-MPCS075-OS (0xC2)",
+      "channel_spacing_ghz": 87.5,
+      "host_interface_name": [
+        "400GAUI-8",
+        "200GAUI-4",
+        "100GAUI-2"
+      ],
+      "host_interface_id_hex": [
+        "0x11",
+        "0x0F",
+        "0x0D"
+      ],
+      "media_interface_name": "FlexO-4e-MPCS075-OS",
+      "media_interface_id_hex": "0xC2",
+      "baud_rate_gbaud": 75.0,
+      "modulation_formats": "PCS-75",
+      "rx_sensitivity_dbm": -25.5,
+      "rx_osnr_db": [
+        20.6,
+        21.4
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 37000.0,
+      "fec_types": "oFEC"
+    },
+    {
+      "label": "FlexO-4e-MPCS087-OS (0xC9)",
+      "channel_spacing_ghz": 100.0,
+      "host_interface_name": [
+        "400GAUI-8",
+        "200GAUI-4",
+        "100GAUI-2"
+      ],
+      "host_interface_id_hex": [
+        "0x11",
+        "0x0F",
+        "0x0D"
+      ],
+      "media_interface_name": "FlexO-4e-MPCS087-OS",
+      "media_interface_id_hex": "0xC9",
+      "baud_rate_gbaud": 87.4,
+      "modulation_formats": "PCS-87",
+      "rx_sensitivity_dbm": -25.5,
+      "rx_osnr_db": [
+        19.5,
+        20.3
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 52000.0,
+      "fec_types": "oFEC"
+    },
+    {
+      "label": "FlexO-4e-MPCS098-OS (0xD8)",
+      "channel_spacing_ghz": 112.5,
+      "host_interface_name": [
+        "400GAUI-8",
+        "200GAUI-4",
+        "100GAUI-2"
+      ],
+      "host_interface_id_hex": [
+        "0x11",
+        "0x0F",
+        "0x0D"
+      ],
+      "media_interface_name": "FlexO-4e-MPCS098-OS",
+      "media_interface_id_hex": "0xD8",
+      "baud_rate_gbaud": 97.9,
+      "modulation_formats": "PCS-98",
+      "rx_sensitivity_dbm": -26.0,
+      "rx_osnr_db": [
+        19.2,
+        20.0
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 35000.0,
+      "fec_types": "oFEC"
+    },
+    {
+      "label": "FlexO-4-MPCS101-OS (0xDC)",
+      "channel_spacing_ghz": 125.0,
+      "host_interface_name": "FOIC1.2-MFI",
+      "host_interface_id_hex": "0x3C",
+      "media_interface_name": "FlexO-4-MPCS101-OS",
+      "media_interface_id_hex": "0xDC",
+      "baud_rate_gbaud": 100.8,
+      "modulation_formats": "PCS-101",
+      "rx_sensitivity_dbm": -26.0,
+      "rx_osnr_db": [
+        19.7,
+        20.4
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 34000.0,
+      "fec_types": "oFEC"
+    },
+    {
+      "label": "FlexO-4-MPCS079-OS (0xC4)",
+      "channel_spacing_ghz": 87.5,
+      "host_interface_name": "FOIC1.2-MFI",
+      "host_interface_id_hex": "0x3C",
+      "media_interface_name": "FlexO-4-MPCS079-OS",
+      "media_interface_id_hex": "0xC4",
+      "baud_rate_gbaud": 78.9,
+      "modulation_formats": "PCS-79",
+      "rx_sensitivity_dbm": -25.5,
+      "rx_osnr_db": [
+        20.5,
+        21.2
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 58000.0,
+      "fec_types": "oFEC"
+    },
+    {
+      "label": "FlexO-4-MPCS069-OS (0xC1)",
+      "channel_spacing_ghz": 75.0,
+      "host_interface_name": "FOIC1.2-MFI",
+      "host_interface_id_hex": "0x3C",
+      "media_interface_name": "FlexO-4-MPCS069-OS",
+      "media_interface_id_hex": "0xC1",
+      "baud_rate_gbaud": 69.1,
+      "modulation_formats": "PCS-69",
+      "rx_sensitivity_dbm": -25.5,
+      "rx_osnr_db": [
+        21.5,
+        22.2
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 80000.0,
+      "fec_types": "oFEC"
+    },
+    {
+      "label": "FlexO-4-MPCS087-OS (0xCA)",
+      "channel_spacing_ghz": 100.0,
+      "host_interface_name": "FOIC1.2-MFI",
+      "host_interface_id_hex": "0x3C",
+      "media_interface_name": "FlexO-4-MPCS087-OS",
+      "media_interface_id_hex": "0xCA",
+      "baud_rate_gbaud": 87.3,
+      "modulation_formats": "PCS-87",
+      "rx_sensitivity_dbm": -25.5,
+      "rx_osnr_db": [
+        20.1,
+        20.8
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 52000.0,
+      "fec_types": "oFEC"
+    },
+    {
+      "label": "OpenZR+ Enhanced (0xC6)",
+      "channel_spacing_ghz": 75.0,
+      "host_interface_name": [
+        "400GAUI-8",
+        "200GAUI-4",
+        "100GAUI-2"
+      ],
+      "host_interface_id_hex": [
+        "0x11",
+        "0x0F",
+        "0x0D"
+      ],
+      "media_interface_name": "OpenZR+, MSA, Enhanced",
+      "media_interface_id_hex": "0xC6",
+      "baud_rate_gbaud": 60.1,
+      "modulation_formats": "DP-16QAM",
+      "rx_sensitivity_dbm": -22.5,
+      "rx_osnr_db": [
+        22.9,
+        23.6
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 23000.0,
+      "fec_types": "OpenZR+"
+    },
+    {
+      "label": "ZR400-OFEC-16QAM (0x46)",
+      "channel_spacing_ghz": 75.0,
+      "host_interface_name": [
+        "400GAUI-8",
+        "200GAUI-4",
+        "100GAUI-2"
+      ],
+      "host_interface_id_hex": [
+        "0x11",
+        "0x0F",
+        "0x0D"
+      ],
+      "media_interface_name": "ZR400-OFEC-16QAM",
+      "media_interface_id_hex": "0x46",
+      "baud_rate_gbaud": 60.1,
+      "modulation_formats": "DP-16QAM",
+      "rx_sensitivity_dbm": -22.5,
+      "rx_osnr_db": [
+        23.1,
+        23.8
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 23000.0,
+      "fec_types": "OpenZR+"
+    },
+    {
+      "label": "ZR400-OFEC-16QAM-HB (0x36)",
+      "channel_spacing_ghz": 75.0,
+      "host_interface_name": [
+        "400GAUI-8",
+        "200GAUI-4",
+        "100GAUI-2"
+      ],
+      "host_interface_id_hex": [
+        "0x11",
+        "0x0F",
+        "0x0D"
+      ],
+      "media_interface_name": "ZR400-OFEC-16QAM-HB",
+      "media_interface_id_hex": "0x36",
+      "baud_rate_gbaud": 60.1,
+      "modulation_formats": "DP-16QAM",
+      "rx_sensitivity_dbm": -22.5,
+      "rx_osnr_db": [
+        23.1,
+        23.8
+      ],
+      "rx_overload_dbm": [
+        1.0,
+        15.0
+      ],
+      "cd_tolerance_ps_nm": 23000.0,
+      "fec_types": "OpenZR+"
+    }
+  ]
+}

@@ -16,8 +16,10 @@ from pipeline.pdf_parser import parse_pdf
 from pipeline.atom_extractor import extract_atoms, BASE_URL
 from pipeline.mode_linker import synthesize_modes, store_modes, separate_atoms
 from pipeline.runtime_store import store_run, list_runs, load_run
+from generate_report import generate_html
 
 MODEL_DIR = r"C:\Haris\models"
+REPORTS_DIR = Path("reports")
 
 st.set_page_config(page_title="Transceiver Spec Extractor", layout="wide")
 st.title("Transceiver Datasheet Extractor")
@@ -140,6 +142,7 @@ with tab_extract:
 
                 st.write("Storing run...")
                 run_dir = store_run(parsed, raw_dict, specs, model_id=model_id)
+                st.session_state["_last_run_dir"] = str(run_dir)
                 st.write(f"Saved to `{run_dir}`")
 
                 if specs:
@@ -217,6 +220,16 @@ with tab_extract:
 
                     st.session_state["modes_result"] = modes_result
 
+            # --- Generate Report button (after mode synthesis or if skipped) ---
+            if st.session_state.get("_last_run_dir"):
+                run_dir = Path(st.session_state["_last_run_dir"])
+                report_path = REPORTS_DIR / f"{run_dir.name}.html"
+                if st.button("Generate Report", type="secondary"):
+                    REPORTS_DIR.mkdir(exist_ok=True)
+                    html = generate_html(run_dir)
+                    report_path.write_text(html, encoding="utf-8")
+                    st.success(f"Report saved to `{report_path}`")
+
             if "modes_result" in st.session_state and st.session_state["modes_result"]:
                 modes_result = st.session_state["modes_result"]
                 st.subheader("Configuration Modes")
@@ -241,3 +254,10 @@ with tab_history:
             elif "raw_llm" in run_data:
                 st.subheader("Raw LLM Output (no validated specs)")
                 st.json(run_data["raw_llm"])
+
+            report_path = REPORTS_DIR / f"{selected}.html"
+            if st.button("Generate Report", key="hist_report"):
+                REPORTS_DIR.mkdir(exist_ok=True)
+                html = generate_html(Path("runs") / selected)
+                report_path.write_text(html, encoding="utf-8")
+                st.success(f"Report saved to `{report_path}`")

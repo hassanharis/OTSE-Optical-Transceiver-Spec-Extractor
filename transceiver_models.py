@@ -59,8 +59,8 @@ class TransceiverSpecs(BaseModel):
             default=None,
             description="Max normal operating temperature in Celsius.",
         )
-    power_consumption_w: float | None = Field(
-            default=None,
+    power_consumption_w: Optional[List[float]] = Field(
+        default_factory=list, 
             description="Electrical Power consumption in Watts.",
         )
 
@@ -236,4 +236,5 @@ MODE_FIELDS: list[str] = [
     "media_interface_name",
     "media_interface_id_hex",
     "media_interface_id",
+    "power_consumption_w",
 ]
