@@ -48,13 +48,18 @@ fact without re-parsing the source PDF.
 
 - Python 3.11+
 - [llama-server](https://github.com/ggerganov/llama.cpp) with GGUF models in `C:\Haris\models`
-- Dependencies: `streamlit`, `openai`, `pydantic`, `pymupdf`, `pymupdf4llm`, `requests`
 
 ## Setup
 
 ```bash
-pip install streamlit openai pydantic pymupdf pymupdf4llm requests
+python -m venv .venv
+.venv\Scripts\activate        # Linux/macOS: source .venv/bin/activate
+pip install -r requirements.txt
 ```
+
+Dependencies are pinned exactly, because extraction output depends on the versions in use and a stored
+run is only reproducible against a known environment. For linting and tests, use
+`pip install -r requirements-dev.txt` instead.
 
 Start the model server:
 

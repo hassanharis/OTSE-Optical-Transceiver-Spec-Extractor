@@ -1,0 +1,44 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+
+# Tooling caches
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Local configuration and secrets
+.env
+.env.local
+
+# Streamlit local settings
+.streamlit/secrets.toml
+
+# Editor / OS noise
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini
+*.swp
+
+# --- Project artifacts ---------------------------------------------------- #
+# Extraction runs and generated reports are reproducible outputs, and
+# runs/*/content.md holds parsed vendor datasheet text that should not be
+# redistributed. Both directories are recreated on demand.
+
+
+# Source datasheets are third-party copyrighted material — keep them local.
+
