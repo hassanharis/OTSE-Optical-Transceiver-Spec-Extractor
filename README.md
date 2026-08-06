@@ -23,7 +23,7 @@ parameter as an independent atomic value with no cross-field inference. Stage tw
 into coherent operating modes. For coherent optics datasheets, recovering which values *co-occur* in a
 selectable configuration is the genuinely hard part — a single module may expose a dozen application
 codes, each with its own baud rate, modulation, OSNR requirement and reach. Separating "what values
-exist" from "which values belong together" keeps the second, harder question from corrupting the first. Separating the extraction into two parts increased the accuracy to 99% as deterministic steps and decisions between the parts made the schema dynamically adaptable to transceiver and easier to debug.
+exist" from "which values belong together" keeps the second, harder question from corrupting the first. Separating the extraction into two parts increased the accuracy to 99% as deterministic steps and decisions between the parts made the schema dynamically adaptable to transceiver and easier to debug. Trying to prompt the LLM in one pass to separate the module level and mode level parameter, gather and synthesis the modes across different sections of pdf drastically reduces the extraction quality, accuracy, validity, and success rate.
 
 **Module envelope vs. per-mode specification.** `MODE_FIELDS` in `transceiver_models.py` marks which
 parameters vary per configuration and which describe the module as a whole. A worst-case receiver
