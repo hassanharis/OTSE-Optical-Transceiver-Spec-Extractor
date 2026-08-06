@@ -17,6 +17,7 @@ from pipeline.atom_extractor import extract_atoms, BASE_URL
 from pipeline.mode_linker import synthesize_modes, store_modes, separate_atoms
 from pipeline.runtime_store import store_run, list_runs, load_run
 from generate_report import generate_html
+from generate_modes_report import generate_modes_html
 
 MODEL_DIR = r"C:\Haris\models"
 REPORTS_DIR = Path("reports")
@@ -223,12 +224,15 @@ with tab_extract:
             # --- Generate Report button (after mode synthesis or if skipped) ---
             if st.session_state.get("_last_run_dir"):
                 run_dir = Path(st.session_state["_last_run_dir"])
-                report_path = REPORTS_DIR / f"{run_dir.name}.html"
                 if st.button("Generate Report", type="secondary"):
                     REPORTS_DIR.mkdir(exist_ok=True)
+                    pipeline_path = REPORTS_DIR / f"{run_dir.name}_pipeline.html"
                     html = generate_html(run_dir)
-                    report_path.write_text(html, encoding="utf-8")
-                    st.success(f"Report saved to `{report_path}`")
+                    pipeline_path.write_text(html, encoding="utf-8")
+                    modes_path = REPORTS_DIR / f"{run_dir.name}_modes.html"
+                    modes_html = generate_modes_html(run_dir)
+                    modes_path.write_text(modes_html, encoding="utf-8")
+                    st.success(f"Reports saved: `{pipeline_path}` and `{modes_path}`")
 
             if "modes_result" in st.session_state and st.session_state["modes_result"]:
                 modes_result = st.session_state["modes_result"]
@@ -255,9 +259,13 @@ with tab_history:
                 st.subheader("Raw LLM Output (no validated specs)")
                 st.json(run_data["raw_llm"])
 
-            report_path = REPORTS_DIR / f"{selected}.html"
             if st.button("Generate Report", key="hist_report"):
                 REPORTS_DIR.mkdir(exist_ok=True)
-                html = generate_html(Path("runs") / selected)
-                report_path.write_text(html, encoding="utf-8")
-                st.success(f"Report saved to `{report_path}`")
+                sel_run_dir = Path("runs") / selected
+                pipeline_path = REPORTS_DIR / f"{selected}_pipeline.html"
+                html = generate_html(sel_run_dir)
+                pipeline_path.write_text(html, encoding="utf-8")
+                modes_path = REPORTS_DIR / f"{selected}_modes.html"
+                modes_html = generate_modes_html(sel_run_dir)
+                modes_path.write_text(modes_html, encoding="utf-8")
+                st.success(f"Reports saved: `{pipeline_path}` and `{modes_path}`")
