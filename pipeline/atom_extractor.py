@@ -51,6 +51,7 @@ Rules:
 - For list fields, collect ALL distinct values mentioned across the document.
 - Each field is an independent atomic extraction — do not infer one from another.
 - Return ONLY valid JSON matching the schema. No commentary outside the JSON block.
+- Do not ignore new line within the a table cell. If a value is split across lines, concatenate it with a space.
 """
 
 USER_PROMPT_TEMPLATE = """\

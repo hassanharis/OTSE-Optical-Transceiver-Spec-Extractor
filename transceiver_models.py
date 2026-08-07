@@ -34,6 +34,12 @@ class TransceiverSpecs(BaseModel):
         default=None,
         description="spectrum bands:C-band, L-band, O-band, CWDM, LAN-WDM, grey, Super/Extended variants.",
     )
+    frequency_min_thz: Optional[List[float]] = Field(
+        None, description="Minimum supported optical frequency in THz."
+    )
+    frequency_max_thz: Optional[List[float]] = Field(
+        None, description="Maximum supported optical frequency in THz."
+    )
     channel_spacing_ghz: Optional[List[float]] = Field(
         default_factory=list, description="Supported or minimum channel spacing in GHz."
     )
@@ -95,6 +101,12 @@ class TransceiverSpecs(BaseModel):
             default=None,
             description="Media Interface id in decimals.",
         )
+    frame: list[str] | None = Field(
+        default=None, description="Frames or combination and multiples of frames: i.e. 8x 100GAUI-1"
+    )
+    standards_format: list[str] | None = Field(
+        default=None, description="individual format or codes specific to any MSA or standards or vendor: openzr, openroadm, or specific application code"
+    )
 
     # Electrical and optical performance parameters
     baud_rate_gbaud: Optional[List[float]] = Field(
@@ -191,6 +203,9 @@ class TransceiverSpecs(BaseModel):
     provenance_datasheet_sections: str | list[str] | None = Field(
         None, description="Comma-separated list of section headings (from the Section Headings list above) that contained the extracted parameters."
     )
+    suggestions: Optional[str] = Field(
+        None, description="Any suggestions for improving the extraction or schema."
+    )
     
 
 TransceiverDatasheet = TransceiverSpecs
@@ -239,4 +254,6 @@ MODE_FIELDS: list[str] = [
     "media_interface_id_hex",
     "media_interface_id",
     "power_consumption_w",
+    "standards_format",
+    "frame",
 ]
