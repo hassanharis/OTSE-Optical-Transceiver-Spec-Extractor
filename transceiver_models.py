@@ -188,7 +188,9 @@ class TransceiverSpecs(BaseModel):
     notes: Optional[str] = Field(
         None, description="Conditions, qualifiers, ambiguities, or source wording about any parameter that can not be explained in the set schema."
     )
-
+    provenance_datasheet_sections: str | list[str] | None = Field(
+        None, description="Comma-separated list of section headings (from the Section Headings list above) that contained the extracted parameters."
+    )
     
 
 TransceiverDatasheet = TransceiverSpecs

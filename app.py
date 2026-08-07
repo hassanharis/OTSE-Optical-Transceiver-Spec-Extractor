@@ -119,6 +119,16 @@ with tab_extract:
         st.subheader("Step 1 — Parsed Content")
         st.caption(f"{parsed.page_count} pages | {len(parsed.tables)} tables | {len(parsed.markdown):,} chars")
 
+        import re
+        headings = [
+            line.strip() for line in parsed.markdown.splitlines()
+            if re.match(r"^#{1,6}\s+", line)
+        ]
+        if headings:
+            with st.expander(f"Section Headings ({len(headings)})"):
+                for h in headings:
+                    st.markdown(f"- {h}")
+
         edited_md = st.text_area(
             "Edit the markdown before extraction",
             value=st.session_state.get("edited_md", parsed.markdown),

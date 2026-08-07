@@ -117,3 +117,22 @@ def _find_table_label(page: Any, bbox: tuple) -> str | None:
         return None
     matches = re.findall(r"(Table\s+\d+[-.\u2013]\d+[A-Za-z]?)", text)
     return matches[-1] if matches else None
+
+
+def extract_section_headings(md_path: str | Path) -> list[str]:
+    """Extract all section headings (lines starting with #) from a markdown file."""
+    import re
+
+    md_path = Path(md_path)
+    if not md_path.exists():
+        raise FileNotFoundError(f"Markdown file not found: {md_path}")
+
+    headings: list[str] = []
+    with open(md_path, encoding="utf-8") as f:
+        for line in f:
+            match = re.match(r"^(#{1,6})\s+(.+)", line)
+            if match:
+                headings.append(match.group(0).strip())
+
+    logger.info("Extracted %d headings from %s", len(headings), md_path.name)
+    return headings

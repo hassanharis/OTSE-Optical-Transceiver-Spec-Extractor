@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from pathlib import Path
 from typing import Any
 
@@ -71,6 +72,71 @@ Group the multi-valued atoms into modes. Return only the JSON.
 """
 
 
+def _chunk_by_sections(md_text: str) -> list[tuple[str, str]]:
+    """Split markdown into (heading, body) chunks by top-level headings."""
+    lines = md_text.splitlines(keepends=True)
+    chunks: list[tuple[str, str]] = []
+    current_heading = ""
+    current_body: list[str] = []
+
+    for line in lines:
+        if re.match(r"^#{1,6}\s+", line):
+            if current_heading or current_body:
+                chunks.append((current_heading, "".join(current_body)))
+            current_heading = line.strip().lstrip("#").strip()
+            current_body = []
+        else:
+            current_body.append(line)
+
+    if current_heading or current_body:
+        chunks.append((current_heading, "".join(current_body)))
+    return chunks
+
+
+def _normalize(text: str) -> str:
+    """Lowercase, collapse whitespace, strip punctuation for fuzzy matching."""
+    return re.sub(r"[^a-z0-9 ]", "", text.lower()).strip()
+
+
+def _filter_sections_by_provenance(
+    md_text: str, provenance: str
+) -> str:
+    """Return only the sections referenced in provenance_datasheet_sections.
+
+    Falls back to full text if provenance lists as many or more sections than exist.
+    """
+    chunks = _chunk_by_sections(md_text)
+    if not chunks:
+        return md_text
+
+    # Parse provenance into normalized target names
+    targets = [_normalize(s) for s in re.split(r"[,;\n]", provenance) if s.strip()]
+    if not targets:
+        return md_text
+
+    total_sections = len([h for h, _ in chunks if h])
+    if len(targets) >= total_sections:
+        return md_text
+
+    # Match each chunk heading against targets using substring containment
+    selected: list[str] = []
+    for heading, body in chunks:
+        norm_heading = _normalize(heading)
+        if not norm_heading:
+            continue
+        for target in targets:
+            if target in norm_heading or norm_heading in target:
+                selected.append(f"## {heading}\n{body}")
+                break
+
+    if not selected:
+        logger.warning("Provenance filtering matched 0 sections; using full text")
+        return md_text
+
+    logger.info("Provenance filter: %d/%d sections selected", len(selected), total_sections)
+    return "\n\n".join(selected)
+
+
 def separate_atoms(specs_dict: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
     """Split specs into (multi_valued_mode_atoms, general_params).
 
@@ -127,6 +193,12 @@ def synthesize_modes(
         model_id = models_resp.data[0].id if models_resp.data else "default"
 
     content = parsed.markdown or parsed.full_text
+
+    # Filter to only provenance-referenced sections if available
+    provenance = specs_dict.get("provenance_datasheet_sections")
+    if provenance and isinstance(provenance, str) and provenance.strip():
+        content = _filter_sections_by_provenance(content, provenance)
+
     if len(content) > 80_000:
         content = content[:80_000] + "\n\n[...truncated...]"
 

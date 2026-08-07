@@ -60,6 +60,10 @@ USER_PROMPT_TEMPLATE = """\
 {schema}
 ```
 
+## Section Headings
+
+{headings}
+
 ## Datasheet Content
 
 {content}
@@ -88,6 +92,15 @@ def _truncate(text: str, max_chars: int = 120_000) -> str:
     if len(text) <= max_chars:
         return text
     return text[:max_chars] + "\n\n[...truncated...]"
+
+
+def _extract_headings(md_text: str) -> str:
+    """Return a newline-separated list of markdown headings found in the text."""
+    headings = [
+        line.strip() for line in md_text.splitlines()
+        if re.match(r"^#{1,6}\s+", line)
+    ]
+    return "\n".join(headings) if headings else "(none found)"
 
 
 def _parse_json_from_response(raw: str) -> Any:
@@ -132,7 +145,8 @@ def extract_atoms(
 
     content = _truncate(parsed.markdown or parsed.full_text, max_chars)
     schema_text = _build_schema_text()
-    prompt = USER_PROMPT_TEMPLATE.format(schema=schema_text, content=content)
+    headings = _extract_headings(parsed.markdown or parsed.full_text)
+    prompt = USER_PROMPT_TEMPLATE.format(schema=schema_text, headings=headings, content=content)
 
     # Auto-detect model if not specified
     if not model_id:
