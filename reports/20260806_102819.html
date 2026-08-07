@@ -41,7 +41,7 @@
   .md-excerpt { background: var(--card); border-radius: 6px; padding: 1rem; font-size: 0.78rem; color: var(--muted); max-height: 200px; overflow-y: auto; white-space: pre-wrap; }
   table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
   th, td { border: 1px solid var(--border); padding: 0.45rem 0.65rem; text-align: left; }
-  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: nowrap; }
+  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: normal; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
   tr:hover td { background: rgba(56,189,248,0.04); }
   .badge { display: inline-block; background: rgba(56,189,248,0.15); color: var(--accent); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.72rem; margin: 0.1rem; }
   .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -322,7 +322,7 @@ The management interface specification of the module is compliant to SFF-8636. F
   </div>
   <div class="card" style="overflow-x:auto;">
     <div class="section-label">Synthesized Operating Modes</div>
-    <table><tr><th>label</th><th>channel_spacing_ghz</th><th>host_interface_name</th><th>media_interface_name</th><th>bit_rate_gbps</th><th>modulation_formats</th><th>reach_km</th><th>rx_sensitivity_dbm</th><th>cd_tolerance_ps_nm</th><th>fec_types</th></tr><tr><td><strong>Unamplified (80km)</strong></td><td>[50.0, 100.0]</td><td>[&#x27;CAUI-4&#x27;, &#x27;SFF-8679&#x27;]</td><td>[&#x27;100GBASE-ZR&#x27;, &#x27;SFF-8636&#x27;]</td><td>[100.0, 103.12, 25.0]</td><td>[&#x27;DP-QPSK&#x27;, &#x27;NRZ&#x27;]</td><td>80.0</td><td>-30.0</td><td>2400.0</td><td>[&#x27;SC-FEC&#x27;, &#x27;Staircase FEC&#x27;]</td></tr><tr><td><strong>Amplified (120km)</strong></td><td>[50.0, 100.0]</td><td>[&#x27;CAUI-4&#x27;, &#x27;SFF-8679&#x27;]</td><td>[&#x27;100GBASE-ZR&#x27;, &#x27;SFF-8636&#x27;]</td><td>[100.0, 103.12, 25.0]</td><td>[&#x27;DP-QPSK&#x27;, &#x27;NRZ&#x27;]</td><td>120.0</td><td>-18.0</td><td>2400.0</td><td>[&#x27;SC-FEC&#x27;, &#x27;Staircase FEC&#x27;]</td></tr><tr><td><strong>Extended (300km)</strong></td><td>[50.0, 100.0]</td><td>[&#x27;CAUI-4&#x27;, &#x27;SFF-8679&#x27;]</td><td>[&#x27;100GBASE-ZR&#x27;, &#x27;SFF-8636&#x27;]</td><td>[100.0, 103.12, 25.0]</td><td>[&#x27;DP-QPSK&#x27;, &#x27;NRZ&#x27;]</td><td>300.0</td><td>-22.0</td><td>6000.0</td><td>[&#x27;SC-FEC&#x27;, &#x27;Staircase FEC&#x27;]</td></tr></table>
+    <table><tr><th>label</th><th>channel spacing ghz</th><th>host interface name</th><th>media interface name</th><th>bit rate gbps</th><th>modulation formats</th><th>reach km</th><th>rx sensitivity dbm</th><th>cd tolerance ps nm</th><th>fec types</th></tr><tr><td><strong>Unamplified (80km)</strong></td><td>[50.0, 100.0]</td><td>[&#x27;CAUI-4&#x27;, &#x27;SFF-8679&#x27;]</td><td>[&#x27;100GBASE-ZR&#x27;, &#x27;SFF-8636&#x27;]</td><td>[100.0, 103.12, 25.0]</td><td>[&#x27;DP-QPSK&#x27;, &#x27;NRZ&#x27;]</td><td>80.0</td><td>-30.0</td><td>2400.0</td><td>[&#x27;SC-FEC&#x27;, &#x27;Staircase FEC&#x27;]</td></tr><tr><td><strong>Amplified (120km)</strong></td><td>[50.0, 100.0]</td><td>[&#x27;CAUI-4&#x27;, &#x27;SFF-8679&#x27;]</td><td>[&#x27;100GBASE-ZR&#x27;, &#x27;SFF-8636&#x27;]</td><td>[100.0, 103.12, 25.0]</td><td>[&#x27;DP-QPSK&#x27;, &#x27;NRZ&#x27;]</td><td>120.0</td><td>-18.0</td><td>2400.0</td><td>[&#x27;SC-FEC&#x27;, &#x27;Staircase FEC&#x27;]</td></tr><tr><td><strong>Extended (300km)</strong></td><td>[50.0, 100.0]</td><td>[&#x27;CAUI-4&#x27;, &#x27;SFF-8679&#x27;]</td><td>[&#x27;100GBASE-ZR&#x27;, &#x27;SFF-8636&#x27;]</td><td>[100.0, 103.12, 25.0]</td><td>[&#x27;DP-QPSK&#x27;, &#x27;NRZ&#x27;]</td><td>300.0</td><td>-22.0</td><td>6000.0</td><td>[&#x27;SC-FEC&#x27;, &#x27;Staircase FEC&#x27;]</td></tr></table>
   </div>
 </div>
 
@@ -332,5 +332,57 @@ The management interface specification of the module is compliant to SFF-8636. F
 </footer>
 
 </div>
+<script>
+document.querySelectorAll('table').forEach(function(tbl) {
+  var hdr = tbl.querySelector('tr');
+  if (!hdr) return;
+  var headerCells = Array.prototype.slice.call(hdr.cells || []);
+  if (!headerCells.length) return;
+  var dr = hdr.nextElementSibling;
+  if (!dr || !dr.querySelector('td')) return;
+
+  function clamp(n, lo, hi) {
+    return Math.max(lo, Math.min(hi, n));
+  }
+
+  function headerMinWidthPx(cell) {
+    var text = (cell.textContent || '').trim();
+    if (!text) return 0;
+    var words = text.split(/\s+/).filter(Boolean);
+    var longest = words.reduce(function(mx, w) { return Math.max(mx, w.length); }, 0);
+    var minCh = clamp(longest + 2, 8, 28);
+    var cs = window.getComputedStyle(cell);
+    var probeChar = document.createElement('span');
+    probeChar.textContent = '0';
+    probeChar.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;left:-9999px;top:-9999px;';
+    probeChar.style.font = cs.font;
+    document.body.appendChild(probeChar);
+    var chPx = probeChar.getBoundingClientRect().width || (parseFloat(cs.fontSize) * 0.6);
+    document.body.removeChild(probeChar);
+    var pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+    return (minCh * chPx) + pad + 2;
+  }
+
+  var p = document.createElement('table');
+  p.style.cssText = 'position:absolute;visibility:hidden;table-layout:auto;width:auto;white-space:nowrap';
+  p.innerHTML = '<tr>' + dr.innerHTML + '</tr>';
+  document.body.appendChild(p);
+  var cg = document.createElement('colgroup');
+  var dataCells = p.rows[0] ? p.rows[0].cells : [];
+  var colCount = Math.max(headerCells.length, dataCells.length);
+  for (var i = 0; i < colCount; i++) {
+    var dataWidth = dataCells[i] ? dataCells[i].offsetWidth : 0;
+    var headerMin = headerCells[i] ? headerMinWidthPx(headerCells[i]) : 0;
+    var finalWidth = Math.ceil(Math.max(dataWidth, headerMin));
+    var col = document.createElement('col');
+    col.style.width = finalWidth + 'px';
+    col.style.minWidth = Math.ceil(headerMin) + 'px';
+    cg.appendChild(col);
+  }
+  document.body.removeChild(p);
+  tbl.insertBefore(cg, tbl.firstChild);
+  tbl.style.tableLayout = 'fixed';
+});
+</script>
 </body>
 </html>

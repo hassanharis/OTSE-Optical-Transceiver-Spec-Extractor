@@ -1,0 +1,91 @@
+{
+  "vendor": "Smartoptics",
+  "model": "SO-TQSFP-DD-4CC-ZR",
+  "form_factor": [
+    "QSFP-DD"
+  ],
+  "standards_claimed": [
+    "OIF 400G-ZR",
+    "400GBASE-ZR",
+    "IEEE 802.3bs 400GAUI-8",
+    "QSFP-DD MSA",
+    "CMIS4.0",
+    "OIF400ZR"
+  ],
+  "wavelength_band": [
+    "C-band"
+  ],
+  "frequency_min_thz": [
+    191.28
+  ],
+  "frequency_max_thz": [
+    196.12
+  ],
+  "channel_spacing_ghz": [
+    100.0,
+    75.0
+  ],
+  "connector_type": [
+    "LC"
+  ],
+  "fiber_type": [
+    "SM"
+  ],
+  "temp_min_c": 0.0,
+  "temp_max_c": 70.0,
+  "host_interface_name": [
+    "400GAUI-8"
+  ],
+  "frame": [
+    "4x 100GbE"
+  ],
+  "standards_format": [
+    "OIF 400G-ZR",
+    "0x01",
+    "0x02"
+  ],
+  "baud_rate_gbaud": [
+    60.0
+  ],
+  "bit_rate_gbps": [
+    400.0
+  ],
+  "modulation_formats": [
+    "16QAM"
+  ],
+  "reach_km": [
+    120.0
+  ],
+  "tx_power_min_dbm": [
+    -10.0
+  ],
+  "tx_power_max_dbm": [
+    -6.0
+  ],
+  "rx_sensitivity_dbm": [
+    -12.0
+  ],
+  "rx_osnr_db": [
+    26.0
+  ],
+  "rx_osnr_tolerance_db_max": [
+    26.0
+  ],
+  "rx_overload_dbm": [
+    0.0
+  ],
+  "cd_tolerance_ps_nm": [
+    2400.0
+  ],
+  "pmd_tolerance_ps": [
+    10.0
+  ],
+  "notes": "1) Receiver sensitivity at unamplified configurations. 2) Signal power of the channel at the OSNR performance value. 3) Input power needed to achieve post FEC BER. 4) At CFEC threshold. 5) OSNR tolerance penalty over OSNR Tolerance due to reflections and dispersion. 6) Tolerance to PMD with <0.5 dB penalty to OSNR sensitivity. 7) Set to comply with 400G modes. Can be changed on individual modules to fully support other modes.",
+  "provenance_datasheet_sections": [
+    "OVERVIEW",
+    "TECHNICAL DATA",
+    "ORDERING INFORMATION",
+    "GENERAL DEFINITIONS"
+  ],
+  "suggestions": "Consider allowing non-numeric values for power_consumption_w when given as inequality. Also, for wavelength parameters, if provided in THz, the schema might need to support THz units or conversion. Additionally, the standards_claimed field collected many entries; perhaps grouping by standard family could help."
+}

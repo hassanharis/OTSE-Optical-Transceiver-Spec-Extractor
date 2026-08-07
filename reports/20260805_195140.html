@@ -41,7 +41,7 @@
   .md-excerpt { background: var(--card); border-radius: 6px; padding: 1rem; font-size: 0.78rem; color: var(--muted); max-height: 200px; overflow-y: auto; white-space: pre-wrap; }
   table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
   th, td { border: 1px solid var(--border); padding: 0.45rem 0.65rem; text-align: left; }
-  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: nowrap; }
+  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: normal; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
   tr:hover td { background: rgba(56,189,248,0.04); }
   .badge { display: inline-block; background: rgba(56,189,248,0.15); color: var(--accent); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.72rem; margin: 0.1rem; }
   .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -327,7 +327,7 @@ The below table lists the Host and NTWK modes supported by TD8005-TUNC-SO.
   </div>
   <div class="card" style="overflow-x:auto;">
     <div class="section-label">Synthesized Operating Modes</div>
-    <table><tr><th>label</th><th>channel_spacing_ghz</th><th>host_interface_name</th><th>media_interface_name</th><th>media_interface_id_hex</th><th>baud_rate_gbaud</th><th>bit_rate_gbps</th><th>modulation_formats</th><th>rx_sensitivity_dbm</th><th>rx_osnr_db</th><th>rx_osnr_tolerance_db_max</th><th>rx_overload_dbm</th><th>cd_tolerance_ps_nm</th></tr><tr><td><strong>800ZR</strong></td><td>150</td><td>800GAUI-8</td><td>800ZR Power class A</td><td><span class="badge">0x6E</span></td><td>118.2</td><td>800</td><td>DP-16QAM</td><td>-18.5</td><td>26.4</td><td>27.4</td><td>1</td><td>3000</td></tr><tr><td><strong>FlexO-6e 118.7</strong></td><td>150</td><td>200GAUI-2</td><td>FLEXO-6e-DPO-16QAM / FOIC6e-DPO</td><td><span class="badge">0x6A</span></td><td>118.7</td><td>600</td><td>PCS-118</td><td>-23.5</td><td>22.8</td><td>23.8</td><td>1</td><td>29000</td></tr><tr><td><strong>FlexO-6e 118.5</strong></td><td>150</td><td>200GAUI-2</td><td>600G-PCS-118</td><td><span class="badge">0xF2</span></td><td>118.5</td><td>600</td><td>PCS-118</td><td>-23.5</td><td>21.6</td><td>22.6</td><td>1</td><td>29000</td></tr><tr><td><strong>FlexO-4e</strong></td><td>150</td><td>400GAUI-8</td><td>FLEXO-4e-DO-QPSK / FOIC4e.4-DO</td><td><span class="badge">0x64</span></td><td>118.2</td><td>400</td><td>DP-QPSK</td><td>-27.0</td><td>17.9</td><td>18.9</td><td>1</td><td>58000</td></tr><tr><td><strong>OpenZR400</strong></td><td>75</td><td>400GAUI-8</td><td>ZR400-OFEC-16QAM-HB</td><td><span class="badge">0x36</span></td><td>60.1</td><td>400</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>24.1</td><td>1</td><td>23000</td></tr></table>
+    <table><tr><th>label</th><th>channel spacing ghz</th><th>host interface name</th><th>media interface name</th><th>media interface id hex</th><th>baud rate gbaud</th><th>bit rate gbps</th><th>modulation formats</th><th>rx sensitivity dbm</th><th>rx osnr db</th><th>rx osnr tolerance db max</th><th>rx overload dbm</th><th>cd tolerance ps nm</th></tr><tr><td><strong>800ZR</strong></td><td>150</td><td>800GAUI-8</td><td>800ZR Power class A</td><td><span class="badge">0x6E</span></td><td>118.2</td><td>800</td><td>DP-16QAM</td><td>-18.5</td><td>26.4</td><td>27.4</td><td>1</td><td>3000</td></tr><tr><td><strong>FlexO-6e 118.7</strong></td><td>150</td><td>200GAUI-2</td><td>FLEXO-6e-DPO-16QAM / FOIC6e-DPO</td><td><span class="badge">0x6A</span></td><td>118.7</td><td>600</td><td>PCS-118</td><td>-23.5</td><td>22.8</td><td>23.8</td><td>1</td><td>29000</td></tr><tr><td><strong>FlexO-6e 118.5</strong></td><td>150</td><td>200GAUI-2</td><td>600G-PCS-118</td><td><span class="badge">0xF2</span></td><td>118.5</td><td>600</td><td>PCS-118</td><td>-23.5</td><td>21.6</td><td>22.6</td><td>1</td><td>29000</td></tr><tr><td><strong>FlexO-4e</strong></td><td>150</td><td>400GAUI-8</td><td>FLEXO-4e-DO-QPSK / FOIC4e.4-DO</td><td><span class="badge">0x64</span></td><td>118.2</td><td>400</td><td>DP-QPSK</td><td>-27.0</td><td>17.9</td><td>18.9</td><td>1</td><td>58000</td></tr><tr><td><strong>OpenZR400</strong></td><td>75</td><td>400GAUI-8</td><td>ZR400-OFEC-16QAM-HB</td><td><span class="badge">0x36</span></td><td>60.1</td><td>400</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>24.1</td><td>1</td><td>23000</td></tr></table>
   </div>
 </div>
 
@@ -337,5 +337,57 @@ The below table lists the Host and NTWK modes supported by TD8005-TUNC-SO.
 </footer>
 
 </div>
+<script>
+document.querySelectorAll('table').forEach(function(tbl) {
+  var hdr = tbl.querySelector('tr');
+  if (!hdr) return;
+  var headerCells = Array.prototype.slice.call(hdr.cells || []);
+  if (!headerCells.length) return;
+  var dr = hdr.nextElementSibling;
+  if (!dr || !dr.querySelector('td')) return;
+
+  function clamp(n, lo, hi) {
+    return Math.max(lo, Math.min(hi, n));
+  }
+
+  function headerMinWidthPx(cell) {
+    var text = (cell.textContent || '').trim();
+    if (!text) return 0;
+    var words = text.split(/\s+/).filter(Boolean);
+    var longest = words.reduce(function(mx, w) { return Math.max(mx, w.length); }, 0);
+    var minCh = clamp(longest + 2, 8, 28);
+    var cs = window.getComputedStyle(cell);
+    var probeChar = document.createElement('span');
+    probeChar.textContent = '0';
+    probeChar.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;left:-9999px;top:-9999px;';
+    probeChar.style.font = cs.font;
+    document.body.appendChild(probeChar);
+    var chPx = probeChar.getBoundingClientRect().width || (parseFloat(cs.fontSize) * 0.6);
+    document.body.removeChild(probeChar);
+    var pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+    return (minCh * chPx) + pad + 2;
+  }
+
+  var p = document.createElement('table');
+  p.style.cssText = 'position:absolute;visibility:hidden;table-layout:auto;width:auto;white-space:nowrap';
+  p.innerHTML = '<tr>' + dr.innerHTML + '</tr>';
+  document.body.appendChild(p);
+  var cg = document.createElement('colgroup');
+  var dataCells = p.rows[0] ? p.rows[0].cells : [];
+  var colCount = Math.max(headerCells.length, dataCells.length);
+  for (var i = 0; i < colCount; i++) {
+    var dataWidth = dataCells[i] ? dataCells[i].offsetWidth : 0;
+    var headerMin = headerCells[i] ? headerMinWidthPx(headerCells[i]) : 0;
+    var finalWidth = Math.ceil(Math.max(dataWidth, headerMin));
+    var col = document.createElement('col');
+    col.style.width = finalWidth + 'px';
+    col.style.minWidth = Math.ceil(headerMin) + 'px';
+    cg.appendChild(col);
+  }
+  document.body.removeChild(p);
+  tbl.insertBefore(cg, tbl.firstChild);
+  tbl.style.tableLayout = 'fixed';
+});
+</script>
 </body>
 </html>

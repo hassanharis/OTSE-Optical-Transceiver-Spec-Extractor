@@ -175,6 +175,8 @@ def generate_html(run_dir: Path) -> str:
   table {{ width: 100%; border-collapse: collapse; font-size: 0.8rem; }}
   th, td {{ border: 1px solid var(--border); padding: 0.45rem 0.65rem; text-align: left; }}
   th {{ background: var(--card); color: var(--accent); font-weight: 600; white-space: nowrap; }}
+  th {{ white-space: normal; }}
+  td {{ white-space: nowrap; }}
   tr:hover td {{ background: rgba(56,189,248,0.04); }}
   .badge {{ display: inline-block; background: rgba(56,189,248,0.15); color: var(--accent); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.72rem; margin: 0.1rem; }}
   .cols-2 {{ display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }}

@@ -26,9 +26,11 @@
   .spec-item .label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
   .spec-item .value { font-size: 0.88rem; font-weight: 600; margin-top: 0.1rem; word-break: break-word; }
   .spec-item.wide { grid-column: 1 / -1; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  table { width: 100%; border-collapse: collapse; table-layout: auto; font-size: 0.8rem; }
   th, td { border: 1px solid var(--border); padding: 0.45rem 0.65rem; text-align: left; }
-  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: nowrap; }
+  th { background: var(--card); color: var(--accent); font-weight: 600;}
+  th { white-space: normal; }
+  td { white-space: nowrap; }
   tr:hover td { background: rgba(3,105,161,0.05); }
   .badge { display: inline-block; background: rgba(3,105,161,0.1); color: var(--accent); padding: 0.15rem 0.45rem; border-radius: 3px; font-size: 0.72rem; margin: 0.1rem; border: 1px solid rgba(3,105,161,0.2); }
   .note-box { background: rgba(124,58,237,0.06); border-left: 3px solid var(--accent2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; margin-top: 0.75rem; font-size: 0.75rem; color: var(--text); }
@@ -55,13 +57,21 @@
       <div class="spec-item"><div class="label">Vendor</div><div class="value">Smartoptics</div></div>
       <div class="spec-item"><div class="label">Model</div><div class="value">SO-TQSFPDD4CCZRP</div></div>
       <div class="spec-item"><div class="label">Form Factor</div><div class="value">QSFP-DD</div></div>
+      <div class="spec-item"><div class="label">Standards</div><div class="value">OIF 400ZR, OpenZR+, CMIS4.1</div></div>
       <div class="spec-item"><div class="label">Wavelength Band</div><div class="value">DWDM</div></div>
+      <div class="spec-item"><div class="label">Channel Spacing (GHz)</div><div class="value">100.0</div></div>
       <div class="spec-item"><div class="label">Connector</div><div class="value">LC</div></div>
       <div class="spec-item"><div class="label">Fiber Type</div><div class="value">SM</div></div>
       <div class="spec-item"><div class="label">Temp Min (°C)</div><div class="value">15.0</div></div>
       <div class="spec-item"><div class="label">Temp Max (°C)</div><div class="value">75.0</div></div>
-      <div class="spec-item"><div class="label">Standards</div><div class="value">OIF 400ZR, OpenZR+, CMIS4.1</div></div>
+      <div class="spec-item"><div class="label">Frame</div><div class="value">1x 400GAUI-8, 4x 100GAUI-2, 3x 100GAUI-2, 2x 100GAUI-2, 1x 100GAUI-2, 2 x CAUI4, 1 x CAUI4</div></div>
+      <div class="spec-item"><div class="label">Standards Format</div><div class="value">OIF 400ZR, OpenZR+ MSA, CMIS4.1</div></div>
+      <div class="spec-item"><div class="label">Tx In Band Osnr Db</div><div class="value">42.0</div></div>
+      <div class="spec-item"><div class="label">Tx Out Of Band Osnr Db</div><div class="value">42.0</div></div>
+      <div class="spec-item"><div class="label">Pre Fec Ber Threshold</div><div class="value">0.0125</div></div>
+      <div class="spec-item"><div class="label">Los Assert Dbm</div><div class="value">-28.0</div></div>
       <div class="spec-item wide"><div class="label">Notes</div><div class="value" style="font-weight:400; font-size:0.78rem;">Operating temperature +15°C to +75°C. The module will turn up from cold start at ambient temperature as low as -5°C and will reach specifications after self-heating up to min temperature.</div></div>
+      <div class="spec-item"><div class="label">Provenance Datasheet Sections</div><div class="value">OVERVIEW, TECHNICAL DATA, GENERIC, OIF 400ZR, OpenZR+</div></div>
     </div>
   </div>
 </div>
@@ -74,7 +84,7 @@
   </div>
   <div class="card">
     <table>
-      <tr><th>Mode</th><th>power_consumption_w</th><th>Host Interface</th><th>Media Interface</th><th>media_interface_id_hex</th><th>media_interface_id</th><th>Bit Rate (Gbps)</th><th>Modulation</th><th>Reach (km)</th><th>tx_power_min_dbm</th><th>tx_power_max_dbm</th><th>RX Sensitivity (dBm)</th><th>rx_osnr_db</th><th>rx_osnr_tolerance_db_max</th><th>rx_overload_dbm</th><th>CD Tolerance (ps/nm)</th><th>FEC</th></tr>
+      <tr><th>Mode</th><th>Power (W)</th><th>Host Interface</th><th>Media Interface</th><th>media_interface_id_hex</th><th>media_interface_id</th><th>Bit Rate (Gbps)</th><th>Modulation</th><th>Reach (km)</th><th>TX Power Min (dBm)</th><th>TX Power Max (dBm)</th><th>RX Sensitivity (dBm)</th><th>RX OSNR (dB)</th><th>RX OSNR Tolerance (dB)</th><th>RX Overload (dBm)</th><th>CD Tolerance (ps/nm)</th><th>FEC</th></tr>
       <tr><td><strong>OIF 400ZR App 1 (80km)</strong></td><td>23.1</td><td>400GBASE-R</td><td>OIF 400ZR</td><td>0x01</td><td>1</td><td>400.0</td><td>DP-16QAM</td><td>80.0</td><td>-10.0</td><td>-6.0</td><td>-20.0</td><td>23.9</td><td>26.0</td><td>13.0</td><td>2400.0</td><td>CFEC</td></tr>
       <tr><td><strong>OIF 400ZR App 2 (25km)</strong></td><td>23.1</td><td>400GBASE-R</td><td>OIF 400ZR</td><td>0x02</td><td>2</td><td>400.0</td><td>DP-16QAM</td><td>25.0</td><td>-10.0</td><td>-6.0</td><td>-20.0</td><td>23.9</td><td>26.0</td><td>13.0</td><td>2400.0</td><td>CFEC</td></tr>
       <tr><td><strong>OIF 400ZR App 3 (80km 4x100G)</strong></td><td>23.1</td><td>4 × 100GBASE-R</td><td>OIF 400ZR</td><td>0x01</td><td>1</td><td>400.0</td><td>DP-16QAM</td><td>80.0</td><td>-10.0</td><td>-6.0</td><td>-20.0</td><td>23.9</td><td>26.0</td><td>13.0</td><td>2400.0</td><td>CFEC</td></tr>

@@ -28,7 +28,7 @@
   .spec-item.wide { grid-column: 1 / -1; }
   table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
   th, td { border: 1px solid var(--border); padding: 0.45rem 0.65rem; text-align: left; }
-  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: nowrap; }
+  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: normal; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
   tr:hover td { background: rgba(3,105,161,0.05); }
   .badge { display: inline-block; background: rgba(3,105,161,0.1); color: var(--accent); padding: 0.15rem 0.45rem; border-radius: 3px; font-size: 0.72rem; margin: 0.1rem; border: 1px solid rgba(3,105,161,0.2); }
   .note-box { background: rgba(124,58,237,0.06); border-left: 3px solid var(--accent2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; margin-top: 0.75rem; font-size: 0.75rem; color: var(--text); }
@@ -125,5 +125,57 @@
 </footer>
 
 </div>
+<script>
+document.querySelectorAll('table').forEach(function(tbl) {
+  var hdr = tbl.querySelector('tr');
+  if (!hdr) return;
+  var headerCells = Array.prototype.slice.call(hdr.cells || []);
+  if (!headerCells.length) return;
+  var dr = hdr.nextElementSibling;
+  if (!dr || !dr.querySelector('td')) return;
+
+  function clamp(n, lo, hi) {
+    return Math.max(lo, Math.min(hi, n));
+  }
+
+  function headerMinWidthPx(cell) {
+    var text = (cell.textContent || '').trim();
+    if (!text) return 0;
+    var words = text.split(/\\s+/).filter(Boolean);
+    var longest = words.reduce(function(mx, w) { return Math.max(mx, w.length); }, 0);
+    var minCh = clamp(longest + 2, 8, 28);
+    var cs = window.getComputedStyle(cell);
+    var probeChar = document.createElement('span');
+    probeChar.textContent = '0';
+    probeChar.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;left:-9999px;top:-9999px;';
+    probeChar.style.font = cs.font;
+    document.body.appendChild(probeChar);
+    var chPx = probeChar.getBoundingClientRect().width || (parseFloat(cs.fontSize) * 0.6);
+    document.body.removeChild(probeChar);
+    var pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+    return (minCh * chPx) + pad + 2;
+  }
+
+  var p = document.createElement('table');
+  p.style.cssText = 'position:absolute;visibility:hidden;table-layout:auto;width:auto;white-space:nowrap';
+  p.innerHTML = '<tr>' + dr.innerHTML + '</tr>';
+  document.body.appendChild(p);
+  var cg = document.createElement('colgroup');
+  var dataCells = p.rows[0] ? p.rows[0].cells : [];
+  var colCount = Math.max(headerCells.length, dataCells.length);
+  for (var i = 0; i < colCount; i++) {
+    var dataWidth = dataCells[i] ? dataCells[i].offsetWidth : 0;
+    var headerMin = headerCells[i] ? headerMinWidthPx(headerCells[i]) : 0;
+    var finalWidth = Math.ceil(Math.max(dataWidth, headerMin));
+    var col = document.createElement('col');
+    col.style.width = finalWidth + 'px';
+    col.style.minWidth = Math.ceil(headerMin) + 'px';
+    cg.appendChild(col);
+  }
+  document.body.removeChild(p);
+  tbl.insertBefore(cg, tbl.firstChild);
+  tbl.style.tableLayout = 'fixed';
+});
+</script>
 </body>
 </html>

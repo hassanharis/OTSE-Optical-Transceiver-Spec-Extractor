@@ -41,7 +41,7 @@
   .md-excerpt { background: var(--card); border-radius: 6px; padding: 1rem; font-size: 0.78rem; color: var(--muted); max-height: 200px; overflow-y: auto; white-space: pre-wrap; }
   table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
   th, td { border: 1px solid var(--border); padding: 0.45rem 0.65rem; text-align: left; }
-  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: nowrap; }
+  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: normal; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
   tr:hover td { background: rgba(56,189,248,0.04); }
   .badge { display: inline-block; background: rgba(56,189,248,0.15); color: var(--accent); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.72rem; margin: 0.1rem; }
   .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -392,7 +392,7 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
   </div>
   <div class="card" style="overflow-x:auto;">
     <div class="section-label">Synthesized Operating Modes</div>
-    <table><tr><th>label</th><th>channel_spacing_ghz</th><th>power_consumption_w</th><th>host_interface_name</th><th>host_interface_id_hex</th><th>host_interface_id</th><th>media_interface_name</th><th>media_interface_id_hex</th><th>media_interface_id</th><th>baud_rate_gbaud</th><th>modulation_formats</th><th>rx_sensitivity_dbm</th><th>rx_osnr_db</th><th>rx_osnr_tolerance_db_max</th><th>cd_tolerance_ps_nm</th><th>fec_types</th></tr><tr><td><strong>FLEXO-4e-DO-QPSK (0x64)</strong></td><td>150.0</td><td>24.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FLEXO-4e-DO-QPSK</td><td><span class="badge">0x64</span></td><td>100</td><td>118.2</td><td>DP-QPSK</td><td>-27.0</td><td>17.9</td><td>18.7</td><td>58000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS066-OS (0xC0)</strong></td><td>75.0</td><td>23.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS066-OS</td><td><span class="badge">0xC0</span></td><td>192</td><td>65.7</td><td>PCS-66</td><td>-24.5</td><td>21.2</td><td>22.0</td><td>42000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS075-OS (0xC2)</strong></td><td>87.5</td><td>24.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS075-OS</td><td><span class="badge">0xC2</span></td><td>194</td><td>75.0</td><td>PCS-75</td><td>-25.5</td><td>20.6</td><td>21.4</td><td>37000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS087-OS (0xC9)</strong></td><td>100.0</td><td>24.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS087-OS</td><td><span class="badge">0xC9</span></td><td>201</td><td>87.4</td><td>PCS-87</td><td>-25.5</td><td>19.5</td><td>20.3</td><td>52000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS098-OS (0xD8)</strong></td><td>112.5</td><td>25.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS098-OS</td><td><span class="badge">0xD8</span></td><td>216</td><td>97.9</td><td>PCS-98</td><td>-26.0</td><td>19.2</td><td>20.0</td><td>35000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS101-OS (0xDC)</strong></td><td>125.0</td><td>24.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS101-OS</td><td><span class="badge">0xDC</span></td><td>220</td><td>100.8</td><td>PCS-101</td><td>-26.0</td><td>19.7</td><td>20.4</td><td>34000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS079-OS (0xC4)</strong></td><td>87.5</td><td>24.0</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS079-OS</td><td><span class="badge">0xC4</span></td><td>196</td><td>78.9</td><td>PCS-79</td><td>-25.0</td><td>20.5</td><td>21.2</td><td>58000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS069-OS (0xC1)</strong></td><td>75.0</td><td>23.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS069-OS</td><td><span class="badge">0xC1</span></td><td>193</td><td>69.1</td><td>PCS-69</td><td>-24.0</td><td>21.5</td><td>22.2</td><td>80000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS087-OS (0xCA)</strong></td><td>100.0</td><td>24.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS087-OS</td><td><span class="badge">0xCA</span></td><td>202</td><td>87.3</td><td>PCS-87</td><td>-25.5</td><td>20.1</td><td>20.8</td><td>52000.0</td><td>oFEC</td></tr><tr><td><strong>OpenZR+ Enhanced (0xC6)</strong></td><td>75.0</td><td>22.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>OpenZR+, MSA, Enhanced</td><td><span class="badge">0xC6</span></td><td>198</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>22.9</td><td>23.6</td><td>23000.0</td><td>OpenZR+</td></tr><tr><td><strong>ZR400-OFEC-16QAM (0x46)</strong></td><td>75.0</td><td>22.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>ZR400-OFEC-16QAM</td><td><span class="badge">0x46</span></td><td>70</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>23.8</td><td>23000.0</td><td>OpenZR+</td></tr><tr><td><strong>ZR400-OFEC-16QAM-HB (0x36)</strong></td><td>75.0</td><td>22.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>ZR400-OFEC-16QAM-HB</td><td><span class="badge">0x36</span></td><td>54</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>23.8</td><td>23000.0</td><td>OpenZR+</td></tr></table>
+    <table><tr><th>label</th><th>channel spacing ghz</th><th>power consumption w</th><th>host interface name</th><th>host interface id hex</th><th>host interface id</th><th>media interface name</th><th>media interface id hex</th><th>media interface id</th><th>baud rate gbaud</th><th>modulation formats</th><th>rx sensitivity dbm</th><th>rx osnr db</th><th>rx osnr tolerance db max</th><th>cd tolerance ps nm</th><th>fec types</th></tr><tr><td><strong>FLEXO-4e-DO-QPSK (0x64)</strong></td><td>150.0</td><td>24.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FLEXO-4e-DO-QPSK</td><td><span class="badge">0x64</span></td><td>100</td><td>118.2</td><td>DP-QPSK</td><td>-27.0</td><td>17.9</td><td>18.7</td><td>58000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS066-OS (0xC0)</strong></td><td>75.0</td><td>23.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS066-OS</td><td><span class="badge">0xC0</span></td><td>192</td><td>65.7</td><td>PCS-66</td><td>-24.5</td><td>21.2</td><td>22.0</td><td>42000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS075-OS (0xC2)</strong></td><td>87.5</td><td>24.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS075-OS</td><td><span class="badge">0xC2</span></td><td>194</td><td>75.0</td><td>PCS-75</td><td>-25.5</td><td>20.6</td><td>21.4</td><td>37000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS087-OS (0xC9)</strong></td><td>100.0</td><td>24.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS087-OS</td><td><span class="badge">0xC9</span></td><td>201</td><td>87.4</td><td>PCS-87</td><td>-25.5</td><td>19.5</td><td>20.3</td><td>52000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS098-OS (0xD8)</strong></td><td>112.5</td><td>25.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS098-OS</td><td><span class="badge">0xD8</span></td><td>216</td><td>97.9</td><td>PCS-98</td><td>-26.0</td><td>19.2</td><td>20.0</td><td>35000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS101-OS (0xDC)</strong></td><td>125.0</td><td>24.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS101-OS</td><td><span class="badge">0xDC</span></td><td>220</td><td>100.8</td><td>PCS-101</td><td>-26.0</td><td>19.7</td><td>20.4</td><td>34000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS079-OS (0xC4)</strong></td><td>87.5</td><td>24.0</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS079-OS</td><td><span class="badge">0xC4</span></td><td>196</td><td>78.9</td><td>PCS-79</td><td>-25.0</td><td>20.5</td><td>21.2</td><td>58000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS069-OS (0xC1)</strong></td><td>75.0</td><td>23.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS069-OS</td><td><span class="badge">0xC1</span></td><td>193</td><td>69.1</td><td>PCS-69</td><td>-24.0</td><td>21.5</td><td>22.2</td><td>80000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS087-OS (0xCA)</strong></td><td>100.0</td><td>24.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS087-OS</td><td><span class="badge">0xCA</span></td><td>202</td><td>87.3</td><td>PCS-87</td><td>-25.5</td><td>20.1</td><td>20.8</td><td>52000.0</td><td>oFEC</td></tr><tr><td><strong>OpenZR+ Enhanced (0xC6)</strong></td><td>75.0</td><td>22.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>OpenZR+, MSA, Enhanced</td><td><span class="badge">0xC6</span></td><td>198</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>22.9</td><td>23.6</td><td>23000.0</td><td>OpenZR+</td></tr><tr><td><strong>ZR400-OFEC-16QAM (0x46)</strong></td><td>75.0</td><td>22.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>ZR400-OFEC-16QAM</td><td><span class="badge">0x46</span></td><td>70</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>23.8</td><td>23000.0</td><td>OpenZR+</td></tr><tr><td><strong>ZR400-OFEC-16QAM-HB (0x36)</strong></td><td>75.0</td><td>22.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>ZR400-OFEC-16QAM-HB</td><td><span class="badge">0x36</span></td><td>54</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>23.8</td><td>23000.0</td><td>OpenZR+</td></tr></table>
   </div>
 </div>
 
@@ -402,5 +402,57 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
 </footer>
 
 </div>
+<script>
+document.querySelectorAll('table').forEach(function(tbl) {
+  var hdr = tbl.querySelector('tr');
+  if (!hdr) return;
+  var headerCells = Array.prototype.slice.call(hdr.cells || []);
+  if (!headerCells.length) return;
+  var dr = hdr.nextElementSibling;
+  if (!dr || !dr.querySelector('td')) return;
+
+  function clamp(n, lo, hi) {
+    return Math.max(lo, Math.min(hi, n));
+  }
+
+  function headerMinWidthPx(cell) {
+    var text = (cell.textContent || '').trim();
+    if (!text) return 0;
+    var words = text.split(/\s+/).filter(Boolean);
+    var longest = words.reduce(function(mx, w) { return Math.max(mx, w.length); }, 0);
+    var minCh = clamp(longest + 2, 8, 28);
+    var cs = window.getComputedStyle(cell);
+    var probeChar = document.createElement('span');
+    probeChar.textContent = '0';
+    probeChar.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;left:-9999px;top:-9999px;';
+    probeChar.style.font = cs.font;
+    document.body.appendChild(probeChar);
+    var chPx = probeChar.getBoundingClientRect().width || (parseFloat(cs.fontSize) * 0.6);
+    document.body.removeChild(probeChar);
+    var pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+    return (minCh * chPx) + pad + 2;
+  }
+
+  var p = document.createElement('table');
+  p.style.cssText = 'position:absolute;visibility:hidden;table-layout:auto;width:auto;white-space:nowrap';
+  p.innerHTML = '<tr>' + dr.innerHTML + '</tr>';
+  document.body.appendChild(p);
+  var cg = document.createElement('colgroup');
+  var dataCells = p.rows[0] ? p.rows[0].cells : [];
+  var colCount = Math.max(headerCells.length, dataCells.length);
+  for (var i = 0; i < colCount; i++) {
+    var dataWidth = dataCells[i] ? dataCells[i].offsetWidth : 0;
+    var headerMin = headerCells[i] ? headerMinWidthPx(headerCells[i]) : 0;
+    var finalWidth = Math.ceil(Math.max(dataWidth, headerMin));
+    var col = document.createElement('col');
+    col.style.width = finalWidth + 'px';
+    col.style.minWidth = Math.ceil(headerMin) + 'px';
+    cg.appendChild(col);
+  }
+  document.body.removeChild(p);
+  tbl.insertBefore(cg, tbl.firstChild);
+  tbl.style.tableLayout = 'fixed';
+});
+</script>
 </body>
 </html>

@@ -59,10 +59,6 @@ _FIELD_DISPLAY = {
     "rx_overload_dbm": "RX Overload (dBm)",
     "standards_claimed": "Standards",
     "notes": "Notes",
-}
-
-# Mode table column display names
-_MODE_COL_DISPLAY = {
     "label": "Mode",
     "reach_km": "Reach (km)",
     "rx_sensitivity_dbm": "RX Sensitivity (dBm)",
@@ -73,6 +69,7 @@ _MODE_COL_DISPLAY = {
     "fec_types": "FEC",
     "host_interface_name": "Host Interface",
     "media_interface_name": "Media Interface",
+    "standards_format": "Standards Format",
 }
 
 
@@ -105,17 +102,16 @@ def generate_modes_html(run_dir: Path) -> str:
     ts = meta.get("timestamp", "")[:16].replace("T", " ")
     model_id = shorten(meta.get("model_id", "unknown"), width=30, placeholder="…")
 
-    # General spec items
     general_items = ""
-    for field, display_name in _FIELD_DISPLAY.items():
-        value = general.get(field)
+    for field, value in general.items():
         if value is None:
             continue
+        display_name = _FIELD_DISPLAY.get(field, field.replace("_", " ").title())
         formatted = _fmt_value(value)
         if not formatted:
             continue
         wide = field == "notes"
-        general_items += f"      {_spec_item(display_name, formatted, wide=wide)}\n"
+        general_items = general_items + f"      {_spec_item(display_name, formatted, wide=wide)}\n" if 'general_items' in locals() else f"      {_spec_item(display_name, formatted, wide=wide)}\n"
 
     # Mode table
     if modes:
@@ -126,7 +122,7 @@ def generate_modes_html(run_dir: Path) -> str:
                     all_keys.append(k)
 
         header_cells = "".join(
-            f"<th>{escape(_MODE_COL_DISPLAY.get(k, k))}</th>" for k in all_keys
+            f"<th>{escape(_FIELD_DISPLAY.get(k, k))}</th>" for k in all_keys
         )
         rows = ""
         for m in modes:
@@ -173,9 +169,11 @@ def generate_modes_html(run_dir: Path) -> str:
   .spec-item .label {{ font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }}
   .spec-item .value {{ font-size: 0.88rem; font-weight: 600; margin-top: 0.1rem; word-break: break-word; }}
   .spec-item.wide {{ grid-column: 1 / -1; }}
-  table {{ width: 100%; border-collapse: collapse; font-size: 0.8rem; }}
+  table {{ width: 100%; border-collapse: collapse; table-layout: auto; font-size: 0.8rem; }}
   th, td {{ border: 1px solid var(--border); padding: 0.45rem 0.65rem; text-align: left; }}
-  th {{ background: var(--card); color: var(--accent); font-weight: 600; white-space: nowrap; }}
+  th {{ background: var(--card); color: var(--accent); font-weight: 600;}}
+  th {{ white-space: normal; }}
+  td {{ white-space: nowrap; }}
   tr:hover td {{ background: rgba(3,105,161,0.05); }}
   .badge {{ display: inline-block; background: rgba(3,105,161,0.1); color: var(--accent); padding: 0.15rem 0.45rem; border-radius: 3px; font-size: 0.72rem; margin: 0.1rem; border: 1px solid rgba(3,105,161,0.2); }}
   .note-box {{ background: rgba(124,58,237,0.06); border-left: 3px solid var(--accent2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; margin-top: 0.75rem; font-size: 0.75rem; color: var(--text); }}

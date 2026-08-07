@@ -41,7 +41,9 @@
   .md-excerpt { background: var(--card); border-radius: 6px; padding: 1rem; font-size: 0.78rem; color: var(--muted); max-height: 200px; overflow-y: auto; white-space: pre-wrap; }
   table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
   th, td { border: 1px solid var(--border); padding: 0.45rem 0.65rem; text-align: left; }
-  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: normal; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
+  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: nowrap; }
+  th { white-space: normal; }
+  td { white-space: nowrap; }
   tr:hover td { background: rgba(56,189,248,0.04); }
   .badge { display: inline-block; background: rgba(56,189,248,0.15); color: var(--accent); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.72rem; margin: 0.1rem; }
   .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -73,11 +75,11 @@
   </div>
   <div class="card">
     <div class="meta-grid">
-      <div class="meta-item"><div class="label">Source</div><div class="value">tmptj3iw5no.pdf</div></div>
+      <div class="meta-item"><div class="label">Source</div><div class="value">tmp_a2oxpyi.pdf</div></div>
       <div class="meta-item"><div class="label">Pages</div><div class="value">4</div></div>
       <div class="meta-item"><div class="label">Tables Detected</div><div class="value">5</div></div>
       <div class="meta-item"><div class="label">Model</div><div class="value">Qwen3.6-27B-Q4_K_M</div></div>
-      <div class="meta-item"><div class="label">Timestamp</div><div class="value">2026-08-07 11:39</div></div>
+      <div class="meta-item"><div class="label">Timestamp</div><div class="value">2026-08-07 14:13</div></div>
     </div>
   </div>
   <div class="card">
@@ -144,6 +146,12 @@ The below table lists the OpenROADM mode supported by TQD017-TUNC-SO.
   <span class="key">"wavelength_band"</span>: [
     "DWDM"
   ],
+  <span class="key">"frequency_min_thz"</span>: [
+    <span class="num">191.3</span>
+  ],
+  <span class="key">"frequency_max_thz"</span>: [
+    <span class="num">196.1</span>
+  ],
   <span class="key">"channel_spacing_ghz"</span>: [
     <span class="num">100</span>
   ],
@@ -179,6 +187,21 @@ The below table lists the OpenROADM mode supported by TQD017-TUNC-SO.
   ],
   <span class="key">"media_interface_id_hex"</span>: <span class="null">null</span>,
   <span class="key">"media_interface_id"</span>: <span class="null">null</span>,
+  <span class="key">"frame"</span>: [
+    "4x <span class="num">100</span>GAUI-2",
+    "3x <span class="num">100</span>GAUI-2",
+    "2x <span class="num">100</span>GAUI-2",
+    "100GAUI-2",
+    "1x <span class="num">400</span>GAUI-8",
+    "200GAUI-4",
+    "CAUI-4 w/o FEC",
+    "CAUI-4 with FEC",
+    "OTL4.4"
+  ],
+  <span class="key">"standards_format"</span>: [
+    "OpenROADM <span class="num">5.0</span>",
+    "OpenROADM <span class="num">2.0</span>"
+  ],
   <span class="key">"baud_rate_gbaud"</span>: [
     <span class="num">63.1</span>,
     <span class="num">31.6</span>
@@ -198,11 +221,10 @@ The below table lists the OpenROADM mode supported by TQD017-TUNC-SO.
   ],
   <span class="key">"reach_km"</span>: <span class="null">null</span>,
   <span class="key">"tx_power_min_dbm"</span>: [
-    <span class="num">0</span>
-  ],
-  <span class="key">"tx_power_max_dbm"</span>: [
+    <span class="num">0</span>,
     <span class="num">1</span>
   ],
+  <span class="key">"tx_power_max_dbm"</span>: <span class="null">null</span>,
   <span class="key">"tx_in_band_osnr_db"</span>: [
     <span class="num">38</span>
   ],
@@ -222,13 +244,15 @@ The below table lists the OpenROADM mode supported by TQD017-TUNC-SO.
     <span class="num">14.8</span>,
     <span class="num">11.8</span>,
     <span class="num">12.8</span>,
-    <span class="num">14.5</span>,
-    <span class="num">15.8</span>,
-    <span class="num">15.5</span>,
-    <span class="num">21.5</span>,
-    <span class="num">25.0</span>
+    <span class="num">14.5</span>
   ],
-  <span class="key">"rx_osnr_tolerance_db_max"</span>: <span class="null">null</span>,
+  <span class="key">"rx_osnr_tolerance_db_max"</span>: [
+    <span class="num">25.0</span>,
+    <span class="num">21.5</span>,
+    <span class="num">15.8</span>,
+    <span class="num">12.8</span>,
+    <span class="num">15.5</span>
+  ],
   <span class="key">"rx_overload_dbm"</span>: [
     <span class="num">13</span>,
     <span class="num">15</span>
@@ -238,10 +262,7 @@ The below table lists the OpenROADM mode supported by TQD017-TUNC-SO.
     <span class="num">48000</span>,
     <span class="num">30000</span>,
     <span class="num">77000</span>,
-    <span class="num">154000</span>,
-    <span class="num">80000</span>,
-    <span class="num">115000</span>,
-    <span class="num">96000</span>
+    <span class="num">80000</span>
   ],
   <span class="key">"pdl_db"</span>: <span class="null">null</span>,
   <span class="key">"pmd_tolerance_ps"</span>: <span class="null">null</span>,
@@ -255,14 +276,16 @@ The below table lists the OpenROADM mode supported by TQD017-TUNC-SO.
   <span class="key">"extinction_ratio_db"</span>: <span class="null">null</span>,
   <span class="key">"los_assert_dbm"</span>: <span class="num">-28.0</span>,
   <span class="key">"los_deassert_dbm"</span>: <span class="null">null</span>,
-  <span class="key">"notes"</span>: <span class="str">"The module will turn up from cold start at ambient temperature as low as <span class="num">-5</span>C and will reach specifications after self-heating up to min temperature. The module transmit power can be provisioned up to the maximum available TX power. If the TX power is not provisioned by the host, the module TX power will default to the maximum available power, which can be any power level in the specified <span class="num">10</span>dB range. LOS assert threshold set to comply with <span class="num">400</span>G modes. Can be changed on individual modules to fully support other modes."</span>,
+  <span class="key">"notes"</span>: <span class="str">"The module will turn up from cold start at ambient temperature as low as <span class="num">-5</span>C and will reach specifications after self-heating up to min temperature. The module transmit power can be provisioned up to the maximum available TX power. If the TX power is not provisioned by the host, the module TX power will default to the maximum available power, which can be any power level in the specified <span class="num">10</span>dB range. Set to comply with <span class="num">400</span>G modes. Can be changed on individual modules to fully support other modes. Minimum Tx power without attenuation. The module Tx power can be attenuated with <span class="num">10</span>dB from the maximum available Tx power. If the Tx power is not provisioned by the host, the module Tx power will default to the maximum available power. Maximum provisionable CD search range. Increasing the search range will increase the power consumption of the transceiver."</span>,
   <span class="key">"provenance_datasheet_sections"</span>: [
     "OVERVIEW – TQD017-TUNC-SO",
     "TECHNICAL DATA",
     "GENERIC",
     "OPTICAL SPECIFICATION - APPLICATION CODES",
-    "ORDERING INFORMATION"
-  ]
+    "ORDERING INFORMATION",
+    "GENERAL DEFINITIONS"
+  ],
+  <span class="key">"suggestions"</span>: <span class="null">null</span>
 }</pre></div>
   </div>
 </div>
@@ -282,13 +305,17 @@ The below table lists the OpenROADM mode supported by TQD017-TUNC-SO.
         <tr><td>power_consumption_w</td><td><span class="badge">24.7</span> <span class="badge">24.1</span> <span class="badge">22.6</span> <span class="badge">19.6</span></td></tr>
 <tr><td>host_interface_name</td><td><span class="badge">4x100GBASE-R</span> <span class="badge">3x100GBASE-R</span> <span class="badge">2x100GBASE-R</span> <span class="badge">100GBASE-R</span> <span class="badge">400GBASE-R</span> <span class="badge">200GBASE-R</span> <span class="badge">OTU4</span></td></tr>
 <tr><td>media_interface_name</td><td><span class="badge">OpenROADM 5.0</span> <span class="badge">OpenROADM 2.0</span></td></tr>
+<tr><td>frame</td><td><span class="badge">4x 100GAUI-2</span> <span class="badge">3x 100GAUI-2</span> <span class="badge">2x 100GAUI-2</span> <span class="badge">100GAUI-2</span> <span class="badge">1x 400GAUI-8</span> <span class="badge">200GAUI-4</span> <span class="badge">CAUI-4 w/o FEC</span> <span class="badge">CAUI-4 with FEC</span> <span class="badge">OTL4.4</span></td></tr>
+<tr><td>standards_format</td><td><span class="badge">OpenROADM 5.0</span> <span class="badge">OpenROADM 2.0</span></td></tr>
 <tr><td>baud_rate_gbaud</td><td><span class="badge">63.1</span> <span class="badge">31.6</span></td></tr>
 <tr><td>bit_rate_gbps</td><td><span class="badge">400.0</span> <span class="badge">300.0</span> <span class="badge">200.0</span> <span class="badge">100.0</span></td></tr>
 <tr><td>modulation_formats</td><td><span class="badge">DP-16QAM</span> <span class="badge">DP-8QAM</span> <span class="badge">DP-QPSK</span> <span class="badge">DP-DQPSK</span></td></tr>
+<tr><td>tx_power_min_dbm</td><td><span class="badge">0.0</span> <span class="badge">1.0</span></td></tr>
 <tr><td>rx_sensitivity_dbm</td><td><span class="badge">-20.0</span> <span class="badge">-23.0</span> <span class="badge">-28.0</span> <span class="badge">-32.0</span> <span class="badge">-30.0</span></td></tr>
-<tr><td>rx_osnr_db</td><td><span class="badge">23.5</span> <span class="badge">20.5</span> <span class="badge">14.8</span> <span class="badge">11.8</span> <span class="badge">12.8</span> <span class="badge">14.5</span> <span class="badge">15.8</span> <span class="badge">15.5</span> <span class="badge">21.5</span> <span class="badge">25.0</span></td></tr>
+<tr><td>rx_osnr_db</td><td><span class="badge">23.5</span> <span class="badge">20.5</span> <span class="badge">14.8</span> <span class="badge">11.8</span> <span class="badge">12.8</span> <span class="badge">14.5</span></td></tr>
+<tr><td>rx_osnr_tolerance_db_max</td><td><span class="badge">25.0</span> <span class="badge">21.5</span> <span class="badge">15.8</span> <span class="badge">12.8</span> <span class="badge">15.5</span></td></tr>
 <tr><td>rx_overload_dbm</td><td><span class="badge">13.0</span> <span class="badge">15.0</span></td></tr>
-<tr><td>cd_tolerance_ps_nm</td><td><span class="badge">12000.0</span> <span class="badge">48000.0</span> <span class="badge">30000.0</span> <span class="badge">77000.0</span> <span class="badge">154000.0</span> <span class="badge">80000.0</span> <span class="badge">115000.0</span> <span class="badge">96000.0</span></td></tr>
+<tr><td>cd_tolerance_ps_nm</td><td><span class="badge">12000.0</span> <span class="badge">48000.0</span> <span class="badge">30000.0</span> <span class="badge">77000.0</span> <span class="badge">80000.0</span></td></tr>
 <tr><td>fec_types</td><td><span class="badge">oFEC</span> <span class="badge">SC-FEC</span></td></tr>
 
       </table>
@@ -302,18 +329,18 @@ The below table lists the OpenROADM mode supported by TQD017-TUNC-SO.
 <tr><td>form_factor</td><td>QSFP-DD</td></tr>
 <tr><td>standards_claimed</td><td>OpenROADM, CMIS5.0, QSFP-DD MSA&#x27;s</td></tr>
 <tr><td>wavelength_band</td><td>DWDM</td></tr>
+<tr><td>frequency_min_thz</td><td>191.3</td></tr>
+<tr><td>frequency_max_thz</td><td>196.1</td></tr>
 <tr><td>channel_spacing_ghz</td><td>100.0</td></tr>
 <tr><td>connector_type</td><td>LC</td></tr>
 <tr><td>fiber_type</td><td>SM</td></tr>
 <tr><td>temp_min_c</td><td>15.0</td></tr>
 <tr><td>temp_max_c</td><td>75.0</td></tr>
-<tr><td>tx_power_min_dbm</td><td>0.0</td></tr>
-<tr><td>tx_power_max_dbm</td><td>1.0</td></tr>
 <tr><td>tx_in_band_osnr_db</td><td>38.0</td></tr>
 <tr><td>tx_out_of_band_osnr_db</td><td>42.0</td></tr>
 <tr><td>los_assert_dbm</td><td>-28.0</td></tr>
-<tr><td>notes</td><td>The module will turn up from cold start at ambient temperature as low as -5C and will reach specifications after self-heating up to min temperature. The module transmit power can be provisioned up to the maximum available TX power. If the TX power is not provisioned by the host, the module TX power will default to the maximum available power, which can be any power level in the specified 10dB range. LOS assert threshold set to comply with 400G modes. Can be changed on individual modules to fully support other modes.</td></tr>
-<tr><td>provenance_datasheet_sections</td><td>OVERVIEW – TQD017-TUNC-SO, TECHNICAL DATA, GENERIC, OPTICAL SPECIFICATION - APPLICATION CODES, ORDERING INFORMATION</td></tr>
+<tr><td>notes</td><td>The module will turn up from cold start at ambient temperature as low as -5C and will reach specifications after self-heating up to min temperature. The module transmit power can be provisioned up to the maximum available TX power. If the TX power is not provisioned by the host, the module TX power will default to the maximum available power, which can be any power level in the specified 10dB range. Set to comply with 400G modes. Can be changed on individual modules to fully support other modes. Minimum Tx power without attenuation. The module Tx power can be attenuated with 10dB from the maximum available Tx power. If the Tx power is not provisioned by the host, the module Tx power will default to the maximum available power. Maximum provisionable CD search range. Increasing the search range will increase the power consumption of the transceiver.</td></tr>
+<tr><td>provenance_datasheet_sections</td><td>OVERVIEW – TQD017-TUNC-SO, TECHNICAL DATA, GENERIC, OPTICAL SPECIFICATION - APPLICATION CODES, ORDERING INFORMATION, GENERAL DEFINITIONS</td></tr>
 
       </table>
     </div>
@@ -330,67 +357,15 @@ The below table lists the OpenROADM mode supported by TQD017-TUNC-SO.
   </div>
   <div class="card" style="overflow-x:auto;">
     <div class="section-label">Synthesized Operating Modes</div>
-    <table><tr><th>label</th><th>power consumption w</th><th>host interface name</th><th>media interface name</th><th>baud rate gbaud</th><th>bit rate gbps</th><th>modulation formats</th><th>rx sensitivity dbm</th><th>rx osnr db</th><th>rx overload dbm</th><th>cd tolerance ps nm</th><th>fec types</th></tr><tr><td><strong>App 1: 4x100G DP-16QAM</strong></td><td>24.7</td><td>4x100GBASE-R</td><td>OpenROADM 5.0</td><td>63.1</td><td>400.0</td><td>DP-16QAM</td><td>-20.0</td><td>23.5</td><td>13.0</td><td>12000.0</td><td>oFEC</td></tr><tr><td><strong>App 2: 3x100G DP-8QAM</strong></td><td>24.1</td><td>3x100GBASE-R</td><td>OpenROADM 5.0</td><td>63.1</td><td>300.0</td><td>DP-8QAM</td><td>-23.0</td><td>20.5</td><td>13.0</td><td>48000.0</td><td>oFEC</td></tr><tr><td><strong>App 3: 2x100G DP-QPSK</strong></td><td>22.6</td><td>2x100GBASE-R</td><td>OpenROADM 5.0</td><td>63.1</td><td>200.0</td><td>DP-QPSK</td><td>-28.0</td><td>14.8</td><td>13.0</td><td>48000.0</td><td>oFEC</td></tr><tr><td><strong>App 4: 2x100G DP-16QAM</strong></td><td>22.6</td><td>2x100GBASE-R</td><td>OpenROADM 5.0</td><td>31.6</td><td>200.0</td><td>DP-16QAM</td><td>-23.0</td><td>20.5</td><td>13.0</td><td>30000.0</td><td>oFEC</td></tr><tr><td><strong>App 5: 100G DP-QPSK (100GAUI-2)</strong></td><td>19.6</td><td>100GBASE-R</td><td>OpenROADM 5.0</td><td>31.6</td><td>100.0</td><td>DP-QPSK</td><td>-32.0</td><td>11.8</td><td>13.0</td><td>77000.0</td><td>oFEC</td></tr><tr><td><strong>App 6: 400G DP-16QAM</strong></td><td>24.7</td><td>400GBASE-R</td><td>OpenROADM 5.0</td><td>63.1</td><td>400.0</td><td>DP-16QAM</td><td>-20.0</td><td>23.5</td><td>13.0</td><td>12000.0</td><td>oFEC</td></tr><tr><td><strong>App 7: 200G DP-QPSK (200GAUI-4)</strong></td><td>22.6</td><td>200GBASE-R</td><td>OpenROADM 5.0</td><td>63.1</td><td>200.0</td><td>DP-QPSK</td><td>-28.0</td><td>14.8</td><td>13.0</td><td>48000.0</td><td>oFEC</td></tr><tr><td><strong>App 8: 200G DP-16QAM (200GAUI-4)</strong></td><td>22.6</td><td>200GBASE-R</td><td>OpenROADM 5.0</td><td>31.6</td><td>200.0</td><td>DP-16QAM</td><td>-23.0</td><td>20.5</td><td>13.0</td><td>30000.0</td><td>oFEC</td></tr><tr><td><strong>App 9: 100G DP-QPSK (CAUI-4 w/o FEC)</strong></td><td>19.6</td><td>100GBASE-R</td><td>OpenROADM 5.0</td><td>31.6</td><td>100.0</td><td>DP-QPSK</td><td>-32.0</td><td>11.8</td><td>13.0</td><td>77000.0</td><td>oFEC</td></tr><tr><td><strong>App 10: 100G DP-QPSK (CAUI-4 w/ FEC)</strong></td><td>19.6</td><td>100GBASE-R</td><td>OpenROADM 5.0</td><td>31.6</td><td>100.0</td><td>DP-QPSK</td><td>-32.0</td><td>11.8</td><td>13.0</td><td>77000.0</td><td>oFEC</td></tr><tr><td><strong>App 11: 100G DP-DQPSK (CAUI-4 w/o FEC)</strong></td><td>19.6</td><td>100GBASE-R</td><td>OpenROADM 2.0</td><td>31.6</td><td>100.0</td><td>DP-DQPSK</td><td>-30.0</td><td>14.5</td><td>13.0</td><td>80000.0</td><td>SC-FEC</td></tr><tr><td><strong>App 12: 100G DP-DQPSK (CAUI-4 w/ FEC)</strong></td><td>19.6</td><td>100GBASE-R</td><td>OpenROADM 2.0</td><td>31.6</td><td>100.0</td><td>DP-DQPSK</td><td>-30.0</td><td>14.5</td><td>13.0</td><td>80000.0</td><td>SC-FEC</td></tr><tr><td><strong>App 13: OTU4 DP-DQPSK</strong></td><td>19.6</td><td>OTU4</td><td>OpenROADM 2.0</td><td>31.6</td><td>100.0</td><td>DP-DQPSK</td><td>-30.0</td><td>14.5</td><td>13.0</td><td>80000.0</td><td>SC-FEC</td></tr></table>
+    <table><tr><th>label</th><th>power_consumption_w</th><th>host_interface_name</th><th>media_interface_name</th><th>frame</th><th>standards_format</th><th>baud_rate_gbaud</th><th>bit_rate_gbps</th><th>modulation_formats</th><th>tx_power_min_dbm</th><th>rx_sensitivity_dbm</th><th>rx_osnr_db</th><th>rx_osnr_tolerance_db_max</th><th>rx_overload_dbm</th><th>cd_tolerance_ps_nm</th><th>fec_types</th></tr><tr><td><strong>4x100G DP-16QAM 63.1G</strong></td><td>24.7</td><td>4x100GBASE-R</td><td>OpenROADM 5.0</td><td>4x 100GAUI-2</td><td>OpenROADM 5.0</td><td>63.1</td><td>400.0</td><td>DP-16QAM</td><td>1.0</td><td>-20.0</td><td>23.5</td><td>25.0</td><td>13.0</td><td>12000.0</td><td>oFEC</td></tr><tr><td><strong>3x100G DP-8QAM 63.1G</strong></td><td>24.1</td><td>3x100GBASE-R</td><td>OpenROADM 5.0</td><td>3x 100GAUI-2</td><td>OpenROADM 5.0</td><td>63.1</td><td>300.0</td><td>DP-8QAM</td><td>1.0</td><td>-23.0</td><td>20.5</td><td>21.5</td><td>13.0</td><td>48000.0</td><td>oFEC</td></tr><tr><td><strong>2x100G DP-QPSK 63.1G</strong></td><td>22.6</td><td>2x100GBASE-R</td><td>OpenROADM 5.0</td><td>2x 100GAUI-2</td><td>OpenROADM 5.0</td><td>63.1</td><td>200.0</td><td>DP-QPSK</td><td>1.0</td><td>-28.0</td><td>14.8</td><td>15.8</td><td>13.0</td><td>48000.0</td><td>oFEC</td></tr><tr><td><strong>2x100G DP-16QAM 31.6G</strong></td><td>22.6</td><td>2x100GBASE-R</td><td>OpenROADM 5.0</td><td>2x 100GAUI-2</td><td>OpenROADM 5.0</td><td>31.6</td><td>200.0</td><td>DP-16QAM</td><td>1.0</td><td>-23.0</td><td>20.5</td><td>21.5</td><td>13.0</td><td>30000.0</td><td>oFEC</td></tr><tr><td><strong>1x100G DP-QPSK 31.6G</strong></td><td>19.6</td><td>100GBASE-R</td><td>OpenROADM 5.0</td><td>100GAUI-2</td><td>OpenROADM 5.0</td><td>31.6</td><td>100.0</td><td>DP-QPSK</td><td>1.0</td><td>-32.0</td><td>11.8</td><td>12.8</td><td>13.0</td><td>77000.0</td><td>oFEC</td></tr><tr><td><strong>400G DP-16QAM 63.1G</strong></td><td>24.7</td><td>400GBASE-R</td><td>OpenROADM 5.0</td><td>1x 400GAUI-8</td><td>OpenROADM 5.0</td><td>63.1</td><td>400.0</td><td>DP-16QAM</td><td>1.0</td><td>-20.0</td><td>23.5</td><td>25.0</td><td>13.0</td><td>12000.0</td><td>oFEC</td></tr><tr><td><strong>200G DP-QPSK 63.1G</strong></td><td>22.6</td><td>200GBASE-R</td><td>OpenROADM 5.0</td><td>200GAUI-4</td><td>OpenROADM 5.0</td><td>63.1</td><td>200.0</td><td>DP-QPSK</td><td>1.0</td><td>-28.0</td><td>14.8</td><td>15.8</td><td>13.0</td><td>48000.0</td><td>oFEC</td></tr><tr><td><strong>200G DP-16QAM 31.6G</strong></td><td>22.6</td><td>200GBASE-R</td><td>OpenROADM 5.0</td><td>200GAUI-4</td><td>OpenROADM 5.0</td><td>31.6</td><td>200.0</td><td>DP-16QAM</td><td>1.0</td><td>-23.0</td><td>20.5</td><td>21.5</td><td>13.0</td><td>30000.0</td><td>oFEC</td></tr><tr><td><strong>100G CAUI-4 w/o FEC DP-QPSK</strong></td><td>19.6</td><td>100GBASE-R</td><td>OpenROADM 5.0</td><td>CAUI-4 w/o FEC</td><td>OpenROADM 5.0</td><td>31.6</td><td>100.0</td><td>DP-QPSK</td><td>1.0</td><td>-32.0</td><td>11.8</td><td>12.8</td><td>13.0</td><td>77000.0</td><td>oFEC</td></tr><tr><td><strong>100G CAUI-4 with FEC DP-QPSK</strong></td><td>19.6</td><td>100GBASE-R</td><td>OpenROADM 5.0</td><td>CAUI-4 with FEC</td><td>OpenROADM 5.0</td><td>31.6</td><td>100.0</td><td>DP-QPSK</td><td>1.0</td><td>-32.0</td><td>11.8</td><td>12.8</td><td>13.0</td><td>77000.0</td><td>oFEC</td></tr><tr><td><strong>100G CAUI-4 w/o FEC DP-DQPSK</strong></td><td>19.6</td><td>100GBASE-R</td><td>OpenROADM 2.0</td><td>CAUI-4 w/o FEC</td><td>OpenROADM 2.0</td><td>31.6</td><td>100.0</td><td>DP-DQPSK</td><td>1.0</td><td>-30.0</td><td>14.5</td><td>15.5</td><td>13.0</td><td>80000.0</td><td>SC-FEC</td></tr><tr><td><strong>100G CAUI-4 with FEC DP-DQPSK</strong></td><td>19.6</td><td>100GBASE-R</td><td>OpenROADM 2.0</td><td>CAUI-4 with FEC</td><td>OpenROADM 2.0</td><td>31.6</td><td>100.0</td><td>DP-DQPSK</td><td>1.0</td><td>-30.0</td><td>14.5</td><td>15.5</td><td>13.0</td><td>80000.0</td><td>SC-FEC</td></tr><tr><td><strong>OTU4 DP-DQPSK</strong></td><td>19.6</td><td>OTU4</td><td>OpenROADM 2.0</td><td>OTL4.4</td><td>OpenROADM 2.0</td><td>31.6</td><td>100.0</td><td>DP-DQPSK</td><td>1.0</td><td>-30.0</td><td>14.5</td><td>15.5</td><td>13.0</td><td>80000.0</td><td>SC-FEC</td></tr></table>
   </div>
 </div>
 
 
 <footer>
-  Generated by Transceiver Spec Extraction Pipeline &middot; Qwen3.6-27B-Q4_K_M &middot; Run 2026-08-07 11:39
+  Generated by Transceiver Spec Extraction Pipeline &middot; Qwen3.6-27B-Q4_K_M &middot; Run 2026-08-07 14:13
 </footer>
 
 </div>
-<script>
-document.querySelectorAll('table').forEach(function(tbl) {
-  var hdr = tbl.querySelector('tr');
-  if (!hdr) return;
-  var headerCells = Array.prototype.slice.call(hdr.cells || []);
-  if (!headerCells.length) return;
-  var dr = hdr.nextElementSibling;
-  if (!dr || !dr.querySelector('td')) return;
-
-  function clamp(n, lo, hi) {
-    return Math.max(lo, Math.min(hi, n));
-  }
-
-  function headerMinWidthPx(cell) {
-    var text = (cell.textContent || '').trim();
-    if (!text) return 0;
-    var words = text.split(/\s+/).filter(Boolean);
-    var longest = words.reduce(function(mx, w) { return Math.max(mx, w.length); }, 0);
-    var minCh = clamp(longest + 2, 8, 28);
-    var cs = window.getComputedStyle(cell);
-    var probeChar = document.createElement('span');
-    probeChar.textContent = '0';
-    probeChar.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;left:-9999px;top:-9999px;';
-    probeChar.style.font = cs.font;
-    document.body.appendChild(probeChar);
-    var chPx = probeChar.getBoundingClientRect().width || (parseFloat(cs.fontSize) * 0.6);
-    document.body.removeChild(probeChar);
-    var pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
-    return (minCh * chPx) + pad + 2;
-  }
-
-  var p = document.createElement('table');
-  p.style.cssText = 'position:absolute;visibility:hidden;table-layout:auto;width:auto;white-space:nowrap';
-  p.innerHTML = '<tr>' + dr.innerHTML + '</tr>';
-  document.body.appendChild(p);
-  var cg = document.createElement('colgroup');
-  var dataCells = p.rows[0] ? p.rows[0].cells : [];
-  var colCount = Math.max(headerCells.length, dataCells.length);
-  for (var i = 0; i < colCount; i++) {
-    var dataWidth = dataCells[i] ? dataCells[i].offsetWidth : 0;
-    var headerMin = headerCells[i] ? headerMinWidthPx(headerCells[i]) : 0;
-    var finalWidth = Math.ceil(Math.max(dataWidth, headerMin));
-    var col = document.createElement('col');
-    col.style.width = finalWidth + 'px';
-    col.style.minWidth = Math.ceil(headerMin) + 'px';
-    cg.appendChild(col);
-  }
-  document.body.removeChild(p);
-  tbl.insertBefore(cg, tbl.firstChild);
-  tbl.style.tableLayout = 'fixed';
-});
-</script>
 </body>
 </html>
