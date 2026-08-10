@@ -1,0 +1,9 @@
+{
+  "modes": [
+    {
+      "label": "100GBase-LR4",
+      "host_interface_name": "QSFP28",
+      "bit_rate_gbps": 100.0
+    }
+  ]
+}
