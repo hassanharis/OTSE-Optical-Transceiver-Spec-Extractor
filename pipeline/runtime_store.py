@@ -34,6 +34,7 @@ def store_run(
     *,
     model_id: str | None = None,
     runs_dir: Path | None = None,
+    timings_seconds: dict[str, float] | None = None,
 ) -> Path:
     """Persist a single extraction run and return the run directory."""
     runs_dir = runs_dir or DEFAULT_RUNS_DIR
@@ -48,6 +49,7 @@ def store_run(
         "table_count": len(parsed.tables),
         "model_id": model_id,
         "validation_passed": specs is not None,
+        "timings_seconds": timings_seconds or {},
     }
     (run_dir / "meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
 
@@ -81,10 +83,36 @@ def store_run(
     return run_dir
 
 
+def update_run_timings(run_dir: Path, timings_seconds: dict[str, float]) -> None:
+    """Merge stage durations into an existing run's metadata."""
+    meta_path = run_dir / "meta.json"
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    timings = meta.setdefault("timings_seconds", {})
+    timings.update({name: round(seconds, 3) for name, seconds in timings_seconds.items()})
+    meta_path.write_text(json.dumps(meta, indent=2), encoding="utf-8")
+
+
+def store_specs(run_dir: Path, specs: TransceiverSpecs) -> dict[str, Any]:
+    """Overwrite the run's specifications with validated parameter edits."""
+    data = specs.model_dump(mode="json")
+    (run_dir / "specs.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
+
+    meta_path = run_dir / "meta.json"
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    meta["validation_passed"] = True
+    meta_path.write_text(json.dumps(meta, indent=2), encoding="utf-8")
+    return data
+
+
 def load_run(run_dir: Path) -> dict[str, Any]:
     """Load a previously stored run."""
     result: dict[str, Any] = {}
-    for name in ("meta.json", "parsed.json", "raw_llm.json", "specs.json"):
+    for name in (
+        "meta.json",
+        "parsed.json",
+        "raw_llm.json",
+        "specs.json",
+    ):
         p = run_dir / name
         if p.exists():
             result[name.replace(".json", "")] = json.loads(p.read_text(encoding="utf-8"))

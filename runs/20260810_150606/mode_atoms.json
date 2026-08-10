@@ -1,0 +1,101 @@
+{
+  "multi_valued": {
+    "channel_spacing_ghz": [
+      100.0,
+      75.0
+    ],
+    "rx_sensitivity_dbm": [
+      -20.0,
+      -12.0
+    ]
+  },
+  "general": {
+    "vendor": "Smartoptics",
+    "model": "SO-TQSFP-DD-4CC-ZR",
+    "form_factor": [
+      "QSFP-DD"
+    ],
+    "standards_claimed": [
+      "OIF 400ZR",
+      "IEEE 802.3bs",
+      "CMIS4.0",
+      "QSFP-DD MSA",
+      "G.694.1"
+    ],
+    "wavelength_band": [
+      "C-band"
+    ],
+    "frequency_min_thz": [
+      191.28
+    ],
+    "frequency_max_thz": [
+      196.12
+    ],
+    "connector_type": [
+      "LC"
+    ],
+    "fiber_type": [
+      "SM"
+    ],
+    "temp_min_c": 0.0,
+    "temp_max_c": 70.0,
+    "power_consumption_w": [
+      20.0
+    ],
+    "host_interface_name": [
+      "400GAUI-8"
+    ],
+    "media_interface_name": [
+      "400GBASE-ZR"
+    ],
+    "frame": [
+      "400GAUI-8"
+    ],
+    "standards_code": [
+      "0x01",
+      "0x02"
+    ],
+    "baud_rate_gbaud": [
+      60.0
+    ],
+    "bit_rate_gbps": [
+      400.0
+    ],
+    "modulation_formats": [
+      "16QAM"
+    ],
+    "reach_km": [
+      120.0
+    ],
+    "tx_power_min_dbm": [
+      -10.0
+    ],
+    "tx_power_max_dbm": [
+      -6.0
+    ],
+    "rx_osnr_tolerance_db_max": [
+      26.0
+    ],
+    "rx_overload_dbm": [
+      0.0
+    ],
+    "cd_tolerance_ps_nm": [
+      2400.0
+    ],
+    "pmd_tolerance_ps": [
+      10.0
+    ],
+    "fec_types": [
+      "CFEC"
+    ],
+    "pre_fec_ber_threshold": [
+      0.0125
+    ],
+    "los_assert_dbm": -28.0,
+    "notes": "Receiver sensitivity varies by configuration: -20.0 dBm for unamplified, -12.0 dBm for amplified/OSNR performance. OSNR tolerance max 26 dB/0.1nm. CD tolerance min 2400 ps/nm. PMD tolerance min 10 ps. Pre-FEC BER 1.25x10^-2. LOS assert -28.0 dBm. Supports 100 GHz grid (75 GHz optional). Tunable over ITU C-Band. Power consumption < 20 W.",
+    "provenance_datasheet_sections": [
+      "OVERVIEW",
+      "TECHNICAL DATA"
+    ]
+  }
+}

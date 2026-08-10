@@ -33,6 +33,7 @@ Rules:
 - Use the datasheet content to determine which values belong together.
 - Assign a short descriptive label to each mode.
 - Return ONLY valid JSON matching the schema below. No commentary.
+- Assignment of parameters to each mode should be performed on definitive evidence. Do not create modes based on speculation or guesswork.
 """
 
 USER_PROMPT_TEMPLATE = """\

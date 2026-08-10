@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import argparse
 import logging
+import time
 from pathlib import Path
 
 from pipeline.pdf_parser import parse_pdf
 from pipeline.atom_extractor import extract_atoms
-from pipeline.runtime_store import store_run
+from pipeline.runtime_store import store_run, update_run_timings
 
 logging.basicConfig(
     level=logging.INFO,
@@ -24,17 +25,40 @@ def run(
     runs_dir: Path | None = None,
 ) -> Path:
     """Execute the full pipeline and return the run directory."""
+    pipeline_started = time.perf_counter()
+    timings: dict[str, float] = {}
+
     logger.info("=== Step 1: Parsing PDF ===")
+    stage_started = time.perf_counter()
     parsed = parse_pdf(pdf_path)
+    timings["parse_pdf"] = time.perf_counter() - stage_started
+    logger.info("Step 1 completed in %.3f seconds", timings["parse_pdf"])
 
     logger.info("=== Step 2: Extracting atomic parameters ===")
+    stage_started = time.perf_counter()
     specs, raw_dict = extract_atoms(parsed, model_id=model_id)
+    timings["extract_atoms"] = time.perf_counter() - stage_started
+    logger.info("Step 2 completed in %.3f seconds", timings["extract_atoms"])
 
     logger.info("=== Step 3: Storing run ===")
-    run_dir = store_run(parsed, raw_dict, specs, model_id=model_id, runs_dir=runs_dir)
+    stage_started = time.perf_counter()
+    run_dir = store_run(
+        parsed,
+        raw_dict,
+        specs,
+        model_id=model_id,
+        runs_dir=runs_dir,
+        timings_seconds=timings,
+    )
+    timings["store_run"] = time.perf_counter() - stage_started
+    timings["total"] = time.perf_counter() - pipeline_started
+    update_run_timings(run_dir, timings)
+    logger.info("Step 3 completed in %.3f seconds", timings["store_run"])
 
     status = "VALID" if specs else "PARTIAL (validation failed)"
-    logger.info("=== Done [%s] — results in %s ===", status, run_dir)
+    logger.info(
+        "=== Done [%s] in %.3f seconds — results in %s ===", status, timings["total"], run_dir
+    )
     return run_dir
 
 

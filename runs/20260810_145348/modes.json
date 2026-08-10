@@ -1,0 +1,18 @@
+{
+  "modes": [
+    {
+      "label": "400G Unamplified",
+      "channel_spacing_ghz": 100.0,
+      "media_interface_name": "400GBASE-ZR",
+      "bit_rate_gbps": 400.0,
+      "rx_sensitivity_dbm": -20.0
+    },
+    {
+      "label": "100G Amplified",
+      "channel_spacing_ghz": 75.0,
+      "media_interface_name": "OIF 400G-ZR",
+      "bit_rate_gbps": 100.0,
+      "rx_sensitivity_dbm": -12.0
+    }
+  ]
+}

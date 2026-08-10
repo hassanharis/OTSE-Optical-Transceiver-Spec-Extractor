@@ -104,8 +104,8 @@ class TransceiverSpecs(BaseModel):
     frame: list[str] | None = Field(
         default=None, description="Frames or combination and multiples of frames: i.e. 8x 100GAUI-1"
     )
-    standards_format: list[str] | None = Field(
-        default=None, description="individual format or codes specific to any MSA or standards or vendor: openzr, openroadm, or specific application code"
+    standards_code: list[str] | None = Field(
+        default=None, description="application code or profile or format related to any MSA, specifications, standards or vendor: openzr, openroadm, or specific application code"
     )
 
     # Electrical and optical performance parameters
@@ -113,7 +113,7 @@ class TransceiverSpecs(BaseModel):
         None, description="symbol rates in GBaud."
     )
     bit_rate_gbps: Optional[List[float]] = Field(
-        default_factory=list, description="data rate/speed/payload bit rate in Gbps or G."
+        default_factory=list, description="data rate/speed/payload bit rate in Gbps or G. do not confuse with GHz or grid"
     )
     roll_off_percent: Optional[List[float]] = Field(
         None, description="Spectral roll-off factor in percent."
@@ -254,6 +254,6 @@ MODE_FIELDS: list[str] = [
     "media_interface_id_hex",
     "media_interface_id",
     "power_consumption_w",
-    "standards_format",
+    "standards_code",
     "frame",
 ]

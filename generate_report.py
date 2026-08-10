@@ -21,6 +21,11 @@ def _load(run_dir: Path, name: str) -> dict | list | None:
     return None
 
 
+def _load_dict(run_dir: Path, name: str) -> dict:
+    data = _load(run_dir, name)
+    return data if isinstance(data, dict) else {}
+
+
 def _load_text(run_dir: Path, name: str, max_chars: int = 2000) -> str:
     p = run_dir / name
     if not p.exists():
@@ -96,9 +101,10 @@ def _mode_table(modes: list[dict]) -> str:
 
 
 def generate_html(run_dir: Path) -> str:
-    meta = _load(run_dir, "meta.json") or {}
-    raw_llm = _load(run_dir, "raw_llm.json") or {}
-    mode_atoms = _load(run_dir, "mode_atoms.json") or {}
+    meta = _load_dict(run_dir, "meta.json")
+    raw_llm = _load_dict(run_dir, "raw_llm.json")
+    specs = _load_dict(run_dir, "specs.json") or raw_llm
+    mode_atoms = _load_dict(run_dir, "mode_atoms.json")
     modes_data = _load(run_dir, "modes.json") or {}
     md_excerpt = escape(_load_text(run_dir, "content.md", max_chars=2000))
 
@@ -107,7 +113,9 @@ def generate_html(run_dir: Path) -> str:
     general = mode_atoms.get("general", {}) if isinstance(mode_atoms, dict) else {}
 
     source = Path(meta.get("source_file", "unknown")).name
-    title = raw_llm.get("vendor", "") + " " + raw_llm.get("model", source)
+    vendor = specs.get("vendor") or ""
+    model = specs.get("model") or source
+    title = f"{vendor} {model}"
     title = title.strip() or source
     ts = meta.get("timestamp", "")[:16].replace("T", " ")
     model_id = shorten(meta.get("model_id", "unknown"), width=30, placeholder="…")

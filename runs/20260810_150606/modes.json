@@ -1,0 +1,14 @@
+{
+  "modes": [
+    {
+      "label": "Unamplified (App Code 0x02)",
+      "channel_spacing_ghz": 100.0,
+      "rx_sensitivity_dbm": -20.0
+    },
+    {
+      "label": "Amplified (App Code 0x01)",
+      "channel_spacing_ghz": 100.0,
+      "rx_sensitivity_dbm": -12.0
+    }
+  ]
+}
