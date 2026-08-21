@@ -22,13 +22,13 @@ class TransceiverSpecs(BaseModel):
 
     #Frequency and wavelength parameters
     wavelength_min_nm: Optional[List[float]] = Field(
-        None, description="Minimum supported optical wavelength in nm."
+        None, description="Minimum supported of optical wavelengths ranges in nm."
     )
     wavelength_max_nm: Optional[List[float]] = Field(
-        None, description="Maximum supported optical wavelength in nm."
+        None, description="Maximum supported optical wavelengths of ranges in nm."
     )
     wavelength_center_nm: Optional[List[float]] = Field(
-        None, description="Nominal or center optical wavelength in nm."
+        None, description="Nominal or center optical wavelengths of ranges in nm."
     )
     wavelength_band: list[str] | None = Field(
         default=None,
@@ -128,7 +128,7 @@ class TransceiverSpecs(BaseModel):
         None, description="Minimum transmitter output power in dBm."
     )
     tx_power_max_dbm: Optional[List[float]] = Field(
-        None, description="Maximum transmitter output power in dBm."
+        None, description="Maximum transmitter output power in dBm. sometimes given with TX shaping"
     )
     tx_in_band_osnr_db: Optional[List[float]] = Field(
         None, description="Transmitter-generated in band OSNR in dB."
@@ -224,6 +224,13 @@ FIELD_BUNDLES = {
 # Fields that participate in per-mode configuration (can have multiple correlated values)
 MODE_FIELDS: list[str] = [
     "channel_spacing_ghz",
+    "form_factor",
+    "frequency_max_thz",
+    "frequency_min_thz",
+    "wavelength_band",
+    "wavelength_center_nm",
+    "wavelength_max_nm",
+    "wavelength_min_nm",
     "channel_total",
     "model",
     "baud_rate_gbaud",

@@ -16,7 +16,8 @@ from pydantic import ValidationError
 
 from pipeline.pdf_parser import parse_pdf
 from pipeline.atom_extractor import extract_atoms, BASE_URL
-from pipeline.mode_linker import synthesize_modes, store_modes, separate_atoms
+import re
+from pipeline.mode_linker import synthesize_modes, store_modes, separate_atoms, _filter_sections_by_provenance
 from pipeline.runtime_store import (
     list_runs,
     load_run,
@@ -143,6 +144,34 @@ with tab_extract:
         )
         st.session_state["edited_md"] = edited_md
 
+        headings = [re.sub(r"^#{1,6}\s+", "", line.strip()) for line in edited_md.splitlines() if re.match(r"^#{1,6}\s+", line)]
+        with st.expander(f"Identified Headings ({len(headings)})"):
+            if headings:
+                for h in headings:
+                    st.write(f"- {h}")
+            else:
+                st.caption("No headings found")
+
+        # Show provenance-filtered content after extraction
+        if "extraction_result" in st.session_state:
+            ex_specs, ex_raw = st.session_state["extraction_result"]
+            ex_data = st.session_state.get("current_specs") or (
+                json.loads(ex_specs.model_dump_json()) if ex_specs else ex_raw
+            )
+            provenance = ex_data.get("provenance_datasheet_sections")
+            if provenance and isinstance(provenance, (str, list)):
+                filtered_md = _filter_sections_by_provenance(edited_md, provenance)
+                prov_headings = len([line for line in filtered_md.splitlines() if re.match(r"^#{1,6}\s+", line)])
+                with st.expander(f"Provenance Sections ({len(filtered_md):,} chars · {prov_headings} sections)", expanded=False):
+                    st.text_area(
+                        "Filtered content (read-only)",
+                        value=filtered_md,
+                        height=400,
+                        disabled=True,
+                        key="provenance_viewer",
+                        label_visibility="collapsed",
+                    )
+
         # --- Step 3: Extract ---
         if st.button("Extract Parameters", type="primary"):
             # Patch the parsed object with edited markdown
@@ -176,6 +205,29 @@ with tab_extract:
                     seconds for name, seconds in timings.items() if name != "total"
                 )
                 update_run_timings(run_dir, timings)
+
+                # Persist content & provenance stats into meta
+                result_data = json.loads(specs.model_dump_json()) if specs else raw_dict
+                md_text = st.session_state["edited_md"]
+                all_headings = [l for l in md_text.splitlines() if re.match(r"^#{1,6}\s+", l)]
+                prov = result_data.get("provenance_datasheet_sections")
+                if prov and isinstance(prov, (str, list)):
+                    filt = _filter_sections_by_provenance(md_text, prov)
+                    prov_headings = [l for l in filt.splitlines() if re.match(r"^#{1,6}\s+", l)]
+                else:
+                    filt = md_text
+                    prov_headings = all_headings
+                content_stats = {
+                    "content_chars": len(md_text),
+                    "content_headings": len(all_headings),
+                    "provenance_chars": len(filt),
+                    "provenance_headings": len(prov_headings),
+                }
+                meta_path = run_dir / "meta.json"
+                meta = json.loads(meta_path.read_text(encoding="utf-8"))
+                meta["content_stats"] = content_stats
+                meta_path.write_text(json.dumps(meta, indent=2), encoding="utf-8")
+
                 st.session_state["timings_seconds"] = timings
                 st.session_state["_last_run_dir"] = str(run_dir)
                 st.write(f"Saved to `{run_dir}` in {timings['store_run']:.3f} seconds")
@@ -266,6 +318,7 @@ with tab_extract:
                 modes_result, _, _ = synthesize_modes(
                     source,
                     st.session_state["parsed"],
+                    run_dir=run_dir,
                     model_id=model_id,
                     temperature=temperature,
                     max_tokens=max_tokens,
@@ -305,6 +358,8 @@ with tab_extract:
                 st.success(f"Reports saved: `{pipeline_path}` and `{modes_path}`")
 
             modes_result = st.session_state["modes_result"]
+            with st.expander("Raw LLM Mode Output"):
+                st.json(modes_result)
             st.subheader("Configuration Modes")
             for i, mode in enumerate(modes_result.get("modes", [])):
                 label = mode.get("label", f"Mode {i+1}")
@@ -327,6 +382,12 @@ with tab_history:
             elif "raw_llm" in run_data:
                 st.subheader("Raw LLM Output (no validated specs)")
                 st.json(run_data["raw_llm"])
+            if "raw_llm_modes_response" in run_data:
+                with st.expander("Raw Mode LLM Response"):
+                    st.json(run_data["raw_llm_modes_response"])
+            if "raw_llm_modes" in run_data:
+                with st.expander("Raw LLM Mode Output"):
+                    st.json(run_data["raw_llm_modes"])
 
             if st.button("Generate Report", key="hist_report"):
                 REPORTS_DIR.mkdir(exist_ok=True)

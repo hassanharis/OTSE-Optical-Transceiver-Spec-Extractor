@@ -2,6 +2,13 @@
 
 Takes the flat extracted specs and identifies which atomic values belong to
 the same logical operating mode (e.g. same table row, same application code).
+
+## Module-level context (single-valued, applies to all modes)
+
+```json
+{general}
+```
+
 """
 
 from __future__ import annotations
@@ -29,24 +36,21 @@ a host-to-media binding).
 
 Rules:
 - Each mode must include values that co-occur in the source (same row/section/application).
-- A parameter with a single value across all modes should be repeated in each mode it applies to.
+- Interfaces can be multiple per mode
+- For multiple model numbers, each model should be treated as a separate mode. 
 - Use the datasheet content to determine which values belong together.
 - Assign a short descriptive label to each mode.
-- Return ONLY valid JSON matching the schema below. No commentary.
+- Return ONLY valid JSON matching the schema below
+- for amplified and unamplified values, create separate modes.
 - Assignment of parameters to each mode should be performed on definitive evidence. Do not create modes based on speculation or guesswork.
 """
+
 
 USER_PROMPT_TEMPLATE = """\
 ## Multi-valued parameters to group
 
 ```json
 {atoms}
-```
-
-## Module-level context (single-valued, applies to all modes)
-
-```json
-{general}
 ```
 
 ## Original Datasheet Content
@@ -100,7 +104,7 @@ def _normalize(text: str) -> str:
 
 
 def _filter_sections_by_provenance(
-    md_text: str, provenance: str
+    md_text: str, provenance: str | list[str]
 ) -> str:
     """Return only the sections referenced in provenance_datasheet_sections.
 
@@ -110,8 +114,11 @@ def _filter_sections_by_provenance(
     if not chunks:
         return md_text
 
-    # Parse provenance into normalized target names
-    targets = [_normalize(s) for s in re.split(r"[,;\n]", provenance) if s.strip()]
+    # Parse provenance into normalized target names.
+    provenance_items = (
+        provenance if isinstance(provenance, list) else re.split(r"[,;\n]", provenance)
+    )
+    targets = [_normalize(item) for item in provenance_items if item.strip()]
     if not targets:
         return md_text
 
@@ -172,6 +179,7 @@ def synthesize_modes(
     specs_dict: dict[str, Any],
     parsed: ParsedDatasheet,
     *,
+    run_dir: Path | None = None,
     model_id: str | None = None,
     base_url: str = BASE_URL,
     temperature: float = 0.1,
@@ -197,7 +205,7 @@ def synthesize_modes(
 
     # Filter to only provenance-referenced sections if available
     provenance = specs_dict.get("provenance_datasheet_sections")
-    if provenance and isinstance(provenance, str) and provenance.strip():
+    if provenance and isinstance(provenance, (str, list)):
         content = _filter_sections_by_provenance(content, provenance)
 
     if len(content) > 80_000:
@@ -225,13 +233,26 @@ def synthesize_modes(
     choice = response.choices[0]
     raw_response = choice.message.content or ""
 
+    if run_dir is not None:
+        (run_dir / "raw_llm_modes_response.json").write_text(
+            json.dumps(
+                {
+                    "finish_reason": choice.finish_reason,
+                    "content": raw_response,
+                    "reasoning_content": getattr(choice.message, "reasoning_content", None),
+                },
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+
     if not raw_response.strip():
         reasoning = getattr(choice.message, "reasoning_content", None) or ""
         if reasoning:
             raw_response = reasoning
 
     if not raw_response.strip():
-        logger.error("Mode synthesis: empty LLM response")
+        logger.error("Mode synthesis: empty LLM response (finish_reason=%s)", choice.finish_reason)
         return None, multi, general
 
     result = _parse_json_from_response(raw_response)
@@ -248,6 +269,9 @@ def synthesize_modes(
 
 def store_modes(run_dir: Path, modes: dict[str, Any], multi: dict[str, Any], general: dict[str, Any]) -> None:
     """Save mode synthesis results to the run directory."""
+    (run_dir / "raw_llm_modes.json").write_text(
+        json.dumps(modes, indent=2), encoding="utf-8"
+    )
     (run_dir / "modes.json").write_text(json.dumps(modes, indent=2), encoding="utf-8")
     (run_dir / "mode_atoms.json").write_text(
         json.dumps({"multi_valued": multi, "general": general}, indent=2),

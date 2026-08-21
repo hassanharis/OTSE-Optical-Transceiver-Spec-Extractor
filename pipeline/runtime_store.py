@@ -3,6 +3,7 @@
 Each run gets a timestamped directory containing:
 - parsed.json   — serialized ParsedDatasheet metadata
 - raw_llm.json  — raw dict returned by LLM (before validation)
+- raw_llm_modes_response.json — raw mode-linking completion and finish reason
 - specs.json    — validated TransceiverSpecs (if validation passed)
 - meta.json     — run metadata (timestamp, source file, provider, status)
 """
@@ -111,6 +112,8 @@ def load_run(run_dir: Path) -> dict[str, Any]:
         "meta.json",
         "parsed.json",
         "raw_llm.json",
+        "raw_llm_modes_response.json",
+        "raw_llm_modes.json",
         "specs.json",
     ):
         p = run_dir / name
