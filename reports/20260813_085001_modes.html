@@ -43,7 +43,7 @@
 <header>
   <h1>Transceiver Mode Report</h1>
   <div class="model-name">Smartoptics TD8005-TUNC-SO</div>
-  <div class="subtitle">QSFP-DD &middot; DWDM</div>
+  <div class="subtitle">QSFP-DD &middot; DWDM &middot; 1 channels</div>
 </header>
 
 <!-- GENERAL SPECS -->
@@ -59,6 +59,9 @@
       <div class="spec-item"><div class="label">Form Factor</div><div class="value">QSFP-DD</div></div>
       <div class="spec-item"><div class="label">Standards</div><div class="value">OIF 800ZR MSA, OpenROADM MSA, CMIS5.3, OSFP800 MSA&#x27;s</div></div>
       <div class="spec-item"><div class="label">Wavelength Band</div><div class="value">DWDM</div></div>
+      <div class="spec-item"><div class="label">Frequency Min Thz</div><div class="value">191.25</div></div>
+      <div class="spec-item"><div class="label">Frequency Max Thz</div><div class="value">196.1</div></div>
+      <div class="spec-item"><div class="label">Channel Total</div><div class="value">1</div></div>
       <div class="spec-item"><div class="label">Connector</div><div class="value">LC</div></div>
       <div class="spec-item"><div class="label">Fiber Type</div><div class="value">SM</div></div>
       <div class="spec-item"><div class="label">Temp Min (°C)</div><div class="value">15.0</div></div>
@@ -66,7 +69,7 @@
       <div class="spec-item"><div class="label">TX Power Min (dBm)</div><div class="value">-2.0</div></div>
       <div class="spec-item"><div class="label">Tx In Band Osnr Db</div><div class="value">37.0</div></div>
       <div class="spec-item"><div class="label">RX Overload (dBm)</div><div class="value">1.0</div></div>
-      <div class="spec-item wide"><div class="label">Notes</div><div class="value" style="font-weight:400; font-size:0.78rem;">Operating temperature +15OC to +75OC1) The module will turn up from cold start at ambient temperature as low as -5C and will reach specifications after self-heating up to min temperature.</div></div>
+      <div class="spec-item wide"><div class="label">Notes</div><div class="value" style="font-weight:400; font-size:0.78rem;">The module transmit power can be provisioned up to the maximum available TX power. If the TX power is not provisioned by the host, the module TX power will default to the maximum available power. The provisional Tx power range of the module is 10dB.</div></div>
       <div class="spec-item"><div class="label">Provenance Datasheet Sections</div><div class="value">OVERVIEW, TECHNICAL DATA, GENERIC, OPTICAL SPECIFICATION – NTWK/MEDIA CODES, ELECTICAL CHARACTERISTICS, ORDERING INFORMATION</div></div>
     </div>
   </div>
@@ -80,12 +83,12 @@
   </div>
   <div class="card">
     <table>
-      <tr><th>Mode</th><th>Channel Spacing (GHz)</th><th>Power (W)</th><th>Host Interface</th><th>Media Interface</th><th>media_interface_id_hex</th><th>Baud Rate (GBaud)</th><th>Bit Rate (Gbps)</th><th>Modulation</th><th>RX Sensitivity (dBm)</th><th>RX OSNR (dB)</th><th>CD Tolerance (ps/nm)</th></tr>
-      <tr><td><strong>800ZR (0x6E)</strong></td><td>150.0</td><td>28.0</td><td><span class="badge">800GAUI-8</span> <span class="badge">400GAUI-4</span> <span class="badge">200GAUI-2</span> <span class="badge">100GAUI-1</span></td><td>800ZR Power class A</td><td>0x6E</td><td>118.2</td><td>800.0</td><td>DP-16QAM</td><td>-18.5</td><td>26.4</td><td>3000.0</td></tr>
-      <tr><td><strong>FlexO-6e 600G (0x6A)</strong></td><td>150.0</td><td>28.0</td><td><span class="badge">200GAUI-2</span> <span class="badge">100GAUI-1</span></td><td>FLEXO-6e-DPO-16QAM / FOIC6e-DPO</td><td>0x6A</td><td>118.7</td><td>600.0</td><td>PCS-118</td><td>-23.5</td><td>22.8</td><td>29000.0</td></tr>
-      <tr><td><strong>FlexO-6e 600G PCS-118 (0xF2)</strong></td><td>150.0</td><td>28.0</td><td><span class="badge">200GAUI-2</span> <span class="badge">100GAUI-1</span></td><td>600G-PCS-118</td><td>0xF2</td><td>118.5</td><td>600.0</td><td>PCS-118</td><td>-23.5</td><td>21.6</td><td>29000.0</td></tr>
-      <tr><td><strong>FlexO-4e 400G QPSK (0x64)</strong></td><td>150.0</td><td>25.0</td><td><span class="badge">400GAUI-8</span> <span class="badge">400GAUI-4</span> <span class="badge">200GAUI-4</span> <span class="badge">200GAUI-2</span> <span class="badge">100GAUI-2</span> <span class="badge">100GAUI-1</span></td><td>FLEXO-4e-DO-QPSK / FOIC4e.4-DO</td><td>0x64</td><td>118.2</td><td>400.0</td><td>DP-QPSK</td><td>-27.0</td><td>17.9</td><td>58000.0</td></tr>
-      <tr><td><strong>OpenZR400 400G 16QAM (0x36)</strong></td><td>75.0</td><td>22.5</td><td><span class="badge">400GAUI-8</span> <span class="badge">400GAUI-4</span> <span class="badge">200GAUI-4</span> <span class="badge">200GAUI-2</span> <span class="badge">100GAUI-2</span> <span class="badge">100GAUI-1</span></td><td>ZR400-OFEC-16QAM-HB</td><td>0x36</td><td>60.1</td><td>400.0</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>23000.0</td></tr>
+      <tr><th>Mode</th><th>Channel Spacing (GHz)</th><th>Power (W)</th><th>Host Interface</th><th>Media Interface</th><th>Media Interface ID (hex)</th><th>frame</th><th>Standards code</th><th>Baud Rate (GBaud)</th><th>Bit Rate (Gbps)</th><th>modulation_format</th><th>RX Sensitivity (dBm)</th><th>RX OSNR (dB)</th><th>CD Tolerance (ps/nm)</th></tr>
+      <tr><td><strong>800ZR (0x6E)</strong></td><td>150.0</td><td>28.0</td><td><span class="badge">800GAUI-8</span> <span class="badge">400GAUI-4</span> <span class="badge">200GAUI-2</span> <span class="badge">100GAUI-1</span></td><td>800ZR</td><td>0x6E</td><td>800ZR</td><td>800ZR Power class A</td><td>118.2</td><td>800.0</td><td>DP-16QAM</td><td>-18.5</td><td>26.4</td><td>3000.0</td></tr>
+      <tr><td><strong>FlexO-6e (0x6A)</strong></td><td>150.0</td><td>28.0</td><td><span class="badge">200GAUI-2</span> <span class="badge">100GAUI-1</span></td><td>FlexO-6(e)</td><td>0x6A</td><td>FlexO-6(e)</td><td><span class="badge">FLEXO-6e-DPO-16QAM</span> <span class="badge">FOIC6e-DPO</span> <span class="badge">OpenROADM 600G 118Gbd</span></td><td>118.7</td><td>600.0</td><td>PCS-118</td><td>-23.5</td><td>22.8</td><td>29000.0</td></tr>
+      <tr><td><strong>FlexO-6e (0xF2)</strong></td><td>150.0</td><td>28.0</td><td><span class="badge">200GAUI-2</span> <span class="badge">100GAUI-1</span></td><td>FlexO-6(e)</td><td>0xF2</td><td>FlexO-6(e)</td><td><span class="badge">600G-PCS-118</span> <span class="badge">600G PCS-118Gbd</span></td><td>118.5</td><td>600.0</td><td>PCS-118</td><td>-23.5</td><td>21.6</td><td>29000.0</td></tr>
+      <tr><td><strong>FlexO-4e (0x64)</strong></td><td>150.0</td><td>25.0</td><td><span class="badge">400GAUI-8</span> <span class="badge">400GAUI-4</span> <span class="badge">200GAUI-4</span> <span class="badge">200GAUI-2</span> <span class="badge">100GAUI-2</span> <span class="badge">100GAUI-1</span></td><td>FlexO-4(e)</td><td>0x64</td><td>FlexO-4(e)</td><td><span class="badge">FLEXO-4e-DO-QPSK</span> <span class="badge">FOIC4e.4-DO</span> <span class="badge">OpenROADM 400G QPSK</span></td><td>118.2</td><td>400.0</td><td>DP-QPSK</td><td>-27.0</td><td>17.9</td><td>58000.0</td></tr>
+      <tr><td><strong>OpenZR400 (0x36)</strong></td><td>75.0</td><td>22.5</td><td><span class="badge">400GAUI-8</span> <span class="badge">400GAUI-4</span> <span class="badge">200GAUI-4</span> <span class="badge">200GAUI-2</span> <span class="badge">100GAUI-2</span> <span class="badge">100GAUI-1</span></td><td>OpenZR400</td><td>0x36</td><td>OpenZR400</td><td><span class="badge">ZR400-OFEC-16QAM-HB</span> <span class="badge">OpenZR+ 400G 16QAM-HB</span></td><td>60.1</td><td>400.0</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>23000.0</td></tr>
     </table>
     <div class="note-box">
       Modes were synthesized from multi-valued fields below using LLM-based linking.
@@ -102,14 +105,16 @@
   <div class="card">
     <table>
       <tr><th>Field</th><th>Values</th></tr>
-      <tr><td>channel_spacing_ghz</td><td><span class="badge">150.0</span> <span class="badge">75.0</span></td></tr>
+      <tr><td>channel_spacing_ghz</td><td><span class="badge">6.25</span> <span class="badge">75.0</span> <span class="badge">150.0</span></td></tr>
       <tr><td>power_consumption_w</td><td><span class="badge">28.0</span> <span class="badge">25.0</span> <span class="badge">22.5</span></td></tr>
       <tr><td>host_interface_name</td><td><span class="badge">800GAUI-8</span> <span class="badge">400GAUI-4</span> <span class="badge">200GAUI-2</span> <span class="badge">100GAUI-1</span> <span class="badge">400GAUI-8</span> <span class="badge">200GAUI-4</span> <span class="badge">100GAUI-2</span></td></tr>
-      <tr><td>media_interface_name</td><td><span class="badge">800ZR Power class A</span> <span class="badge">FLEXO-6e-DPO-16QAM / FOIC6e-DPO</span> <span class="badge">600G-PCS-118</span> <span class="badge">FLEXO-4e-DO-QPSK / FOIC4e.4-DO</span> <span class="badge">ZR400-OFEC-16QAM-HB</span></td></tr>
+      <tr><td>media_interface_name</td><td><span class="badge">800ZR</span> <span class="badge">FlexO-6(e)</span> <span class="badge">FlexO-4(e)</span> <span class="badge">OpenZR400</span></td></tr>
       <tr><td>media_interface_id_hex</td><td><span class="badge">0x6E</span> <span class="badge">0x6A</span> <span class="badge">0xF2</span> <span class="badge">0x64</span> <span class="badge">0x36</span></td></tr>
+      <tr><td>frame</td><td><span class="badge">800ZR</span> <span class="badge">FlexO-6(e)</span> <span class="badge">FlexO-4(e)</span> <span class="badge">OpenZR400</span> <span class="badge">1x 800GAUI-8</span> <span class="badge">2x 400GAUI-4</span> <span class="badge">4x 200GAUI-2</span> <span class="badge">8x 100GAUI-1</span> <span class="badge">1x 400GAUI-8</span> <span class="badge">2x 200GAUI-4</span> <span class="badge">4x 100GAUI-2</span></td></tr>
+      <tr><td>standards_code</td><td><span class="badge">800ZR Power class A</span> <span class="badge">FLEXO-6e-DPO-16QAM</span> <span class="badge">FOIC6e-DPO</span> <span class="badge">600G-PCS-118</span> <span class="badge">OpenROADM 600G 118Gbd</span> <span class="badge">600G PCS-118Gbd</span> <span class="badge">FLEXO-4e-DO-QPSK</span> <span class="badge">FOIC4e.4-DO</span> <span class="badge">OpenROADM 400G QPSK</span> <span class="badge">ZR400-OFEC-16QAM-HB</span> <span class="badge">OpenZR+ 400G 16QAM-HB</span></td></tr>
       <tr><td>baud_rate_gbaud</td><td><span class="badge">118.2</span> <span class="badge">118.7</span> <span class="badge">118.5</span> <span class="badge">60.1</span></td></tr>
-      <tr><td>bit_rate_gbps</td><td><span class="badge">800.0</span> <span class="badge">600.0</span> <span class="badge">400.0</span></td></tr>
-      <tr><td>modulation_formats</td><td><span class="badge">DP-16QAM</span> <span class="badge">PCS-118</span> <span class="badge">DP-QPSK</span></td></tr>
+      <tr><td>bit_rate_gbps</td><td><span class="badge">800.0</span> <span class="badge">600.0</span> <span class="badge">400.0</span> <span class="badge">100.0</span> <span class="badge">200.0</span></td></tr>
+      <tr><td>modulation_format</td><td><span class="badge">DP-16QAM</span> <span class="badge">PCS-118</span> <span class="badge">DP-QPSK</span></td></tr>
       <tr><td>rx_sensitivity_dbm</td><td><span class="badge">-18.5</span> <span class="badge">-23.5</span> <span class="badge">-27.0</span> <span class="badge">-22.5</span></td></tr>
       <tr><td>rx_osnr_db</td><td><span class="badge">26.4</span> <span class="badge">22.8</span> <span class="badge">21.6</span> <span class="badge">17.9</span> <span class="badge">23.1</span></td></tr>
       <tr><td>cd_tolerance_ps_nm</td><td><span class="badge">3000.0</span> <span class="badge">29000.0</span> <span class="badge">58000.0</span> <span class="badge">23000.0</span></td></tr>
@@ -118,7 +123,7 @@
 </div>
 
 <footer>
-  Generated by OTSE Pipeline &middot; Qwen3.6-27B-Q4_K_M &middot; Run 2026-08-07 12:11
+  Generated by OTSE Pipeline &middot; Qwen3.6-27B-Q4_K_M &middot; Run 2026-08-13 08:50
 </footer>
 
 </div>

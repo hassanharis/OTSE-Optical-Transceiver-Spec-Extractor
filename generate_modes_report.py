@@ -69,7 +69,9 @@ _FIELD_DISPLAY = {
     "fec_types": "FEC",
     "host_interface_name": "Host Interface",
     "media_interface_name": "Media Interface",
-    "standards_format": "Standards Format",
+    "standards_code": "Standards code",
+    "host_interface_id_hex": "Host Interface ID (hex)",
+    "media_interface_id_hex": "Media Interface ID (hex)",
 }
 
 

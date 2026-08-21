@@ -41,7 +41,9 @@
   .md-excerpt { background: var(--card); border-radius: 6px; padding: 1rem; font-size: 0.78rem; color: var(--muted); max-height: 200px; overflow-y: auto; white-space: pre-wrap; }
   table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
   th, td { border: 1px solid var(--border); padding: 0.45rem 0.65rem; text-align: left; }
-  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: normal; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
+  th { background: var(--card); color: var(--accent); font-weight: 600; white-space: nowrap; }
+  th { white-space: normal; }
+  td { white-space: nowrap; }
   tr:hover td { background: rgba(56,189,248,0.04); }
   .badge { display: inline-block; background: rgba(56,189,248,0.15); color: var(--accent); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.72rem; margin: 0.1rem; }
   .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -73,11 +75,11 @@
   </div>
   <div class="card">
     <div class="meta-grid">
-      <div class="meta-item"><div class="label">Source</div><div class="value">tmp69dji4uy.pdf</div></div>
+      <div class="meta-item"><div class="label">Source</div><div class="value">tmp90vir0lq.pdf</div></div>
       <div class="meta-item"><div class="label">Pages</div><div class="value">5</div></div>
       <div class="meta-item"><div class="label">Tables Detected</div><div class="value">8</div></div>
       <div class="meta-item"><div class="label">Model</div><div class="value">Qwen3.6-27B-Q4_K_M</div></div>
-      <div class="meta-item"><div class="label">Timestamp</div><div class="value">2026-08-06 09:58</div></div>
+      <div class="meta-item"><div class="label">Timestamp</div><div class="value">2026-08-10 18:39</div></div>
     </div>
   </div>
   <div class="card">
@@ -143,15 +145,22 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
   <span class="key">"wavelength_min_nm"</span>: <span class="null">null</span>,
   <span class="key">"wavelength_max_nm"</span>: <span class="null">null</span>,
   <span class="key">"wavelength_center_nm"</span>: <span class="null">null</span>,
-  <span class="key">"wavelength_band"</span>: <span class="null">null</span>,
+  <span class="key">"wavelength_band"</span>: [
+    "DWDM"
+  ],
+  <span class="key">"frequency_min_thz"</span>: [
+    <span class="num">191.25</span>
+  ],
+  <span class="key">"frequency_max_thz"</span>: [
+    <span class="num">196.1</span>
+  ],
   <span class="key">"channel_spacing_ghz"</span>: [
     <span class="num">150</span>,
     <span class="num">75</span>,
     <span class="num">87.5</span>,
     <span class="num">100</span>,
     <span class="num">112.5</span>,
-    <span class="num">125</span>,
-    <span class="num">6.25</span>
+    <span class="num">125</span>
   ],
   <span class="key">"channel_total"</span>: <span class="null">null</span>,
   <span class="key">"connector_type"</span>: [
@@ -181,25 +190,20 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
     "0x0D",
     "0x3C"
   ],
-  <span class="key">"host_interface_id"</span>: [
-    <span class="num">17</span>,
-    <span class="num">15</span>,
-    <span class="num">13</span>,
-    <span class="num">60</span>
-  ],
+  <span class="key">"host_interface_id"</span>: <span class="null">null</span>,
   <span class="key">"media_interface_name"</span>: [
     "FLEXO-4e-DO-QPSK",
     "FlexO-4e-MPCS066-OS",
     "FlexO-4e-MPCS075-OS",
     "FlexO-4e-MPCS087-OS",
     "FlexO-4e-MPCS098-OS",
-    "OpenZR+, MSA, Enhanced",
-    "ZR400-OFEC-16QAM",
-    "ZR400-OFEC-16QAM-HB",
     "FlexO-4-MPCS101-OS",
     "FlexO-4-MPCS079-OS",
     "FlexO-4-MPCS069-OS",
-    "FlexO-4-MPCS087-OS"
+    "FlexO-4-MPCS087-OS",
+    "OpenZR+, MSA, Enhanced",
+    "ZR400-OFEC-16QAM",
+    "ZR400-OFEC-16QAM-HB"
   ],
   <span class="key">"media_interface_id_hex"</span>: [
     "0x64",
@@ -215,19 +219,16 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
     "0x46",
     "0x36"
   ],
-  <span class="key">"media_interface_id"</span>: [
-    <span class="num">100</span>,
-    <span class="num">192</span>,
-    <span class="num">194</span>,
-    <span class="num">201</span>,
-    <span class="num">216</span>,
-    <span class="num">220</span>,
-    <span class="num">196</span>,
-    <span class="num">193</span>,
-    <span class="num">202</span>,
-    <span class="num">198</span>,
-    <span class="num">70</span>,
-    <span class="num">54</span>
+  <span class="key">"media_interface_id"</span>: <span class="null">null</span>,
+  <span class="key">"frame"</span>: [
+    "FlexO-4(e)",
+    "FlexO-4",
+    "OpenZR400"
+  ],
+  <span class="key">"standards_code"</span>: [
+    "OpenZR+",
+    "OpenROADM",
+    "CMIS5.3"
   ],
   <span class="key">"baud_rate_gbaud"</span>: [
     <span class="num">118.2</span>,
@@ -270,8 +271,6 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
     <span class="num">-24.5</span>,
     <span class="num">-25.5</span>,
     <span class="num">-26.0</span>,
-    <span class="num">-25.0</span>,
-    <span class="num">-24.0</span>,
     <span class="num">-22.5</span>
   ],
   <span class="key">"rx_osnr_db"</span>: [
@@ -315,17 +314,24 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
   ],
   <span class="key">"pdl_db"</span>: <span class="null">null</span>,
   <span class="key">"pmd_tolerance_ps"</span>: <span class="null">null</span>,
-  <span class="key">"fec_types"</span>: [
-    "OpenZR+",
-    "oFEC"
-  ],
+  <span class="key">"fec_types"</span>: <span class="null">null</span>,
   <span class="key">"fec_overhead_percent"</span>: <span class="null">null</span>,
   <span class="key">"pre_fec_ber_threshold"</span>: <span class="null">null</span>,
   <span class="key">"post_fec_ber_target"</span>: <span class="null">null</span>,
   <span class="key">"extinction_ratio_db"</span>: <span class="null">null</span>,
   <span class="key">"los_assert_dbm"</span>: <span class="null">null</span>,
   <span class="key">"los_deassert_dbm"</span>: <span class="null">null</span>,
-  <span class="key">"notes"</span>: <span class="null">null</span>
+  <span class="key">"notes"</span>: <span class="str">"Operating temperature +15°C to +75°C. Storage temperature <span class="num">-40</span>°C to +85°C. Tx power provisionable up to max available with <span class="num">10</span>dB range. Rx absolute max input power +1dBm (signal) / <span class="num">15</span>dBm (total)."</span>,
+  <span class="key">"provenance_datasheet_sections"</span>: [
+    "OVERVIEW",
+    "TECHNICAL DATA",
+    "GENERIC",
+    "OPTICAL SPECIFICATION – NTWK/MEDIA CODES",
+    "ELECTICAL CHARACTERISTICS",
+    "APPLICATION SELECT TABLE - NORMALIZED APPLICATION DESCRIPTORS",
+    "ORDERING INFORMATION"
+  ],
+  <span class="key">"suggestions"</span>: <span class="null">null</span>
 }</pre></div>
   </div>
 </div>
@@ -342,21 +348,20 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
       <div class="section-label">Multi-Valued (need linking)</div>
       <table>
         <tr><th>Field</th><th>Values</th></tr>
-        <tr><td>channel_spacing_ghz</td><td><span class="badge">150.0</span> <span class="badge">75.0</span> <span class="badge">87.5</span> <span class="badge">100.0</span> <span class="badge">112.5</span> <span class="badge">125.0</span> <span class="badge">6.25</span></td></tr>
+        <tr><td>channel_spacing_ghz</td><td><span class="badge">150.0</span> <span class="badge">75.0</span> <span class="badge">87.5</span> <span class="badge">100.0</span> <span class="badge">112.5</span> <span class="badge">125.0</span></td></tr>
 <tr><td>power_consumption_w</td><td><span class="badge">24.0</span> <span class="badge">23.5</span> <span class="badge">25.0</span> <span class="badge">24.5</span> <span class="badge">22.5</span></td></tr>
 <tr><td>host_interface_name</td><td><span class="badge">400GAUI-8</span> <span class="badge">200GAUI-4</span> <span class="badge">100GAUI-2</span> <span class="badge">FOIC1.2</span></td></tr>
 <tr><td>host_interface_id_hex</td><td><span class="badge">0x11</span> <span class="badge">0x0F</span> <span class="badge">0x0D</span> <span class="badge">0x3C</span></td></tr>
-<tr><td>host_interface_id</td><td><span class="badge">17</span> <span class="badge">15</span> <span class="badge">13</span> <span class="badge">60</span></td></tr>
-<tr><td>media_interface_name</td><td><span class="badge">FLEXO-4e-DO-QPSK</span> <span class="badge">FlexO-4e-MPCS066-OS</span> <span class="badge">FlexO-4e-MPCS075-OS</span> <span class="badge">FlexO-4e-MPCS087-OS</span> <span class="badge">FlexO-4e-MPCS098-OS</span> <span class="badge">OpenZR+, MSA, Enhanced</span> <span class="badge">ZR400-OFEC-16QAM</span> <span class="badge">ZR400-OFEC-16QAM-HB</span> <span class="badge">FlexO-4-MPCS101-OS</span> <span class="badge">FlexO-4-MPCS079-OS</span> <span class="badge">FlexO-4-MPCS069-OS</span> <span class="badge">FlexO-4-MPCS087-OS</span></td></tr>
+<tr><td>media_interface_name</td><td><span class="badge">FLEXO-4e-DO-QPSK</span> <span class="badge">FlexO-4e-MPCS066-OS</span> <span class="badge">FlexO-4e-MPCS075-OS</span> <span class="badge">FlexO-4e-MPCS087-OS</span> <span class="badge">FlexO-4e-MPCS098-OS</span> <span class="badge">FlexO-4-MPCS101-OS</span> <span class="badge">FlexO-4-MPCS079-OS</span> <span class="badge">FlexO-4-MPCS069-OS</span> <span class="badge">FlexO-4-MPCS087-OS</span> <span class="badge">OpenZR+, MSA, Enhanced</span> <span class="badge">ZR400-OFEC-16QAM</span> <span class="badge">ZR400-OFEC-16QAM-HB</span></td></tr>
 <tr><td>media_interface_id_hex</td><td><span class="badge">0x64</span> <span class="badge">0xC0</span> <span class="badge">0xC2</span> <span class="badge">0xC9</span> <span class="badge">0xD8</span> <span class="badge">0xDC</span> <span class="badge">0xC4</span> <span class="badge">0xC1</span> <span class="badge">0xCA</span> <span class="badge">0xC6</span> <span class="badge">0x46</span> <span class="badge">0x36</span></td></tr>
-<tr><td>media_interface_id</td><td><span class="badge">100</span> <span class="badge">192</span> <span class="badge">194</span> <span class="badge">201</span> <span class="badge">216</span> <span class="badge">220</span> <span class="badge">196</span> <span class="badge">193</span> <span class="badge">202</span> <span class="badge">198</span> <span class="badge">70</span> <span class="badge">54</span></td></tr>
+<tr><td>frame</td><td><span class="badge">FlexO-4(e)</span> <span class="badge">FlexO-4</span> <span class="badge">OpenZR400</span></td></tr>
+<tr><td>standards_code</td><td><span class="badge">OpenZR+</span> <span class="badge">OpenROADM</span> <span class="badge">CMIS5.3</span></td></tr>
 <tr><td>baud_rate_gbaud</td><td><span class="badge">118.2</span> <span class="badge">65.7</span> <span class="badge">75.0</span> <span class="badge">87.4</span> <span class="badge">97.9</span> <span class="badge">100.8</span> <span class="badge">78.9</span> <span class="badge">69.1</span> <span class="badge">87.3</span> <span class="badge">60.1</span></td></tr>
 <tr><td>modulation_formats</td><td><span class="badge">DP-QPSK</span> <span class="badge">PCS-66</span> <span class="badge">PCS-75</span> <span class="badge">PCS-87</span> <span class="badge">PCS-98</span> <span class="badge">PCS-101</span> <span class="badge">PCS-79</span> <span class="badge">PCS-69</span> <span class="badge">DP-16QAM</span></td></tr>
-<tr><td>rx_sensitivity_dbm</td><td><span class="badge">-27.0</span> <span class="badge">-24.5</span> <span class="badge">-25.5</span> <span class="badge">-26.0</span> <span class="badge">-25.0</span> <span class="badge">-24.0</span> <span class="badge">-22.5</span></td></tr>
+<tr><td>rx_sensitivity_dbm</td><td><span class="badge">-27.0</span> <span class="badge">-24.5</span> <span class="badge">-25.5</span> <span class="badge">-26.0</span> <span class="badge">-22.5</span></td></tr>
 <tr><td>rx_osnr_db</td><td><span class="badge">17.9</span> <span class="badge">21.2</span> <span class="badge">20.6</span> <span class="badge">19.5</span> <span class="badge">19.2</span> <span class="badge">19.7</span> <span class="badge">20.5</span> <span class="badge">21.5</span> <span class="badge">20.1</span> <span class="badge">22.9</span> <span class="badge">23.1</span></td></tr>
 <tr><td>rx_osnr_tolerance_db_max</td><td><span class="badge">18.7</span> <span class="badge">22.0</span> <span class="badge">21.4</span> <span class="badge">20.3</span> <span class="badge">20.0</span> <span class="badge">20.4</span> <span class="badge">21.2</span> <span class="badge">22.2</span> <span class="badge">20.8</span> <span class="badge">23.6</span> <span class="badge">23.8</span></td></tr>
 <tr><td>cd_tolerance_ps_nm</td><td><span class="badge">58000.0</span> <span class="badge">42000.0</span> <span class="badge">37000.0</span> <span class="badge">52000.0</span> <span class="badge">35000.0</span> <span class="badge">34000.0</span> <span class="badge">80000.0</span> <span class="badge">23000.0</span></td></tr>
-<tr><td>fec_types</td><td><span class="badge">OpenZR+</span> <span class="badge">oFEC</span></td></tr>
 
       </table>
     </div>
@@ -368,6 +373,9 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
 <tr><td>model</td><td>TQD029-TUNC-SO</td></tr>
 <tr><td>form_factor</td><td>QSFP-DD</td></tr>
 <tr><td>standards_claimed</td><td>OpenZR+, OpenROADM, CMIS5.3, QSFP-DD MSA&#x27;s</td></tr>
+<tr><td>wavelength_band</td><td>DWDM</td></tr>
+<tr><td>frequency_min_thz</td><td>191.25</td></tr>
+<tr><td>frequency_max_thz</td><td>196.1</td></tr>
 <tr><td>connector_type</td><td>LC</td></tr>
 <tr><td>fiber_type</td><td>SM</td></tr>
 <tr><td>temp_min_c</td><td>15.0</td></tr>
@@ -376,6 +384,8 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
 <tr><td>tx_power_min_dbm</td><td>1.0</td></tr>
 <tr><td>tx_in_band_osnr_db</td><td>37.0</td></tr>
 <tr><td>rx_overload_dbm</td><td>1.0</td></tr>
+<tr><td>notes</td><td>Operating temperature +15°C to +75°C. Storage temperature -40°C to +85°C. Tx power provisionable up to max available with 10dB range. Rx absolute max input power +1dBm (signal) / 15dBm (total).</td></tr>
+<tr><td>provenance_datasheet_sections</td><td>OVERVIEW, TECHNICAL DATA, GENERIC, OPTICAL SPECIFICATION – NTWK/MEDIA CODES, ELECTICAL CHARACTERISTICS, APPLICATION SELECT TABLE - NORMALIZED APPLICATION DESCRIPTORS, ORDERING INFORMATION</td></tr>
 
       </table>
     </div>
@@ -392,67 +402,15 @@ The below table lists the Host and NTWK modes supported by TQD029-TUNC-SO.
   </div>
   <div class="card" style="overflow-x:auto;">
     <div class="section-label">Synthesized Operating Modes</div>
-    <table><tr><th>label</th><th>channel spacing ghz</th><th>power consumption w</th><th>host interface name</th><th>host interface id hex</th><th>host interface id</th><th>media interface name</th><th>media interface id hex</th><th>media interface id</th><th>baud rate gbaud</th><th>modulation formats</th><th>rx sensitivity dbm</th><th>rx osnr db</th><th>rx osnr tolerance db max</th><th>cd tolerance ps nm</th><th>fec types</th></tr><tr><td><strong>FLEXO-4e-DO-QPSK (0x64)</strong></td><td>150.0</td><td>24.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FLEXO-4e-DO-QPSK</td><td><span class="badge">0x64</span></td><td>100</td><td>118.2</td><td>DP-QPSK</td><td>-27.0</td><td>17.9</td><td>18.7</td><td>58000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS066-OS (0xC0)</strong></td><td>75.0</td><td>23.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS066-OS</td><td><span class="badge">0xC0</span></td><td>192</td><td>65.7</td><td>PCS-66</td><td>-24.5</td><td>21.2</td><td>22.0</td><td>42000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS075-OS (0xC2)</strong></td><td>87.5</td><td>24.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS075-OS</td><td><span class="badge">0xC2</span></td><td>194</td><td>75.0</td><td>PCS-75</td><td>-25.5</td><td>20.6</td><td>21.4</td><td>37000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS087-OS (0xC9)</strong></td><td>100.0</td><td>24.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS087-OS</td><td><span class="badge">0xC9</span></td><td>201</td><td>87.4</td><td>PCS-87</td><td>-25.5</td><td>19.5</td><td>20.3</td><td>52000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4e-MPCS098-OS (0xD8)</strong></td><td>112.5</td><td>25.0</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>FlexO-4e-MPCS098-OS</td><td><span class="badge">0xD8</span></td><td>216</td><td>97.9</td><td>PCS-98</td><td>-26.0</td><td>19.2</td><td>20.0</td><td>35000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS101-OS (0xDC)</strong></td><td>125.0</td><td>24.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS101-OS</td><td><span class="badge">0xDC</span></td><td>220</td><td>100.8</td><td>PCS-101</td><td>-26.0</td><td>19.7</td><td>20.4</td><td>34000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS079-OS (0xC4)</strong></td><td>87.5</td><td>24.0</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS079-OS</td><td><span class="badge">0xC4</span></td><td>196</td><td>78.9</td><td>PCS-79</td><td>-25.0</td><td>20.5</td><td>21.2</td><td>58000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS069-OS (0xC1)</strong></td><td>75.0</td><td>23.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS069-OS</td><td><span class="badge">0xC1</span></td><td>193</td><td>69.1</td><td>PCS-69</td><td>-24.0</td><td>21.5</td><td>22.2</td><td>80000.0</td><td>oFEC</td></tr><tr><td><strong>FlexO-4-MPCS087-OS (0xCA)</strong></td><td>100.0</td><td>24.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>60</td><td>FlexO-4-MPCS087-OS</td><td><span class="badge">0xCA</span></td><td>202</td><td>87.3</td><td>PCS-87</td><td>-25.5</td><td>20.1</td><td>20.8</td><td>52000.0</td><td>oFEC</td></tr><tr><td><strong>OpenZR+ Enhanced (0xC6)</strong></td><td>75.0</td><td>22.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>OpenZR+, MSA, Enhanced</td><td><span class="badge">0xC6</span></td><td>198</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>22.9</td><td>23.6</td><td>23000.0</td><td>OpenZR+</td></tr><tr><td><strong>ZR400-OFEC-16QAM (0x46)</strong></td><td>75.0</td><td>22.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>ZR400-OFEC-16QAM</td><td><span class="badge">0x46</span></td><td>70</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>23.8</td><td>23000.0</td><td>OpenZR+</td></tr><tr><td><strong>ZR400-OFEC-16QAM-HB (0x36)</strong></td><td>75.0</td><td>22.5</td><td>[&#x27;400GAUI-8&#x27;, &#x27;200GAUI-4&#x27;, &#x27;100GAUI-2&#x27;]</td><td><span class="badge">[&#x27;0x11&#x27;, &#x27;0x0F&#x27;, &#x27;0x0D&#x27;]</span></td><td>[17, 15, 13]</td><td>ZR400-OFEC-16QAM-HB</td><td><span class="badge">0x36</span></td><td>54</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>23.8</td><td>23000.0</td><td>OpenZR+</td></tr></table>
+    <table><tr><th>label</th><th>channel_spacing_ghz</th><th>power_consumption_w</th><th>host_interface_name</th><th>host_interface_id_hex</th><th>media_interface_name</th><th>media_interface_id_hex</th><th>frame</th><th>standards_code</th><th>baud_rate_gbaud</th><th>modulation_formats</th><th>rx_sensitivity_dbm</th><th>rx_osnr_db</th><th>rx_osnr_tolerance_db_max</th><th>cd_tolerance_ps_nm</th></tr><tr><td><strong>FlexO-4e-DO-QPSK (0x64)</strong></td><td>150.0</td><td>24.0</td><td>400GAUI-8</td><td><span class="badge">0x11</span></td><td>FLEXO-4e-DO-QPSK</td><td><span class="badge">0x64</span></td><td>FlexO-4(e)</td><td>OpenROADM</td><td>118.2</td><td>DP-QPSK</td><td>-27.0</td><td>17.9</td><td>18.7</td><td>58000.0</td></tr><tr><td><strong>FlexO-4e-MPCS066-OS (0xC0)</strong></td><td>75.0</td><td>23.5</td><td>400GAUI-8</td><td><span class="badge">0x11</span></td><td>FlexO-4e-MPCS066-OS</td><td><span class="badge">0xC0</span></td><td>FlexO-4(e)</td><td>OpenROADM</td><td>65.7</td><td>PCS-66</td><td>-24.5</td><td>21.2</td><td>22.0</td><td>42000.0</td></tr><tr><td><strong>FlexO-4e-MPCS075-OS (0xC2)</strong></td><td>87.5</td><td>24.0</td><td>400GAUI-8</td><td><span class="badge">0x11</span></td><td>FlexO-4e-MPCS075-OS</td><td><span class="badge">0xC2</span></td><td>FlexO-4(e)</td><td>OpenROADM</td><td>75.0</td><td>PCS-75</td><td>-25.5</td><td>20.6</td><td>21.4</td><td>37000.0</td></tr><tr><td><strong>FlexO-4e-MPCS087-OS (0xC9)</strong></td><td>100.0</td><td>24.0</td><td>400GAUI-8</td><td><span class="badge">0x11</span></td><td>FlexO-4e-MPCS087-OS</td><td><span class="badge">0xC9</span></td><td>FlexO-4(e)</td><td>OpenROADM</td><td>87.4</td><td>PCS-87</td><td>-25.5</td><td>19.5</td><td>20.3</td><td>52000.0</td></tr><tr><td><strong>FlexO-4e-MPCS098-OS (0xD8)</strong></td><td>112.5</td><td>25.0</td><td>400GAUI-8</td><td><span class="badge">0x11</span></td><td>FlexO-4e-MPCS098-OS</td><td><span class="badge">0xD8</span></td><td>FlexO-4(e)</td><td>OpenROADM</td><td>97.9</td><td>PCS-98</td><td>-26.0</td><td>19.2</td><td>20.0</td><td>35000.0</td></tr><tr><td><strong>FlexO-4-MPCS101-OS (0xDC)</strong></td><td>125.0</td><td>24.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>FlexO-4-MPCS101-OS</td><td><span class="badge">0xDC</span></td><td>FlexO-4</td><td>OpenROADM</td><td>100.8</td><td>PCS-101</td><td>-26.0</td><td>19.7</td><td>20.4</td><td>34000.0</td></tr><tr><td><strong>FlexO-4-MPCS079-OS (0xC4)</strong></td><td>87.5</td><td>24.0</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>FlexO-4-MPCS079-OS</td><td><span class="badge">0xC4</span></td><td>FlexO-4</td><td>OpenROADM</td><td>78.9</td><td>PCS-79</td><td>-25.5</td><td>20.5</td><td>21.2</td><td>58000.0</td></tr><tr><td><strong>FlexO-4-MPCS069-OS (0xC1)</strong></td><td>75.0</td><td>23.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>FlexO-4-MPCS069-OS</td><td><span class="badge">0xC1</span></td><td>FlexO-4</td><td>OpenROADM</td><td>69.1</td><td>PCS-69</td><td>-24.5</td><td>21.5</td><td>22.2</td><td>80000.0</td></tr><tr><td><strong>FlexO-4-MPCS087-OS (0xCA)</strong></td><td>100.0</td><td>24.5</td><td>FOIC1.2</td><td><span class="badge">0x3C</span></td><td>FlexO-4-MPCS087-OS</td><td><span class="badge">0xCA</span></td><td>FlexO-4</td><td>OpenROADM</td><td>87.3</td><td>PCS-87</td><td>-25.5</td><td>20.1</td><td>20.8</td><td>52000.0</td></tr><tr><td><strong>OpenZR+ Enhanced (0xC6)</strong></td><td>75.0</td><td>22.5</td><td>400GAUI-8</td><td><span class="badge">0x11</span></td><td>OpenZR+, MSA, Enhanced</td><td><span class="badge">0xC6</span></td><td>OpenZR400</td><td>OpenZR+</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>22.9</td><td>23.6</td><td>23000.0</td></tr><tr><td><strong>ZR400-OFEC-16QAM (0x46)</strong></td><td>75.0</td><td>22.5</td><td>400GAUI-8</td><td><span class="badge">0x11</span></td><td>ZR400-OFEC-16QAM</td><td><span class="badge">0x46</span></td><td>OpenZR400</td><td>OpenZR+</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>23.8</td><td>23000.0</td></tr><tr><td><strong>ZR400-OFEC-16QAM-HB (0x36)</strong></td><td>75.0</td><td>22.5</td><td>400GAUI-8</td><td><span class="badge">0x11</span></td><td>ZR400-OFEC-16QAM-HB</td><td><span class="badge">0x36</span></td><td>OpenZR400</td><td>OpenZR+</td><td>60.1</td><td>DP-16QAM</td><td>-22.5</td><td>23.1</td><td>23.8</td><td>23000.0</td></tr></table>
   </div>
 </div>
 
 
 <footer>
-  Generated by Transceiver Spec Extraction Pipeline &middot; Qwen3.6-27B-Q4_K_M &middot; Run 2026-08-06 09:58
+  Generated by Transceiver Spec Extraction Pipeline &middot; Qwen3.6-27B-Q4_K_M &middot; Run 2026-08-10 18:39
 </footer>
 
 </div>
-<script>
-document.querySelectorAll('table').forEach(function(tbl) {
-  var hdr = tbl.querySelector('tr');
-  if (!hdr) return;
-  var headerCells = Array.prototype.slice.call(hdr.cells || []);
-  if (!headerCells.length) return;
-  var dr = hdr.nextElementSibling;
-  if (!dr || !dr.querySelector('td')) return;
-
-  function clamp(n, lo, hi) {
-    return Math.max(lo, Math.min(hi, n));
-  }
-
-  function headerMinWidthPx(cell) {
-    var text = (cell.textContent || '').trim();
-    if (!text) return 0;
-    var words = text.split(/\s+/).filter(Boolean);
-    var longest = words.reduce(function(mx, w) { return Math.max(mx, w.length); }, 0);
-    var minCh = clamp(longest + 2, 8, 28);
-    var cs = window.getComputedStyle(cell);
-    var probeChar = document.createElement('span');
-    probeChar.textContent = '0';
-    probeChar.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;left:-9999px;top:-9999px;';
-    probeChar.style.font = cs.font;
-    document.body.appendChild(probeChar);
-    var chPx = probeChar.getBoundingClientRect().width || (parseFloat(cs.fontSize) * 0.6);
-    document.body.removeChild(probeChar);
-    var pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
-    return (minCh * chPx) + pad + 2;
-  }
-
-  var p = document.createElement('table');
-  p.style.cssText = 'position:absolute;visibility:hidden;table-layout:auto;width:auto;white-space:nowrap';
-  p.innerHTML = '<tr>' + dr.innerHTML + '</tr>';
-  document.body.appendChild(p);
-  var cg = document.createElement('colgroup');
-  var dataCells = p.rows[0] ? p.rows[0].cells : [];
-  var colCount = Math.max(headerCells.length, dataCells.length);
-  for (var i = 0; i < colCount; i++) {
-    var dataWidth = dataCells[i] ? dataCells[i].offsetWidth : 0;
-    var headerMin = headerCells[i] ? headerMinWidthPx(headerCells[i]) : 0;
-    var finalWidth = Math.ceil(Math.max(dataWidth, headerMin));
-    var col = document.createElement('col');
-    col.style.width = finalWidth + 'px';
-    col.style.minWidth = Math.ceil(headerMin) + 'px';
-    cg.appendChild(col);
-  }
-  document.body.removeChild(p);
-  tbl.insertBefore(cg, tbl.firstChild);
-  tbl.style.tableLayout = 'fixed';
-});
-</script>
 </body>
 </html>

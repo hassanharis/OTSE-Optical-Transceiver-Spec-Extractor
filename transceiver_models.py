@@ -14,7 +14,7 @@ class TransceiverSpecs(BaseModel):
 
     #Module identification — vendor and part number
     vendor: Optional[str] = Field(None, description="Transceiver manufacturer or brand.")
-    model: Optional[str] = Field(None, description="Product model or orderable part number.")
+    model: Optional[list[str]] = Field(None, description="Product model or orderable part number.")
     form_factor: list[str] | None = Field(default=None, description="Form factor of the transceiver: QSFP28, QSFP-DD, QSFP+, OSFP, CFP2-DCO")
     standards_claimed: list[str] | None  = Field(
         default=None, description="MSA Standards claimed in the datasheet."
@@ -43,8 +43,8 @@ class TransceiverSpecs(BaseModel):
     channel_spacing_ghz: Optional[List[float]] = Field(
         default_factory=list, description="Supported or minimum channel spacing in GHz."
     )
-    channel_total: int | None = Field(
-        default=1, description="Total number of channels supported."
+    channel_total: List[int] | int | None = Field(
+        default=None, description="Total number of channels supported."
     )
 
 
@@ -118,7 +118,7 @@ class TransceiverSpecs(BaseModel):
     roll_off_percent: Optional[List[float]] = Field(
         None, description="Spectral roll-off factor in percent."
     )
-    modulation_formats: Optional[List[str]] = Field(
+    modulation_format: Optional[List[str]] = Field(
         default_factory=list, description="Supported modulation formats: NRZ, PAM, QPSK, 8QAM, 16QAM, 64QAM, etc."
     )
     reach_km: Optional[List[float]] = Field(
@@ -168,7 +168,7 @@ class TransceiverSpecs(BaseModel):
 
 
     # FEC configuration fields
-    fec_types: Optional[List[str]] = Field(
+    fec_type: Optional[List[str]] = Field(
         default_factory=list, description="Supported FEC types as stated: KP4, oFEC, RS-FEC, KP4, KP1, KP2, KP3, KP4, KP5, KP6, KP7, KP8, RS(528)"
     )
     fec_overhead_percent: Optional[List[float]] = Field(
@@ -198,7 +198,7 @@ class TransceiverSpecs(BaseModel):
 
 
     notes: Optional[str] = Field(
-        None, description="Conditions, qualifiers, ambiguities, or source wording about any parameter that can not be explained in the set schema."
+        None, description="Conditions, qualifiers, ambiguities, values trade-off dependencies, or source wording about any parameter that can not be explained in the set schema."
     )
     provenance_datasheet_sections: str | list[str] | None = Field(
         None, description="Comma-separated list of section headings (from the Section Headings list above) that contained the extracted parameters."
@@ -217,17 +217,19 @@ FIELD_BUNDLES = {
     "interfaces": ["host_interface_name", "host_interface_id_hex", "media_interface_name", "media_interface_id_hex"],
     "wavelength": ["wavelength_min_nm", "wavelength_max_nm", "wavelength_center_nm", "wavelength_band", "channel_spacing_ghz"],
     "physical": ["connector_type", "fiber_type", "temp_min_c", "temp_max_c"],
-    "electrical": ["baud_rate_gbaud", "bit_rate_gbps", "modulation_formats"],
-    "fec": ["fec_types", "fec_overhead_percent", "pre_fec_ber_threshold", "post_fec_ber_target"],
+    "electrical": ["baud_rate_gbaud", "bit_rate_gbps", "modulation_format"],
+    "fec": ["fec_type", "fec_overhead_percent", "pre_fec_ber_threshold", "post_fec_ber_target"],
 }
 
 # Fields that participate in per-mode configuration (can have multiple correlated values)
 MODE_FIELDS: list[str] = [
     "channel_spacing_ghz",
+    "channel_total",
+    "model",
     "baud_rate_gbaud",
     "bit_rate_gbps",
     "roll_off_percent",
-    "modulation_formats",
+    "modulation_format",
     "reach_km",
     "tx_power_min_dbm",
     "tx_power_max_dbm",
@@ -240,7 +242,7 @@ MODE_FIELDS: list[str] = [
     "cd_tolerance_ps_nm",
     "pdl_db",
     "pmd_tolerance_ps",
-    "fec_types",
+    "fec_type",
     "fec_overhead_percent",
     "pre_fec_ber_threshold",
     "post_fec_ber_target",
@@ -256,4 +258,28 @@ MODE_FIELDS: list[str] = [
     "power_consumption_w",
     "standards_code",
     "frame",
+]
+
+
+
+# Fields that participate in per-mode configuration (can have multiple correlated values)
+STANDARDS_IDENTITY_FIELDS: list[str] = [
+    "host_interface_name",
+    "host_interface_id_hex",
+    "host_interface_id",
+    "media_interface_name",
+    "media_interface_id_hex",
+    "media_interface_id",
+    "standards_code",
+    "frame",
+]
+
+
+# Fields that participate in per-mode configuration (can have multiple correlated values)
+STANDARDS_IMPLIED_FIELDS: list[str] = [
+    "channel_spacing_ghz",
+    "baud_rate_gbaud",
+    "bit_rate_gbps",
+    "modulation_format",
+    "reach_km"
 ]

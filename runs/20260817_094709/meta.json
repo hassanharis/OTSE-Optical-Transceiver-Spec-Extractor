@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-08-17T09:47:09.437379+00:00",
+  "source_file": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmpgnly_uof.pdf",
+  "page_count": 3,
+  "table_count": 8,
+  "model_id": "Qwen3.8-27B-Q4_K_M",
+  "validation_passed": true,
+  "timings_seconds": {
+    "parse_pdf": 9.379,
+    "extract_atoms": 446.057,
+    "store_run": 0.007,
+    "total": 455.443
+  }
+}

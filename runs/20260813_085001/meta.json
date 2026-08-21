@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-08-13T08:50:01.318012+00:00",
+  "source_file": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmpr8lc7ymn.pdf",
+  "page_count": 4,
+  "table_count": 7,
+  "model_id": "Qwen3.6-27B-Q4_K_M",
+  "validation_passed": true,
+  "timings_seconds": {
+    "parse_pdf": 10.338,
+    "extract_atoms": 950.699,
+    "store_run": 0.014,
+    "total": 1227.559,
+    "synthesize_modes": 266.505,
+    "store_modes": 0.003
+  }
+}

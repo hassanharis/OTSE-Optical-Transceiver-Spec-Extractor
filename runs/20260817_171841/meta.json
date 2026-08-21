@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-08-17T17:18:41.786748+00:00",
+  "source_file": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmpx4wymwc6.pdf",
+  "page_count": 4,
+  "table_count": 5,
+  "model_id": "Qwen3.6-27B-Q4_K_M",
+  "validation_passed": true,
+  "timings_seconds": {
+    "parse_pdf": 10.577,
+    "extract_atoms": 245.662,
+    "store_run": 0.003,
+    "total": 679.475,
+    "synthesize_modes": 423.233
+  }
+}
