@@ -4,7 +4,7 @@
   "page_count": 18,
   "table_count": 20,
   "model_id": "Qwen3.6-27B-Q4_K_M",
-  "validation_passed": false,
+  "validation_passed": true,
   "timings_seconds": {
     "parse_pdf": 25.496,
     "extract_atoms": 310.115,

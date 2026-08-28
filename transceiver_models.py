@@ -182,15 +182,17 @@ class TransceiverSpecs(BaseModel):
     )
 
     # ── Direct-detect only ────────────────────────────────────────────────────
-    extinction_ratio_db: float | None = Field(
+    # These three are listed in MODE_FIELDS, so a datasheet may state one value
+    # per mode; a scalar type would reject the whole record in that case.
+    extinction_ratio_db: Optional[List[float]] = Field(
         default=None,
         description="Extinction ratio in dB.",
     )
-    los_assert_dbm: float | None = Field(
+    los_assert_dbm: Optional[List[float]] = Field(
         default=None,
         description="LOS (loss of signal) assert threshold in dBm.",
     )
-    los_deassert_dbm: float | None = Field(
+    los_deassert_dbm: Optional[List[float]] = Field(
         default=None,
         description="LOS deassert threshold in dBm.",
     )
