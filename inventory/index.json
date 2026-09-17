@@ -1,0 +1,217 @@
+{
+  "generated_at": "2026-08-28T11:22:04.780903+00:00",
+  "n_runs": 14,
+  "n_modules": 23,
+  "run_warnings": [],
+  "modules": [
+    {
+      "vendor": "Avago Technologies",
+      "model": "AFBR-79Q4Z",
+      "file": "Avago_Technologies__AFBR-79Q4Z.json",
+      "source_run": "20260821_133838",
+      "n_modes": 1,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Avago Technologies",
+      "model": "AFBR-79Q5Z",
+      "file": "Avago_Technologies__AFBR-79Q5Z.json",
+      "source_run": "20260821_133838",
+      "n_modes": 1,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Avago Technologies",
+      "model": "AFBR-79QEKZ",
+      "file": "Avago_Technologies__AFBR-79QEKZ.json",
+      "source_run": "20260821_133838",
+      "n_modes": 0,
+      "split": "by_mode_model",
+      "warnings": [
+        "no modes assigned to this model"
+      ]
+    },
+    {
+      "vendor": "Cisco",
+      "model": "DP08QSDD-LRB-A1",
+      "file": "Cisco__DP08QSDD-LRB-A1.json",
+      "source_run": "20260821_090655",
+      "n_modes": 2,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Cisco",
+      "model": "DP08QSDD-ZRA-A1",
+      "file": "Cisco__DP08QSDD-ZRA-A1.json",
+      "source_run": "20260821_090655",
+      "n_modes": 2,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Cisco",
+      "model": "DP08QSDD-ZRB-A1",
+      "file": "Cisco__DP08QSDD-ZRB-A1.json",
+      "source_run": "20260821_090655",
+      "n_modes": 2,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Cisco",
+      "model": "DP08SFP8-LRB-A1",
+      "file": "Cisco__DP08SFP8-LRB-A1.json",
+      "source_run": "20260821_090655",
+      "n_modes": 2,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Cisco",
+      "model": "DP08SFP8-ZRA-A1",
+      "file": "Cisco__DP08SFP8-ZRA-A1.json",
+      "source_run": "20260821_090655",
+      "n_modes": 2,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Cisco",
+      "model": "DP08SFP8-ZRB-A1",
+      "file": "Cisco__DP08SFP8-ZRB-A1.json",
+      "source_run": "20260821_090655",
+      "n_modes": 2,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Cisco",
+      "model": "QDD-2X400G-FR4",
+      "file": "Cisco__QDD-2X400G-FR4.json",
+      "source_run": "20260821_081405",
+      "n_modes": 1,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Cisco",
+      "model": "QDD-400G-ZR-S",
+      "file": "Cisco__QDD-400G-ZR-S.json",
+      "source_run": "20260821_093751",
+      "n_modes": 1,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Cisco",
+      "model": "QDD-400G-ZRP-S",
+      "file": "Cisco__QDD-400G-ZRP-S.json",
+      "source_run": "20260821_093751",
+      "n_modes": 6,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Cisco",
+      "model": "QDD-8X100G-FR",
+      "file": "Cisco__QDD-8X100G-FR.json",
+      "source_run": "20260821_081405",
+      "n_modes": 1,
+      "split": "by_mode_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Fiberworks AS",
+      "model": "QDD-400G-DCO-0ZRP",
+      "file": "Fiberworks_AS__QDD-400G-DCO-0ZRP.json",
+      "source_run": "20260821_110734",
+      "n_modes": 8,
+      "split": "single_model",
+      "warnings": []
+    },
+    {
+      "vendor": "naddod",
+      "model": "400G QSFP-DD ZR+",
+      "file": "naddod__400G_QSFP-DD_ZR+.json",
+      "source_run": "20260821_095641",
+      "n_modes": 6,
+      "split": "single_model",
+      "warnings": []
+    },
+    {
+      "vendor": "ProLabs",
+      "model": "QDD400GBDCOZRP4DBM-J-ST01-C",
+      "file": "ProLabs__QDD400GBDCOZRP4DBM-J-ST01-C.json",
+      "source_run": "20260821_104901",
+      "n_modes": 9,
+      "split": "single_model",
+      "warnings": []
+    },
+    {
+      "vendor": "ProLabs",
+      "model": "QSFP-100G-LR4-ARISTA-C",
+      "file": "ProLabs__QSFP-100G-LR4-ARISTA-C.json",
+      "source_run": "20260810_171058",
+      "n_modes": 1,
+      "split": "single_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Smartoptics",
+      "model": "SO-TQSFP-DD-4CC-ZR",
+      "file": "Smartoptics__SO-TQSFP-DD-4CC-ZR.json",
+      "source_run": "20260810_153827",
+      "n_modes": 2,
+      "split": "single_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Smartoptics",
+      "model": "SO-TQSFPDD4CCZRP",
+      "file": "Smartoptics__SO-TQSFPDD4CCZRP.json",
+      "source_run": "20260807_123953",
+      "n_modes": 14,
+      "split": "single_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Smartoptics",
+      "model": "TD8005-TUNC-SO",
+      "file": "Smartoptics__TD8005-TUNC-SO.json",
+      "source_run": "20260810_163700",
+      "n_modes": 5,
+      "split": "single_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Smartoptics",
+      "model": "TQD013-TUNC-SO",
+      "file": "Smartoptics__TQD013-TUNC-SO.json",
+      "source_run": "20260810_165202",
+      "n_modes": 15,
+      "split": "single_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Smartoptics",
+      "model": "TQD017-TUNC-SO",
+      "file": "Smartoptics__TQD017-TUNC-SO.json",
+      "source_run": "20260807_141342",
+      "n_modes": 13,
+      "split": "single_model",
+      "warnings": []
+    },
+    {
+      "vendor": "Smartoptics",
+      "model": "TQD029-TUNC-SO",
+      "file": "Smartoptics__TQD029-TUNC-SO.json",
+      "source_run": "20260810_183943",
+      "n_modes": 12,
+      "split": "single_model",
+      "warnings": []
+    }
+  ]
+}

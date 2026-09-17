@@ -14,6 +14,7 @@ import streamlit as st
 from openai import OpenAI
 from pydantic import ValidationError
 
+from export_all_modes import collect_mode_rows, write_csv
 from pipeline.pdf_parser import parse_pdf
 from pipeline.atom_extractor import extract_atoms, BASE_URL
 import re
@@ -31,6 +32,9 @@ from transceiver_models import TransceiverSpecs
 
 MODEL_DIR = r"C:\Haris\models"
 REPORTS_DIR = Path("reports")
+RUNS_DIR = Path("runs")
+ALL_MODES_CSV = Path("all_modes.csv")
+ALL_MODES_JSON = Path("all_modes.json")
 
 st.set_page_config(page_title="Transceiver Spec Extractor", layout="wide")
 st.title("Transceiver Datasheet Extractor")
@@ -70,24 +74,22 @@ def _disk_sizes() -> dict[str, float]:
 with st.sidebar:
     st.header("LLM Server")
 
+    model_id = None
     if not _server_up():
         st.error(
             "llama-server router is not reachable on port 8080.\n\n"
             "Start it with:\n```\nllama-server --models-dir C:\\Haris\\models --models-max 1\n```"
         )
-        st.stop()
-
-    st.success("Server online")
-
-    models = _list_models()
-    if not models:
-        st.error(f"No models found. Place GGUF files in {MODEL_DIR}")
-        st.stop()
-
-    sizes = _disk_sizes()
-    labels = [f"{m}  ({sizes[m]:.1f} GB)" if m in sizes else m for m in models]
-    choice = st.selectbox("Model", labels)
-    model_id = models[labels.index(choice)]
+    else:
+        st.success("Server online")
+        models = _list_models()
+        if not models:
+            st.error(f"No models found. Place GGUF files in {MODEL_DIR}")
+        else:
+            sizes = _disk_sizes()
+            labels = [f"{m}  ({sizes[m]:.1f} GB)" if m in sizes else m for m in models]
+            choice = st.selectbox("Model", labels)
+            model_id = models[labels.index(choice)]
 
     st.divider()
     st.header("Settings")
@@ -99,7 +101,7 @@ with st.sidebar:
 # Main area
 # --------------------------------------------------------------------------- #
 
-tab_extract, tab_history = st.tabs(["Extract", "History"])
+tab_extract, tab_history, tab_all_modes = st.tabs(["Extract", "History", "All Modes"])
 
 with tab_extract:
     uploaded = st.file_uploader("Upload a PDF datasheet", type=["pdf"])
@@ -173,7 +175,7 @@ with tab_extract:
                     )
 
         # --- Step 3: Extract ---
-        if st.button("Extract Parameters", type="primary"):
+        if st.button("Extract Parameters", type="primary", disabled=model_id is None):
             # Patch the parsed object with edited markdown
             parsed.markdown = st.session_state["edited_md"]
 
@@ -303,7 +305,7 @@ with tab_extract:
         # --- Step 4: Mode Synthesis ---
         st.divider()
         st.subheader("Step 2 — Mode Synthesis")
-        if st.button("Synthesize Modes", type="primary"):
+        if st.button("Synthesize Modes", type="primary", disabled=model_id is None):
             source = display_data
             multi, general = separate_atoms(source)
             st.session_state.pop("modes_result", None)
@@ -399,3 +401,73 @@ with tab_history:
                 modes_html = generate_modes_html(sel_run_dir)
                 modes_path.write_text(modes_html, encoding="utf-8")
                 st.success(f"Reports saved: `{pipeline_path}` and `{modes_path}`")
+
+with tab_all_modes:
+    st.subheader("All Operating Modes")
+    st.caption(
+        "One row per mode, with its run ID and the module parameters repeated "
+        "for every mode in that run."
+    )
+
+    if "all_modes_rows" not in st.session_state:
+        rows, warnings = collect_mode_rows(RUNS_DIR)
+        st.session_state["all_modes_rows"] = rows
+        st.session_state["all_modes_warnings"] = warnings
+
+    if st.button("Refresh modes", type="primary", key="refresh_all_modes"):
+        rows, warnings = collect_mode_rows(RUNS_DIR)
+        st.session_state["all_modes_rows"] = rows
+        st.session_state["all_modes_warnings"] = warnings
+        if rows:
+            write_csv(rows, ALL_MODES_CSV)
+            ALL_MODES_JSON.write_text(
+                json.dumps(rows, indent=2, ensure_ascii=False), encoding="utf-8"
+            )
+            st.success(f"Refreshed {len(rows)} modes from {len(set(row['run_id'] for row in rows))} runs.")
+        else:
+            st.warning("No synthesized modes were found in the runs folder.")
+
+    all_modes_rows = st.session_state["all_modes_rows"]
+    all_modes_warnings = st.session_state["all_modes_warnings"]
+
+    if all_modes_rows:
+        metric_modes, metric_runs, metric_fields = st.columns(3)
+        metric_modes.metric("Modes", len(all_modes_rows))
+        metric_runs.metric("Runs", len({row["run_id"] for row in all_modes_rows}))
+        metric_fields.metric("Fields", len({key for row in all_modes_rows for key in row}))
+
+        display_rows = [
+            {
+                key: json.dumps(value, ensure_ascii=False)
+                if isinstance(value, (list, dict))
+                else value
+                for key, value in row.items()
+            }
+            for row in all_modes_rows
+        ]
+        st.dataframe(display_rows, use_container_width=True, hide_index=True)
+
+        csv_ready = ALL_MODES_CSV.exists()
+        json_ready = ALL_MODES_JSON.exists()
+        download_csv, download_json = st.columns(2)
+        with download_csv:
+            st.download_button(
+                "Download CSV",
+                data=ALL_MODES_CSV.read_bytes() if csv_ready else b"",
+                file_name=ALL_MODES_CSV.name,
+                mime="text/csv",
+                disabled=not csv_ready,
+                use_container_width=True,
+            )
+        with download_json:
+            st.download_button(
+                "Download JSON",
+                data=ALL_MODES_JSON.read_bytes() if json_ready else b"",
+                file_name=ALL_MODES_JSON.name,
+                mime="application/json",
+                disabled=not json_ready,
+                use_container_width=True,
+            )
+
+    for warning in all_modes_warnings:
+        st.warning(warning)

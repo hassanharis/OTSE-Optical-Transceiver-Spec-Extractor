@@ -1,0 +1,187 @@
+{
+  "vendor": "Smartoptics",
+  "model": "TD8005-TUNC-SO",
+  "source_run": "20260810_163700",
+  "source_file": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmp9y2xq_f4.pdf",
+  "split": "single_model",
+  "warnings": [],
+  "general": {
+    "vendor": "Smartoptics",
+    "model": "TD8005-TUNC-SO",
+    "form_factor": "QSFP-DD",
+    "standards_claimed": [
+      "OIF 800ZR MSA",
+      "OpenROADM MSA",
+      "CMIS5.3",
+      "OSFP800 MSA"
+    ],
+    "wavelength_band": "DWDM",
+    "frequency_min_thz": 191.25,
+    "frequency_max_thz": 196.1,
+    "connector_type": [
+      "LC"
+    ],
+    "fiber_type": [
+      "SM"
+    ],
+    "temp_min_c": 15.0,
+    "temp_max_c": 75.0,
+    "tx_power_min_dbm": [
+      -2.0
+    ],
+    "tx_in_band_osnr_db": [
+      37.0
+    ],
+    "rx_overload_dbm": [
+      1.0
+    ],
+    "notes": "Operating temperature +15\u00b0C to +75\u00b0C. Module turns up from cold start at -5\u00b0C and reaches specs after self-heating. Tx power provisionable up to max available with 10dB range. Absolute max Rx signal input power: +1dBm. Rx total input power: +15dBm.",
+    "provenance_datasheet_sections": [
+      "OVERVIEW",
+      "TECHNICAL DATA",
+      "GENERIC",
+      "OPTICAL SPECIFICATION \u2013 NTWK/MEDIA CODES",
+      "ELECTICAL CHARACTERISTICS",
+      "ORDERING INFORMATION"
+    ]
+  },
+  "modes": [
+    {
+      "label": "800ZR (0x6E)",
+      "channel_spacing_ghz": 150.0,
+      "power_consumption_w": 28.0,
+      "host_interface_name": [
+        "800GAUI-8",
+        "400GAUI-4",
+        "200GAUI-2",
+        "100GAUI-1"
+      ],
+      "media_interface_name": [
+        "800ZR Power class A"
+      ],
+      "media_interface_id_hex": "0x6E",
+      "frame": "800ZR",
+      "standards_code": [
+        "800ZR"
+      ],
+      "baud_rate_gbaud": 118.2,
+      "bit_rate_gbps": 800.0,
+      "modulation_formats": "DP-16QAM",
+      "rx_sensitivity_dbm": -18.5,
+      "rx_osnr_db": 26.4,
+      "rx_osnr_tolerance_db_max": 27.4,
+      "cd_tolerance_ps_nm": 3000.0
+    },
+    {
+      "label": "FlexO-6e-DPO-16QAM (0x6A)",
+      "channel_spacing_ghz": 150.0,
+      "power_consumption_w": 28.0,
+      "host_interface_name": [
+        "200GAUI-2",
+        "100GAUI-1"
+      ],
+      "media_interface_name": [
+        "FLEXO-6e-DPO-16QAM",
+        "FOIC6e-DPO"
+      ],
+      "media_interface_id_hex": "0x6A",
+      "frame": "FlexO-6(e)",
+      "standards_code": [
+        "OpenROADM",
+        "FLEXO-6e-DPO-16QAM",
+        "FOIC6e-DPO"
+      ],
+      "baud_rate_gbaud": 118.7,
+      "bit_rate_gbps": 600.0,
+      "modulation_formats": "PCS-118",
+      "rx_sensitivity_dbm": -23.5,
+      "rx_osnr_db": 22.8,
+      "rx_osnr_tolerance_db_max": 23.8,
+      "cd_tolerance_ps_nm": 29000.0
+    },
+    {
+      "label": "600G-PCS-118 (0xF2)",
+      "channel_spacing_ghz": 150.0,
+      "power_consumption_w": 28.0,
+      "host_interface_name": [
+        "200GAUI-2",
+        "100GAUI-1"
+      ],
+      "media_interface_name": [
+        "600G-PCS-118"
+      ],
+      "media_interface_id_hex": "0xF2",
+      "frame": "FlexO-6(e)",
+      "standards_code": [
+        "600G-PCS-118"
+      ],
+      "baud_rate_gbaud": 118.5,
+      "bit_rate_gbps": 600.0,
+      "modulation_formats": "PCS-118",
+      "rx_sensitivity_dbm": -23.5,
+      "rx_osnr_db": 21.6,
+      "rx_osnr_tolerance_db_max": 22.6,
+      "cd_tolerance_ps_nm": 29000.0
+    },
+    {
+      "label": "FlexO-4e-DO-QPSK (0x64)",
+      "channel_spacing_ghz": 150.0,
+      "power_consumption_w": 25.0,
+      "host_interface_name": [
+        "400GAUI-8",
+        "400GAUI-4",
+        "200GAUI-4",
+        "200GAUI-2",
+        "100GAUI-2",
+        "100GAUI-1"
+      ],
+      "media_interface_name": [
+        "FLEXO-4e-DO-QPSK",
+        "FOIC4e.4-DO"
+      ],
+      "media_interface_id_hex": "0x64",
+      "frame": "FlexO-4(e)",
+      "standards_code": [
+        "OpenROADM",
+        "FLEXO-4e-DO-QPSK",
+        "FOIC4e.4-DO"
+      ],
+      "baud_rate_gbaud": 118.2,
+      "bit_rate_gbps": 400.0,
+      "modulation_formats": "DP-QPSK",
+      "rx_sensitivity_dbm": -27.0,
+      "rx_osnr_db": 17.9,
+      "rx_osnr_tolerance_db_max": 18.9,
+      "cd_tolerance_ps_nm": 58000.0
+    },
+    {
+      "label": "ZR400-OFEC-16QAM-HB (0x36)",
+      "channel_spacing_ghz": 75.0,
+      "power_consumption_w": 22.5,
+      "host_interface_name": [
+        "400GAUI-8",
+        "400GAUI-4",
+        "200GAUI-4",
+        "200GAUI-2",
+        "100GAUI-2",
+        "100GAUI-1"
+      ],
+      "media_interface_name": [
+        "ZR400-OFEC-16QAM-HB"
+      ],
+      "media_interface_id_hex": "0x36",
+      "frame": "OpenZR400",
+      "standards_code": [
+        "OpenZR+",
+        "ZR400-OFEC-16QAM-HB"
+      ],
+      "baud_rate_gbaud": 60.1,
+      "bit_rate_gbps": 400.0,
+      "modulation_formats": "DP-16QAM",
+      "rx_sensitivity_dbm": -22.5,
+      "rx_osnr_db": 23.1,
+      "rx_osnr_tolerance_db_max": 24.1,
+      "cd_tolerance_ps_nm": 23000.0
+    }
+  ]
+}

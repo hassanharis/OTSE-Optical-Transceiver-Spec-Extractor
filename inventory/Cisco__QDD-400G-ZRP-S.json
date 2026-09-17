@@ -1,0 +1,136 @@
+{
+  "vendor": "Cisco",
+  "model": "QDD-400G-ZRP-S",
+  "source_run": "20260821_093751",
+  "source_file": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmpuo496pty.pdf",
+  "split": "by_mode_model",
+  "warnings": [],
+  "general": {
+    "vendor": "Cisco",
+    "model": "QDD-400G-ZRP-S",
+    "form_factor": "QSFP-DD",
+    "standards_claimed": [
+      "OIF MSA",
+      "400ZR",
+      "OpenZR+",
+      "OpenROADM"
+    ],
+    "wavelength_band": "C-band",
+    "temp_min_c": 15.0,
+    "temp_max_c": 75.0,
+    "reach_km": [
+      120.0
+    ],
+    "rx_overload_dbm": [
+      13.0
+    ],
+    "notes": "Operating Case Temperature range: 15 to +75\u00b0C. Short term operating case temperature range +80\u00b0C. Note: a short term condition is present for a period of not more than 96 consecutive hours and a total of not more than 15 days in 1 year. This refers to a total of 360 hours in any given year, but no more than 15 occurrences during that 1-year period. Note: the module turn up from cold start at ambient temperature as low as -5\u00b0C and it will warm up with a case temperature higher than the ambient temperature, but it will meet optical performance specs only with case temperature within the range defined above.",
+    "provenance_datasheet_sections": [
+      "Product overview, QDD ZR overview, QDD ZR Plus overview, Features and benefits, Specification, Transmitter specifications, Rx parameter specifications, Rx Optical Polarization specifications, Rx Multichannel Interaction specifications, Physical, Ordering information"
+    ]
+  },
+  "modes": [
+    {
+      "label": "QDD-400G-ZRP-S 400G 16-QAM",
+      "channel_spacing_ghz": 75.0,
+      "host_interface_name": "400GE",
+      "media_interface_name": "400G-ZR+",
+      "standards_code": "OpenZR+",
+      "baud_rate_gbaud": 60138546798.0,
+      "bit_rate_gbps": 400.0,
+      "modulation_format": "16-QAM",
+      "tx_in_band_osnr_db": 42.0,
+      "tx_out_of_band_osnr_db": 42.0,
+      "rx_sensitivity_dbm": -12.0,
+      "rx_osnr_db": 23.7,
+      "cd_tolerance_ps_nm": 13000.0,
+      "pmd_tolerance_ps": 60.0,
+      "fec_type": "OFEC"
+    },
+    {
+      "label": "QDD-400G-ZRP-S 300G 8-QAM",
+      "channel_spacing_ghz": 75.0,
+      "host_interface_name": "400GE",
+      "media_interface_name": "400G-ZR+",
+      "standards_code": "OpenZR+",
+      "baud_rate_gbaud": 60138546798.0,
+      "bit_rate_gbps": 300.0,
+      "modulation_format": "8-QAM",
+      "tx_in_band_osnr_db": 42.0,
+      "tx_out_of_band_osnr_db": 42.0,
+      "rx_sensitivity_dbm": -15.0,
+      "rx_osnr_db": 20.8,
+      "cd_tolerance_ps_nm": 26000.0,
+      "pmd_tolerance_ps": 60.0,
+      "fec_type": "OFEC"
+    },
+    {
+      "label": "QDD-400G-ZRP-S 200G QPSK",
+      "channel_spacing_ghz": 75.0,
+      "host_interface_name": "400GE",
+      "media_interface_name": "400G-ZR+",
+      "standards_code": "OpenZR+",
+      "baud_rate_gbaud": 60138546798.0,
+      "bit_rate_gbps": 200.0,
+      "modulation_format": "QPSK",
+      "tx_in_band_osnr_db": 42.0,
+      "tx_out_of_band_osnr_db": 42.0,
+      "rx_sensitivity_dbm": -22.0,
+      "rx_osnr_db": 15.3,
+      "cd_tolerance_ps_nm": 50000.0,
+      "pmd_tolerance_ps": 60.0,
+      "fec_type": "OFEC"
+    },
+    {
+      "label": "QDD-400G-ZRP-S 200G 8-QAM",
+      "channel_spacing_ghz": 50.0,
+      "host_interface_name": "400GE",
+      "media_interface_name": "400G-ZR+",
+      "standards_code": "OpenZR+",
+      "baud_rate_gbaud": 40092364532.0,
+      "bit_rate_gbps": 200.0,
+      "modulation_format": "8-QAM",
+      "tx_in_band_osnr_db": 42.0,
+      "tx_out_of_band_osnr_db": 42.0,
+      "rx_sensitivity_dbm": -16.0,
+      "rx_osnr_db": 17.4,
+      "cd_tolerance_ps_nm": 26000.0,
+      "pmd_tolerance_ps": 60.0,
+      "fec_type": "OFEC"
+    },
+    {
+      "label": "QDD-400G-ZRP-S 200G 16-QAM",
+      "channel_spacing_ghz": 50.0,
+      "host_interface_name": "400GE",
+      "media_interface_name": "400G-ZR+",
+      "standards_code": "OpenZR+",
+      "baud_rate_gbaud": 30069273399.0,
+      "bit_rate_gbps": 200.0,
+      "modulation_format": "16-QAM",
+      "tx_in_band_osnr_db": 42.0,
+      "tx_out_of_band_osnr_db": 42.0,
+      "rx_sensitivity_dbm": -15.0,
+      "rx_osnr_db": 19.3,
+      "cd_tolerance_ps_nm": 21000.0,
+      "pmd_tolerance_ps": 60.0,
+      "fec_type": "OFEC"
+    },
+    {
+      "label": "QDD-400G-ZRP-S 100G QPSK",
+      "channel_spacing_ghz": 37.5,
+      "host_interface_name": "400GE",
+      "media_interface_name": "400G-ZR+",
+      "standards_code": "OpenZR+",
+      "baud_rate_gbaud": 30069273399.0,
+      "bit_rate_gbps": 100.0,
+      "modulation_format": "QPSK",
+      "tx_in_band_osnr_db": 42.0,
+      "tx_out_of_band_osnr_db": 42.0,
+      "rx_sensitivity_dbm": -20.0,
+      "rx_osnr_db": 11.8,
+      "cd_tolerance_ps_nm": 80000.0,
+      "pmd_tolerance_ps": 80.0,
+      "fec_type": "OFEC"
+    }
+  ]
+}

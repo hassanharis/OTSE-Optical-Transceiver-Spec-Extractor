@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-09-15T12:40:27.665188+00:00",
+  "source_file": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmpndz24ipr.pdf",
+  "page_count": 4,
+  "table_count": 7,
+  "model_id": "Qwen3.6-27B-Q4_K_M",
+  "validation_passed": true,
+  "timings_seconds": {
+    "parse_pdf": 2.919,
+    "extract_atoms": 282.146,
+    "store_run": 0.003,
+    "total": 527.164,
+    "synthesize_modes": 242.094,
+    "store_modes": 0.002
+  },
+  "content_stats": {
+    "content_chars": 10545,
+    "content_headings": 8,
+    "provenance_chars": 7537,
+    "provenance_headings": 6
+  }
+}
