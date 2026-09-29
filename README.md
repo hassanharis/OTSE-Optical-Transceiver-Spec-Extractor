@@ -67,6 +67,24 @@ Start the model server:
 llama-server --models-dir C:\Haris\models --models-max 1
 ```
 
+### Citation
+
+This work is described in:
+
+> H. Hassan, J. Pedro, and L. G. Cancela, “Automated Extraction of Parameters from Optical Transceiver Datasheets using Multi-Stage LLM Pipeline,” *2026 International Conference on Telecommunications (ICT)*, 2026.
+
+[Paper (PDF)](https://www.amca.cz/Amca/media/icton/We-A7-3-HassanHi1.pdf)
+
+If you use this repository in your research, please cite:
+
+```bibtex
+@inproceedings{hassan2026automated,
+  author    = {Haris Hassan and Jo{\~a}o Pedro and Lu{\'i}s Gon{\c{c}}alo Cancela},
+  title     = {Automated Extraction of Parameters from Optical Transceiver Datasheets using Multi-Stage LLM Pipeline},
+  booktitle = {2026 International Conference on Telecommunications (ICT)},
+  year      = {2026}
+}
+
 ## Usage
 
 ```bash
