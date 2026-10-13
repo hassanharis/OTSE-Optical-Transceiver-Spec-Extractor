@@ -1,0 +1,107 @@
+{
+  "vendor": "XGIGA Communication Technology Co.,ltd",
+  "model": [
+    "OP13TI8-005D"
+  ],
+  "form_factor": [
+    "OSFP"
+  ],
+  "standards_claimed": [
+    "OSFP MSA rev5.0",
+    "OIF-CMIS rev5.2",
+    "IEEE 802.3dj-2024",
+    "IEEE802.3dj"
+  ],
+  "emitter_type": [
+    "DFB"
+  ],
+  "photodetector_type": [
+    "PIN"
+  ],
+  "wavelength_min_nm": [
+    1304.5
+  ],
+  "wavelength_max_nm": [
+    1317.5
+  ],
+  "wavelength_center_nm": [
+    1310.0
+  ],
+  "connector_type": [
+    "MPO-12"
+  ],
+  "fiber_type": [
+    "Single mode fiber",
+    "SMF",
+    "9/125um SMF"
+  ],
+  "temp_min_c": 0.0,
+  "temp_max_c": 70.0,
+  "power_consumption_w": [
+    20.0,
+    18.0
+  ],
+  "standards_code": [
+    "IEEE 802.3dj",
+    "OSFP MSA",
+    "OIF-CMIS"
+  ],
+  "baud_rate_gbaud": [
+    106.25
+  ],
+  "bit_rate_gbps": [
+    212.5
+  ],
+  "modulation_format": [
+    "PAM4"
+  ],
+  "reach_km": [
+    0.5
+  ],
+  "tx_power_min_dbm": [
+    -2.8
+  ],
+  "tx_power_max_dbm": [
+    4.0
+  ],
+  "rx_sensitivity_dbm": [
+    -3.4
+  ],
+  "rx_overload_dbm": [
+    4.0
+  ],
+  "pre_fec_ber_threshold": [
+    0.00024
+  ],
+  "extinction_ratio_db": [
+    3.5
+  ],
+  "channel_insertion_loss_db": [
+    3.0
+  ],
+  "receiver_reflectance_db": [
+    -26.0
+  ],
+  "transmitter_reflectance_db": [
+    -26.0
+  ],
+  "optical_extinction_ratio_db": [
+    3.5
+  ],
+  "optical_return_loss_tolerance_db": [
+    21.4
+  ],
+  "side_mode_suppression_ratio_db": [
+    30.0
+  ],
+  "notes": "Forward error correction (FEC) is required to be implemented by the host in order to ensure reliable system operation.",
+  "provenance_datasheet_sections": [
+    "PRODUCT FEATURES",
+    "REFERENCE STANDARD",
+    "APPLICATIONS",
+    "PRODUCT SPECIFICATION",
+    "Optical Characteristics",
+    "Link Power Budget",
+    "Notes"
+  ]
+}

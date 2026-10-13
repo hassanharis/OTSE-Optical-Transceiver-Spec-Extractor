@@ -1,0 +1,1 @@
+python -c "from pipeline.atom_extractor import _build_schema_text; print(_build_schema_text())"

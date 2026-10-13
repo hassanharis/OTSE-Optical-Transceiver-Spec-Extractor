@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-10-13T15:09:08.771540+00:00",
+  "source_file": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmpt5cjkqdt.pdf",
+  "page_count": 3,
+  "table_count": 8,
+  "model_id": "qwen3.6-35b-a3b",
+  "validation_passed": false,
+  "timings_seconds": {
+    "parse_pdf": 8.771,
+    "extract_atoms": 90.171,
+    "store_run": 0.007,
+    "total": 217.553,
+    "synthesize_modes": 118.604
+  },
+  "content_stats": {
+    "content_chars": 10521,
+    "content_headings": 8,
+    "provenance_chars": 10452,
+    "provenance_headings": 7
+  }
+}

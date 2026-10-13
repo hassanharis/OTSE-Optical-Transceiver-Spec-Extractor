@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-08T10:52:07.955827+00:00",
+  "source_file": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmpkflgmq_u.pdf",
+  "page_count": 6,
+  "table_count": 4,
+  "model_id": "qwen3.6-35b-a3b",
+  "validation_passed": true,
+  "timings_seconds": {
+    "parse_pdf": 16.345,
+    "extract_atoms": 45.885,
+    "store_run": 0.009,
+    "total": 62.24
+  },
+  "content_stats": {
+    "content_chars": 36359,
+    "content_headings": 27,
+    "provenance_chars": 12387,
+    "provenance_headings": 8
+  }
+}

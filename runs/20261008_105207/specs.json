@@ -1,0 +1,45 @@
+{
+  "form_factor": [
+    "SFP",
+    "SFP+",
+    "QSFP28",
+    "QSFP-DD",
+    "CFP2",
+    "OSFP"
+  ],
+  "standards_claimed": [
+    "CMIS",
+    "OpenConfig",
+    "OpenZR+",
+    "400ZR",
+    "800ZR"
+  ],
+  "standards_code": [
+    "CMIS",
+    "OpenConfig",
+    "OpenZR+"
+  ],
+  "modulation_format": [
+    "QPSK",
+    "8QAM",
+    "16QAM"
+  ],
+  "fec_type": [
+    "KP4",
+    "oFEC",
+    "RS-FEC",
+    "soft-decision FEC"
+  ],
+  "notes": "Source is a research paper describing an extraction framework, not a specific transceiver datasheet. No single device specifications are provided; parameters are mentioned only as examples or evaluation metrics.",
+  "provenance_datasheet_sections": [
+    "I. INTRODUCTION",
+    "II. PROBLEM FORMULATION",
+    "III. BACKGROUND AND RELATED WORK",
+    "IV. SYSTEM DESIGN",
+    "V. MULTI-STAGE PIPELINE",
+    "VI. RESULTS DISCUSSION",
+    "VII. LIMITATION AND FUTURE CHALLENGES",
+    "VIII. CONCLUSION"
+  ],
+  "suggestions": "The provided text is a research paper on an extraction methodology rather than a specific optical transceiver datasheet. Consequently, specific device parameters are absent. Only general examples and evaluation metrics are present."
+}

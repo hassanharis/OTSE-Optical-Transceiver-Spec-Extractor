@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-10-13T14:09:05.174602+00:00",
+  "source_file": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmpn7dfh_mz.pdf",
+  "page_count": 3,
+  "table_count": 8,
+  "model_id": "qwen3.6-35b-a3b",
+  "validation_passed": false,
+  "timings_seconds": {
+    "parse_pdf": 8.983,
+    "extract_atoms": 200.766,
+    "store_run": 0.008,
+    "total": 316.435,
+    "synthesize_modes": 106.674,
+    "store_modes": 0.004
+  },
+  "content_stats": {
+    "content_chars": 10461,
+    "content_headings": 8,
+    "provenance_chars": 10383,
+    "provenance_headings": 7
+  }
+}

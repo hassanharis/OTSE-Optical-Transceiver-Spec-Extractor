@@ -1,0 +1,10 @@
+{
+  "channel_spacing_ghz": [],
+  "power_consumption_w": [],
+  "bit_rate_gbps": [],
+  "modulation_format": [],
+  "reach_km": [],
+  "fec_type": [],
+  "fec_overhead_percent": [],
+  "pre_fec_ber_threshold": []
+}

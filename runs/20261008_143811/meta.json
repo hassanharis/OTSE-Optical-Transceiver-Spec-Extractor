@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-08T14:38:11.738662+00:00",
+  "source_file": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmpenskpeb0.pdf",
+  "page_count": 9,
+  "table_count": 9,
+  "model_id": "qwen3.6-35b-a3b",
+  "validation_passed": true,
+  "timings_seconds": {
+    "parse_pdf": 15.592,
+    "extract_atoms": 59.08,
+    "store_run": 0.006,
+    "total": 74.678
+  },
+  "content_stats": {
+    "content_chars": 6823,
+    "content_headings": 18,
+    "provenance_chars": 3801,
+    "provenance_headings": 9
+  }
+}

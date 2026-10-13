@@ -1,0 +1,302 @@
+{
+  "modes": [
+    {
+      "label": "OIF 400ZR App Code 0x01",
+      "power_consumption_w": 23.1,
+      "host_interface_name": "400GAUI-8",
+      "frame": "1x 400GAUI-8",
+      "standards_code": "OIF 400ZR",
+      "bit_rate_gbps": 400,
+      "modulation_format": "DP-16QAM",
+      "reach_km": 80,
+      "tx_power_min_dbm": -10.0,
+      "tx_power_max_dbm": -6.0,
+      "rx_sensitivity_dbm": -20.0,
+      "rx_osnr_db": 26.0,
+      "cd_tolerance_ps_nm": 2400.0,
+      "fec_type": "CFEC",
+      "number_of_lanes": 1,
+      "penalties": [
+        {
+          "target_parameter": "rx_osnr_db",
+          "penalty_db": 0.5,
+          "penalized_value": 26.5,
+          "conditions": [
+            {
+              "parameter": "rx_power_dbm",
+              "value": -14.0
+            }
+          ]
+        },
+        {
+          "target_parameter": "rx_osnr_db",
+          "penalty_db": 1.0,
+          "penalized_value": 27.0,
+          "conditions": [
+            {
+              "parameter": "rx_power_dbm",
+              "value": -15.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "OIF 400ZR App Code 0x02",
+      "power_consumption_w": 23.1,
+      "host_interface_name": "400GAUI-8",
+      "frame": "1x 400GAUI-8",
+      "standards_code": "OIF 400ZR",
+      "bit_rate_gbps": 400,
+      "modulation_format": "DP-16QAM",
+      "reach_km": 25,
+      "tx_power_min_dbm": -10.0,
+      "tx_power_max_dbm": -6.0,
+      "rx_sensitivity_dbm": -20.0,
+      "rx_osnr_db": 26.0,
+      "cd_tolerance_ps_nm": 2400.0,
+      "fec_type": "CFEC",
+      "number_of_lanes": 1,
+      "penalties": []
+    },
+    {
+      "label": "OIF 400ZR Extension",
+      "power_consumption_w": 23.1,
+      "host_interface_name": "100GAUI-2",
+      "frame": "4x 100GAUI-2",
+      "standards_code": "OIF 400ZR",
+      "bit_rate_gbps": 400,
+      "modulation_format": "DP-16QAM",
+      "reach_km": 80,
+      "tx_power_min_dbm": -10.0,
+      "tx_power_max_dbm": -6.0,
+      "rx_sensitivity_dbm": -20.0,
+      "rx_osnr_db": 26.0,
+      "cd_tolerance_ps_nm": 2400.0,
+      "fec_type": "CFEC",
+      "number_of_lanes": 4,
+      "penalties": []
+    },
+    {
+      "label": "OpenZR+ Mode 4",
+      "power_consumption_w": 23.1,
+      "host_interface_name": "400GAUI-8",
+      "frame": "1x 400GAUI-8",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 400,
+      "modulation_format": "DP-16QAM",
+      "reach_km": 120,
+      "tx_power_min_dbm": -10.0,
+      "tx_power_max_dbm": -6.0,
+      "rx_sensitivity_dbm": -20.0,
+      "rx_osnr_db": 23.9,
+      "cd_tolerance_ps_nm": 13000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 1,
+      "penalties": [
+        {
+          "target_parameter": "rx_osnr_db",
+          "penalty_db": 0.5,
+          "penalized_value": 24.2,
+          "conditions": [
+            {
+              "parameter": "rx_power_dbm",
+              "value": -14.0
+            }
+          ]
+        },
+        {
+          "target_parameter": "rx_osnr_db",
+          "penalty_db": 1.0,
+          "penalized_value": 24.7,
+          "conditions": [
+            {
+              "parameter": "rx_power_dbm",
+              "value": -16.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "OpenZR+ Mode 5",
+      "power_consumption_w": 23.1,
+      "host_interface_name": "400GAUI-8",
+      "frame": "1x 400GAUI-8",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 400,
+      "modulation_format": "DP-16QAM",
+      "reach_km": 450,
+      "tx_power_min_dbm": -13.0,
+      "tx_power_max_dbm": -9.0,
+      "rx_sensitivity_dbm": -21.0,
+      "rx_osnr_db": 23.4,
+      "cd_tolerance_ps_nm": 13000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 1,
+      "penalties": []
+    },
+    {
+      "label": "OpenZR+ Mode 6",
+      "power_consumption_w": 23.1,
+      "host_interface_name": "100GAUI-2",
+      "frame": "4x 100GAUI-2",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 400,
+      "modulation_format": "DP-16QAM",
+      "reach_km": 450,
+      "tx_power_min_dbm": -13.0,
+      "tx_power_max_dbm": -9.0,
+      "rx_sensitivity_dbm": -21.0,
+      "rx_osnr_db": 23.4,
+      "cd_tolerance_ps_nm": 13000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 4,
+      "penalties": []
+    },
+    {
+      "label": "OpenZR+ Mode 7",
+      "power_consumption_w": 22.3,
+      "host_interface_name": "100GAUI-2",
+      "frame": "3x 100GAUI-2",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 300,
+      "modulation_format": "DP-8QAM",
+      "reach_km": 600,
+      "tx_power_min_dbm": -12.0,
+      "tx_power_max_dbm": -8.0,
+      "rx_sensitivity_dbm": -22.0,
+      "rx_osnr_db": 20.3,
+      "cd_tolerance_ps_nm": 26000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 3,
+      "penalties": []
+    },
+    {
+      "label": "OpenZR+ Mode 8 Enhanced",
+      "power_consumption_w": 23.1,
+      "host_interface_name": "400GAUI-8",
+      "frame": "1x 400GAUI-8",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 400,
+      "modulation_format": "DP-16QAM",
+      "reach_km": 450,
+      "tx_power_min_dbm": -13.0,
+      "tx_power_max_dbm": -9.0,
+      "rx_sensitivity_dbm": -21.0,
+      "rx_osnr_db": 23.1,
+      "cd_tolerance_ps_nm": 13000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 1,
+      "penalties": []
+    },
+    {
+      "label": "OpenZR+ Mode 9 Enhanced",
+      "power_consumption_w": 23.1,
+      "host_interface_name": "100GAUI-2",
+      "frame": "4x 100GAUI-2",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 400,
+      "modulation_format": "DP-16QAM",
+      "reach_km": 450,
+      "tx_power_min_dbm": -13.0,
+      "tx_power_max_dbm": -9.0,
+      "rx_sensitivity_dbm": -21.0,
+      "rx_osnr_db": 23.1,
+      "cd_tolerance_ps_nm": 13000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 4,
+      "penalties": []
+    },
+    {
+      "label": "OpenZR+ Mode 10 Enhanced",
+      "power_consumption_w": 22.3,
+      "host_interface_name": "100GAUI-2",
+      "frame": "3x 100GAUI-2",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 300,
+      "modulation_format": "DP-8QAM",
+      "reach_km": 600,
+      "tx_power_min_dbm": -12.0,
+      "tx_power_max_dbm": -8.0,
+      "rx_sensitivity_dbm": -23.0,
+      "rx_osnr_db": 20.3,
+      "cd_tolerance_ps_nm": 26000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 3,
+      "penalties": []
+    },
+    {
+      "label": "OpenZR+ Mode 11",
+      "power_consumption_w": 21.3,
+      "host_interface_name": "100GAUI-2",
+      "frame": "2x 100GAUI-2",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 200,
+      "modulation_format": "DP-QPSK",
+      "reach_km": 1000,
+      "tx_power_min_dbm": -10.5,
+      "tx_power_max_dbm": -6.5,
+      "rx_sensitivity_dbm": -29.0,
+      "rx_osnr_db": 15.0,
+      "cd_tolerance_ps_nm": 50000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 2,
+      "penalties": []
+    },
+    {
+      "label": "OpenZR+ Mode 12",
+      "power_consumption_w": 21.3,
+      "host_interface_name": "CAUI4",
+      "frame": "2x CAUI4",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 200,
+      "modulation_format": "DP-QPSK",
+      "reach_km": 1000,
+      "tx_power_min_dbm": -10.5,
+      "tx_power_max_dbm": -6.5,
+      "rx_sensitivity_dbm": -29.0,
+      "rx_osnr_db": 15.0,
+      "cd_tolerance_ps_nm": 50000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 2,
+      "penalties": []
+    },
+    {
+      "label": "OpenZR+ Mode 13",
+      "power_consumption_w": 18.2,
+      "host_interface_name": "100GAUI-2",
+      "frame": "1x 100GAUI-2",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 100,
+      "modulation_format": "DP-QPSK",
+      "reach_km": 2000,
+      "tx_power_min_dbm": -6.0,
+      "tx_power_max_dbm": -2.0,
+      "rx_sensitivity_dbm": -32.0,
+      "rx_osnr_db": 11.8,
+      "cd_tolerance_ps_nm": 80000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 1,
+      "penalties": []
+    },
+    {
+      "label": "OpenZR+ Mode 14",
+      "power_consumption_w": 18.2,
+      "host_interface_name": "CAUI4",
+      "frame": "2x CAUI4",
+      "standards_code": "OpenZR+",
+      "bit_rate_gbps": 100,
+      "modulation_format": "DP-QPSK",
+      "reach_km": 2000,
+      "tx_power_min_dbm": -6.0,
+      "tx_power_max_dbm": -2.0,
+      "rx_sensitivity_dbm": -32.0,
+      "rx_osnr_db": 11.8,
+      "cd_tolerance_ps_nm": 80000.0,
+      "fec_type": "oFEC",
+      "number_of_lanes": 1,
+      "penalties": []
+    }
+  ]
+}

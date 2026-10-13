@@ -66,7 +66,38 @@ def _disk_sizes() -> dict[str, float]:
             sizes[os.path.splitext(entry.name)[0]] = entry.stat().st_size / 1024**3
     return sizes
 
+def markdown_sections(markdown: str) -> list[tuple[str, int, int]]:
+    matches = list(re.finditer(r"(?m)^#{1,6}\s+(.+)$", markdown))
+    if not matches:
+        return [("Document", 0, len(markdown))]
 
+    sections = []
+    if matches[0].start() > 0:
+        sections.append(("Document introduction", 0, matches[0].start()))
+
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(markdown)
+        sections.append((match.group(1).strip(), match.start(), end))
+
+    return sections
+
+
+def clean_markdown(markdown: str) -> str:
+
+    markdown = re.sub(
+        r"(?m)^[^\r\n]*==> picture[^\r\n]*(?:\r?\n|$)",
+        "",
+        markdown,
+    )
+    return markdown
+
+def replace_editor_text() -> None:
+    old = st.session_state.get("replace_text", "")
+    new = st.session_state.get("replacement_text", "")
+
+    if old:
+        current = st.session_state.get("md_editor", "")
+        st.session_state["md_editor"] = current.replace(old, new)
 # --------------------------------------------------------------------------- #
 # Sidebar: server status + model picker
 # --------------------------------------------------------------------------- #
@@ -136,23 +167,58 @@ with tab_extract:
     if "parsed" in st.session_state:
         parsed = st.session_state["parsed"]
         st.subheader("Step 1 — Parsed Content")
-        st.caption(f"{parsed.page_count} pages | {len(parsed.tables)} tables | {len(parsed.markdown):,} chars")
 
-        edited_md = st.text_area(
-            "Edit the markdown before extraction",
-            value=st.session_state.get("edited_md", parsed.markdown),
-            height=400,
-            key="md_editor",
-        )
+        full_md = st.session_state.get("edited_md", parsed.markdown)
+        full_md = clean_markdown(full_md)
+
+
+
+        sections = markdown_sections(full_md)
+        st.caption(f"{parsed.page_count} pages | {len(parsed.tables)} tables | {len(sections)} sections | {len(parsed.markdown):,} chars")
+
+        nav_col, editor_col, preview_col = st.columns([1, 2, 2])
+        headings = [re.sub(r"^#{1,6}\s+", "", line.strip()) for line in full_md.splitlines() if re.match(r"^#{1,6}\s+", line)]
+
+        with nav_col:
+            with st.expander(f"Identified Headings ({len(headings)})"):
+                if headings:
+                    for h in headings:
+                        st.write(f"- {h}")
+                else:
+                    st.caption("No headings found")
+
+
+        with editor_col:
+            edited_md = st.text_area(
+                "Edit the markdown before extraction",
+                value=full_md,
+                height=500,
+                key="md_editor",
+            )
+
+        with preview_col:
+            st.markdown("**Markdown Preview**")
+            with st.container(height=500, border=True):
+                st.markdown(edited_md)
+
         st.session_state["edited_md"] = edited_md
 
-        headings = [re.sub(r"^#{1,6}\s+", "", line.strip()) for line in edited_md.splitlines() if re.match(r"^#{1,6}\s+", line)]
-        with st.expander(f"Identified Headings ({len(headings)})"):
-            if headings:
-                for h in headings:
-                    st.write(f"- {h}")
-            else:
-                st.caption("No headings found")
+
+        replace_col, with_col, button_col = st.columns([2, 2, 1])
+
+        with replace_col:
+            st.text_input("Replace", key="replace_text")
+
+        with with_col:
+            st.text_input("With", key="replacement_text")
+
+        with button_col:
+            st.button(
+                "Replace all",
+                on_click=replace_editor_text,
+                use_container_width=True,
+            )
+
 
         # Show provenance-filtered content after extraction
         if "extraction_result" in st.session_state:
@@ -262,7 +328,7 @@ with tab_extract:
         for k, v in display_data.items():
             if v is None:
                 null_fields.append(k)
-            elif isinstance(v, list):
+            elif isinstance(v, list) and len(v) > 1:
                 list_fields[k] = v
             else:
                 scalar_fields[k] = v
@@ -274,7 +340,12 @@ with tab_extract:
         with col2:
             st.markdown("**List Values**")
             for k, v in list_fields.items():
-                st.write(f"- **{k}:** {v}")
+                if k == "penalties":
+                    st.write(f"- **{k}:** ({len(v)} entries)")
+                    with st.expander("View Penalties"):
+                        st.json(v)
+                else:
+                    st.write(f"- **{k}:** {v}")
         with col3:
             st.markdown("**Not Found (null)**")
             for k in null_fields:

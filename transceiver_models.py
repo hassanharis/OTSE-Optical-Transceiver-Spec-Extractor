@@ -7,17 +7,73 @@ from typing import List, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
 
+from typing import Literal
+
+
+PenaltyParameter = Literal[
+    "chromatic_dispersion_ps_nm",
+    "pmd_ps",
+    "pdl_db",
+    "rx_osnr_db",
+    "rx_power_dbm",
+    "rx_sensitivity_dbm",
+]
+
+PenaltyTargetParameter = Literal[
+    "rx_osnr_db",
+    "rx_sensitivity_dbm",
+    "path_penalty_db",
+    "dispersion_penalty_db",
+]
+
+
+
+class PenaltyCondition(BaseModel):
+    parameter: PenaltyParameter = Field(
+        ...,
+        description="Condition parameter: e.g. 'chromatic_dispersion_ps_nm', 'pmd_ps', 'pdl_db', 'rx_power_dbm'."
+    )
+    value: float = Field(..., description="Condition numeric threshold/value (e.g., 13000 for CD, -14.0 for Rx power).")
+
+class PenaltyPoint(BaseModel):
+    target_parameter: PenaltyTargetParameter = Field(
+        default="rx_osnr_db",
+        description="The parameter degraded: 'rx_osnr_db', 'rx_sensitivity_dbm', or 'path_penalty_db'."
+    )
+    penalty_db: float = Field(..., description="Penalty magnitude in dB (e.g. 0.5, 1.0).")
+    penalized_value: Optional[float] = Field(
+        default=None,
+        description="Degraded parameter value if stated (e.g. 24.2 for 24.2 dB OSNR @ 0.5 dB penalty)."
+    )
+    conditions: list[PenaltyCondition] = Field(
+        min_length=1,
+        description="List of operating conditions under which this penalty occurs."
+    )
+    source: Optional[str] = Field(
+        default=None,
+        description="Where it was found: table section and row key (e.g. 'OpenZR+ | Appl mode=4'). Used for mode linking."
+    )
+
+
 class TransceiverSpecs(BaseModel):
     """Extract only explicitly stated values; use None when data is absent."""
 
-    model_config = ConfigDict(extra="allow", str_strip_whitespace=True)
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
     #Module identification — vendor and part number
-    vendor: Optional[str] = Field(None, description="Transceiver manufacturer or brand.")
+    vendor: Optional[str] = Field(None, description="Manufacturer/brand explicitly identified by this datasheet. Never invent or infer.")
     model: Optional[list[str]] = Field(None, description="Product model or orderable part number.")
-    form_factor: list[str] | None = Field(default=None, description="Form factor of the transceiver: QSFP28, QSFP-DD, QSFP+, OSFP, CFP2-DCO")
+    form_factor: list[str] | None = Field(default=None, description="Form factor of the transceiver: QSFP28, QSFP-DD, QSFP+, OSFP, CFP2-DCO, Front Panel Plug RJ, Low Rider RJ, SFF")
     standards_claimed: list[str] | None  = Field(
         default=None, description="MSA Standards claimed in the datasheet."
+    )
+    emitter_type: list[str] | None = Field(
+        default=None,
+        description="Type of optical emitter: DFB, FP, VCSEL, etc.",
+    )
+    photodetector_type: list[str] | None = Field(
+        default=None,
+        description="Type of optical photodetector: PIN, APD, etc.",
     )
 
     #Frequency and wavelength parameters
@@ -44,11 +100,23 @@ class TransceiverSpecs(BaseModel):
         default_factory=list, description="Supported or minimum channel spacing in GHz."
     )
     channel_total: List[int] | int | None = Field(
-        default=None, description="Total number of channels supported."
+    default=None, description="Total number of channels supported."
     )
-
-
+    
     #Physical parameters
+
+    mounting_type: list[str] | None = Field(
+                default=None,
+                description="Type of mounting for the transceiver module. Pluggable, Socket, screw, solder, etc. It is not a form factor or MSA code.",
+            )
+
+
+
+
+
+
+
+
     connector_type: list[str] | None = Field(
             default=None,
             description="Optical connector: LC, SC, MPO, FC, ST. It is not a form factor or MSA code.",
@@ -110,7 +178,7 @@ class TransceiverSpecs(BaseModel):
 
     # Electrical and optical performance parameters
     baud_rate_gbaud: Optional[List[float]] = Field(
-        None, description="symbol rates in GBaud."
+        None, description="symbol/Signaling rates in GBaud."
     )
     bit_rate_gbps: Optional[List[float]] = Field(
         default_factory=list, description="data rate/speed/payload bit rate in Gbps or G. do not confuse with GHz or grid"
@@ -169,7 +237,7 @@ class TransceiverSpecs(BaseModel):
 
     # FEC configuration fields
     fec_type: Optional[List[str]] = Field(
-        default_factory=list, description="Supported FEC types as stated: KP4, oFEC, RS-FEC, KP4, KP1, KP2, KP3, KP4, KP5, KP6, KP7, KP8, RS(528)"
+        default_factory=list, description="Supported FEC types as stated: oFEC, C-FEC, RS-FEC, KP4, KP1, KP2, KP3, RS(528)"
     )
     fec_overhead_percent: Optional[List[float]] = Field(
         default_factory=list, description="FEC overhead in percent."
@@ -196,8 +264,56 @@ class TransceiverSpecs(BaseModel):
         default=None,
         description="LOS deassert threshold in dBm.",
     )
-
-
+    channel_insertion_loss_db: Optional[List[float]] = Field(
+        default=None,
+        description="Channel insertion loss in dB.",
+    )
+    receiver_reflectance_db: Optional[List[float]] = Field(
+        default=None,
+        description="Receiver reflectance in dB.",
+    )
+    transmitter_reflectance_db: Optional[List[float]] = Field(
+        default=None,
+        description="Transmitter reflectance in dB.",
+    )
+    optical_extinction_ratio_db: Optional[List[float]] = Field(
+        default=None,
+        description="Optical extinction ratio in dB.",
+    )
+    optical_return_loss_tolerance_db: Optional[List[float]] = Field(
+        default=None,
+        description="Optical return loss tolerance in dB.",
+    )
+    number_of_lanes: Optional[List[int]] = Field(
+        default=None,
+        description="Number of lanes.",
+    )
+    side_mode_suppression_ratio_db: Optional[List[float]] = Field(
+        default=None,
+        description="Side Mode Suppression Ratio (SMSR) in dB.",
+    )
+    los_deassert_dbm: Optional[List[float]] = Field(
+        default=None,
+        description="LOS deassert threshold in dBm.",
+    )
+    los_assert_dbm: Optional[List[float]] = Field(
+        default=None,
+        description="LOS assert threshold in dBm.",
+    )
+    los_hysteresis_db: Optional[List[float]] = Field(
+        default=None,
+        description="LOS hysteresis in dB.",
+    )
+    total_jitter_ps: Optional[List[float]] = Field(
+        default=None,
+        description="Total jitter in ps.",
+    )
+    
+    penalties: list[PenaltyPoint] | None = Field(
+        default=None,
+        description=(
+            "Optical penalties (OSNR, RX sensitivity, dispersion, path, PDL) for given values of other parameters like RX power. "        ),
+    )
 
     notes: Optional[str] = Field(
         None, description="Conditions, qualifiers, ambiguities, values trade-off dependencies, or source wording about any parameter that can not be explained in the set schema."
@@ -213,6 +329,19 @@ class TransceiverSpecs(BaseModel):
 TransceiverDatasheet = TransceiverSpecs
 
 __all__ = ["TransceiverSpecs", "TransceiverDatasheet"]
+
+PENALTY_PARAMETERS: list[str] = [
+    "cd_tolerance_ps_nm",
+    "pmd_tolerance_ps",
+    "pdl_db",
+    "rx_osnr_db",
+    "rx_sensitivity_dbm",
+]
+
+PENALTY_CONDITION_PARAMETERS: list[str] = [
+    "rx_power_dbm",
+    "rx_osnr_db",
+]
 
 FIELD_BUNDLES = {
     "identification": ["vendor", "model", "form_factor", "standards_claimed"],
@@ -235,6 +364,7 @@ MODE_FIELDS: list[str] = [
     "wavelength_min_nm",
     "channel_total",
     "model",
+    "number_of_lanes",
     "baud_rate_gbaud",
     "bit_rate_gbps",
     "roll_off_percent",
@@ -267,8 +397,13 @@ MODE_FIELDS: list[str] = [
     "power_consumption_w",
     "standards_code",
     "frame",
+    "penalties",  # <-- Include penalties in MODE_FIELDS
 ]
 
+MODE_FIELDS_OPT: list[str] = [
+    "fec_type",
+    "fec_overhead_percent",
+]
 
 
 # Fields that participate in per-mode configuration (can have multiple correlated values)

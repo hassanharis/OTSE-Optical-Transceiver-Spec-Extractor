@@ -1,0 +1,116 @@
+{
+  "vendor": "XGIGA Communication Technology Co.,ltd",
+  "model": [
+    "OP27PI8-02D"
+  ],
+  "form_factor": [
+    "OSFP"
+  ],
+  "standards_claimed": [
+    "OSFP MSA rev5.0",
+    "OIF-CMIS rev5.1",
+    "IEEE 802.3dj-2024"
+  ],
+  "emitter_type": [
+    "CWDM Si-photonics Laser"
+  ],
+  "photodetector_type": [
+    "PIN"
+  ],
+  "wavelength_min_nm": [
+    1264.5
+  ],
+  "wavelength_max_nm": [
+    1337.5
+  ],
+  "channel_total": [
+    4
+  ],
+  "lanes_total": [
+    8
+  ],
+  "mounting_type": [
+    "Pluggable"
+  ],
+  "connector_type": [
+    "Dual Duplex LC"
+  ],
+  "fiber_type": [
+    "Single mode fiber",
+    "9/125um SMF"
+  ],
+  "temp_min_c": 0.0,
+  "temp_max_c": 70.0,
+  "power_consumption_w": [
+    30.0
+  ],
+  "host_interface_name": [
+    "OSFP MSA",
+    "OIF-CMIS"
+  ],
+  "media_interface_name": [
+    "2xFR4",
+    "IEEE 802.3dj"
+  ],
+  "standards_code": [
+    "2xFR4",
+    "IEEE 802.3dj"
+  ],
+  "baud_rate_gbaud": [
+    113.4375
+  ],
+  "bit_rate_gbps": [
+    226.875
+  ],
+  "modulation_format": [
+    "PAM4"
+  ],
+  "reach_km": [
+    2.0
+  ],
+  "tx_power_min_dbm": [
+    -1.8
+  ],
+  "tx_power_max_dbm": [
+    4.9
+  ],
+  "rx_sensitivity_dbm": [
+    -3.7
+  ],
+  "rx_overload_dbm": [
+    4.9
+  ],
+  "fec_type": [
+    "FEC"
+  ],
+  "pre_fec_ber_threshold": [
+    0.00024
+  ],
+  "extinction_ratio_db": [
+    3.5
+  ],
+  "receiver_reflectance_db": [
+    -26.0
+  ],
+  "transmitter_reflectance_db": [
+    -26.0
+  ],
+  "optical_extinction_ratio_db": [
+    3.5
+  ],
+  "number_of_lanes": [
+    8
+  ],
+  "side_mode_suppression_ratio_db": [
+    30.0
+  ],
+  "notes": "Forward error correction (FEC) is required to be implemented by the host in order to ensure reliable system operation.",
+  "provenance_datasheet_sections": [
+    "PRODUCT FEATURES",
+    "REFERENCE STANDARD",
+    "APPLICATIONS",
+    "PRODUCT SPECIFICATION",
+    "Optical Characteristics",
+    "Electrical Characteristics"
+  ]
+}

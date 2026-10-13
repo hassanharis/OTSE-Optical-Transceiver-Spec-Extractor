@@ -26,6 +26,8 @@ from transceiver_models import MODE_FIELDS
 
 logger = logging.getLogger(__name__)
 
+# In pipeline/mode_linker.py
+
 LINKING_SYSTEM_PROMPT = """\
 You are given a pool of atomic parameter values extracted from an optical transceiver datasheet, \
 plus the original datasheet content for context.
@@ -36,11 +38,12 @@ a host-to-media binding).
 
 Rules:
 - Each mode must include values that co-occur in the source (same row/section/application).
-- Interfaces can be multiple per mode
+- Interfaces can be multiple per mode.
 - For multiple model numbers, each model should be treated as a separate mode. 
 - Use the datasheet content to determine which values belong together.
 - Assign a short descriptive label to each mode.
-- Return ONLY valid JSON matching the schema below
+- Penalties: Assign mode-specific penalties (e.g. Rx OSNR @ 0.5dB penalty at a specific Rx power) to the respective mode under "penalties". Use each penalty's "source" (section | row label, e.g. "OpenZR+ | Appl mode=4") to decide which mode it belongs to, and copy the penalty objects unchanged. Penalties applying globally to the entire module across all modes should not be assigned to individual modes.
+- Return ONLY valid JSON matching the schema below.
 - for amplified and unamplified values, create separate modes.
 - Assignment of parameters to each mode should be performed on definitive evidence. Do not create modes based on speculation or guesswork.
 """
@@ -148,8 +151,8 @@ def _filter_sections_by_provenance(
 def separate_atoms(specs_dict: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
     """Split specs into (multi_valued_mode_atoms, general_params).
 
-    Mode fields with >1 value go to multi_valued.
-    Mode fields with exactly 1 value or general fields go to general.
+    Mode fields with >1 value (or list of objects like penalties) go to multi_valued.
+    Mode fields with exactly 1 scalar value or general fields go to general.
     """
     multi = {}
     general = {}
@@ -157,6 +160,9 @@ def separate_atoms(specs_dict: dict[str, Any]) -> tuple[dict[str, Any], dict[str
     for key, value in specs_dict.items():
         if key in MODE_FIELDS:
             if isinstance(value, list) and len(value) > 1:
+                multi[key] = value
+            elif key == "penalties" and isinstance(value, list) and len(value) > 0:
+                # Penalties can have 1 or more entries that may belong to specific modes
                 multi[key] = value
             elif value is not None:
                 general[key] = value
@@ -171,7 +177,10 @@ def _build_field_template(multi: dict[str, Any]) -> str:
     """Build the per-mode field list for the output schema."""
     lines = []
     for field in multi:
-        lines.append(f'      "{field}": "<value from pool>"')
+        if field == "penalties":
+            lines.append('      "penalties": [<list of penalty objects from pool belonging to this mode, or omit if none>]')
+        else:
+            lines.append(f'      "{field}": "<value from pool>"')
     return ",\n".join(lines)
 
 

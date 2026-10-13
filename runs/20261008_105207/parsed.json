@@ -1,0 +1,28 @@
+{
+  "source_path": "C:\\Users\\hhassan\\AppData\\Local\\Temp\\tmpkflgmq_u.pdf",
+  "page_count": 6,
+  "table_count": 4,
+  "markdown_chars": 36359,
+  "tables": [
+    {
+      "page": 2,
+      "label": null,
+      "rows": 7
+    },
+    {
+      "page": 2,
+      "label": null,
+      "rows": 6
+    },
+    {
+      "page": 3,
+      "label": null,
+      "rows": 5
+    },
+    {
+      "page": 4,
+      "label": null,
+      "rows": 6
+    }
+  ]
+}

@@ -72,12 +72,21 @@ _FIELD_DISPLAY = {
     "standards_code": "Standards code",
     "host_interface_id_hex": "Host Interface ID (hex)",
     "media_interface_id_hex": "Media Interface ID (hex)",
+    "penalties": "Penalties",
 }
 
+def _fmt_penalty(p: dict) -> str:
+    conds = ", ".join(f"{c.get('parameter')}={c.get('value')}" for c in p.get("conditions", []))
+    target = p.get("target_parameter", "")
+    pen = f"{p.get('penalty_db')} dB"
+    val = f" (val={p.get('penalized_value')})" if p.get('penalized_value') is not None else ""
+    return f"{target} +{pen}{val} [{conds}]"
 
 def _mode_cell(key: str, value) -> str:
     if key == "label":
         return f'<td><strong>{escape(str(value))}</strong></td>'
+    if key == "penalties" and isinstance(value, list):
+        return f"<td>{escape('; '.join(_fmt_penalty(p) for p in value if isinstance(p, dict)))}</td>"
     if isinstance(value, list):
         return f"<td>{_badges(value)}</td>"
     return f"<td>{escape(str(value))}</td>"

@@ -1,0 +1,144 @@
+{
+  "vendor": "XGIGA Communication Technology Co.,ltd",
+  "model": [
+    "OP27PI8-02D"
+  ],
+  "form_factor": [
+    "OSFP"
+  ],
+  "standards_claimed": [
+    "OSFP MSA rev5.0",
+    "OIF-CMIS rev5.1",
+    "IEEE 802.3dj-2024"
+  ],
+  "emitter_type": [
+    "CWDM Si-photonics Laser"
+  ],
+  "photodetector_type": [
+    "PIN"
+  ],
+  "wavelength_min_nm": [
+    1264.5
+  ],
+  "wavelength_max_nm": [
+    1337.5
+  ],
+  "wavelength_center_nm": null,
+  "wavelength_band": null,
+  "frequency_min_thz": null,
+  "frequency_max_thz": null,
+  "channel_spacing_ghz": null,
+  "channel_total": [
+    4
+  ],
+  "lanes_total": [
+    8
+  ],
+  "mounting_type": [
+    "Pluggable"
+  ],
+  "connector_type": [
+    "Dual Duplex LC"
+  ],
+  "fiber_type": [
+    "Single mode fiber",
+    "9/125um SMF"
+  ],
+  "temp_min_c": 0,
+  "temp_max_c": 70,
+  "power_consumption_w": [
+    30
+  ],
+  "host_interface_name": [
+    "OSFP MSA",
+    "OIF-CMIS"
+  ],
+  "host_interface_id_hex": null,
+  "host_interface_id": null,
+  "media_interface_name": [
+    "2xFR4",
+    "IEEE 802.3dj"
+  ],
+  "media_interface_id_hex": null,
+  "media_interface_id": null,
+  "frame": null,
+  "standards_code": [
+    "2xFR4",
+    "IEEE 802.3dj"
+  ],
+  "baud_rate_gbaud": [
+    113.4375
+  ],
+  "bit_rate_gbps": [
+    226.875
+  ],
+  "roll_off_percent": null,
+  "modulation_format": [
+    "PAM4"
+  ],
+  "reach_km": [
+    2
+  ],
+  "tx_power_min_dbm": [
+    -1.8
+  ],
+  "tx_power_max_dbm": [
+    4.9
+  ],
+  "tx_in_band_osnr_db": null,
+  "tx_out_of_band_osnr_db": null,
+  "rx_sensitivity_dbm": [
+    -3.7
+  ],
+  "rx_osnr_db": null,
+  "rx_osnr_tolerance_db_max": null,
+  "rx_overload_dbm": [
+    4.9
+  ],
+  "cd_tolerance_ps_nm": null,
+  "pdl_db": null,
+  "pmd_tolerance_ps": null,
+  "fec_type": [
+    "FEC"
+  ],
+  "fec_overhead_percent": null,
+  "pre_fec_ber_threshold": [
+    0.00024
+  ],
+  "post_fec_ber_target": null,
+  "extinction_ratio_db": [
+    3.5
+  ],
+  "los_assert_dbm": null,
+  "los_deassert_dbm": null,
+  "channel_insertion_loss_db": null,
+  "receiver_reflectance_db": [
+    -26
+  ],
+  "transmitter_reflectance_db": [
+    -26
+  ],
+  "optical_extinction_ratio_db": [
+    3.5
+  ],
+  "optical_return_loss_tolerance_db": null,
+  "number_of_lanes": [
+    8
+  ],
+  "side_mode_suppression_ratio_db": [
+    30
+  ],
+  "los_hysteresis_db": null,
+  "total_jitter_ps": null,
+  "penalties": null,
+  "notes": "Forward error correction (FEC) is required to be implemented by the host in order to ensure reliable system operation.",
+  "provenance_datasheet_sections": [
+    "PRODUCT FEATURES",
+    "REFERENCE STANDARD",
+    "APPLICATIONS",
+    "PRODUCT SPECIFICATION",
+    "Optical Characteristics",
+    "Electrical Characteristics"
+  ],
+  "suggestions": null
+}
